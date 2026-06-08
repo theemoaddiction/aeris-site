@@ -24,7 +24,7 @@ A directory glows nearby.
 Storefronts remain illuminated despite showing no signs of power.
 
 Exits:
-food court
+foodcourt
 directory
 arcade
 fountain
@@ -34,7 +34,7 @@ exits:["foodcourt","directory","arcade","fountain","skybridge"]
 },
 
 foodcourt: {
-name: "FOOD COURT",
+name: "FOODCOURT",
 desc: `
 Plastic chairs rest upside-down on tables.
 
@@ -57,7 +57,7 @@ name:"DIRECTORY",
 desc:`
 The mall directory displays:
 
-FOOD COURT
+FOODCOURT
 PARKING
 RESTROOMS
 ELEVATORS
