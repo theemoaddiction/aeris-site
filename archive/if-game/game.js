@@ -49,7 +49,7 @@ function updateInventoryPanel(){
 
 function saveGame(){
 
-      updateInventoryPanel();
+      updateSidebar();
   
 localStorage.setItem(
 "if06162004",
@@ -767,29 +767,18 @@ checkEndings();
 
 return;
 }
-function updateSidebar(){
+function updateInventoryPanel(){
 
-    updateInventoryPanel();
-
-    const room =
-        GAME_DATA.rooms[currentRoom];
-
-    if(locationList){
-        locationList.innerHTML =
-            room.name;
+    if(!inventoryList){
+        return;
     }
 
-    if(exitsList){
-
-        if(room.exits.length === 0){
-            exitsList.innerHTML =
-                "none";
-        } else {
-            exitsList.innerHTML =
-                room.exits.join("<br>");
-        }
-
+    if(inventory.length === 0){
+        inventoryList.innerHTML = "empty";
+        return;
     }
+
+    inventoryList.innerHTML = inventory.join("<br>");
 
 }
 if(
@@ -853,4 +842,4 @@ commandInput.value = "";
 }
 );
 
-updateInventoryPanel();
+updateSidebar();
