@@ -9,7 +9,7 @@ html,body{
     color:#ff63b5;
     font-family:"Courier New", monospace;
     height:100%;
-    overflow:auto;
+    overflow:hidden;
 }
 
 body{
@@ -55,7 +55,7 @@ body{
     max-width:1000px;
     margin:auto;
     padding:24px;
-    min-height:100vh;
+    height:100vh;
     display:flex;
     flex-direction:column;
 }
@@ -147,12 +147,19 @@ h1{
     grid-template-columns:1fr 260px;
     gap:15px;
     min-height:0;
+    overflow:hidden;
 }
 
 #sidebar{
     display:flex;
     flex-direction:column;
     gap:15px;
+    overflow:auto;
+}
+
+#output{
+    overflow-y:auto;
+    min-height:0;
 }
 
 .panel{
