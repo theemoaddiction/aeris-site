@@ -52,12 +52,10 @@ body{
 /* MAIN GAME */
 
 #game{
-    max-width:1400px;
+    max-width:1000px;
     margin:auto;
     padding:24px;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
+    min-height:100vh;
 }
 
 #header{
@@ -142,12 +140,9 @@ h1{
 }
 
 #mainArea{
-    flex:1;
     display:grid;
     grid-template-columns:1fr 260px;
     gap:15px;
-    min-height:0;
-    overflow:hidden;
 }
 
 #sidebar{
@@ -158,8 +153,8 @@ h1{
 }
 
 #output{
+    max-height:65vh;
     overflow-y:auto;
-    min-height:0;
 }
 
 .panel{
