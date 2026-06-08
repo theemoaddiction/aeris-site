@@ -744,6 +744,7 @@ takeItem(
 cmd.substring(5)
 );
 
+updateInventoryPanel();
 saveGame();
 
 return;
@@ -757,6 +758,7 @@ useItem(
 cmd.substring(4)
 );
 
+updateInventoryPanel();
 saveGame();
 
 checkEndings();
