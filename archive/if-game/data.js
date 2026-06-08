@@ -134,7 +134,9 @@ Rows of empty parking spaces disappear into darkness.
 
 A single black bird stands beneath a fluorescent lamp.
 
-It does not move.
+Beside the elevator is a broken change machine.
+
+It dispenses quarters when no one is watching.
 `,
 exits:["service"]
 },
