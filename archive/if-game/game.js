@@ -460,9 +460,20 @@ for(
 let exit of room.exits
 ){
 
+const roomName =
+    GAME_DATA.rooms[exit]?.name
+        .toLowerCase() || "";
+
+const normalizedTarget =
+    target.replace(/\s+/g, "");
+
+const normalizedRoomName =
+    roomName.replace(/\s+/g, "");
+
 if(
-exit.includes(target) ||
-target.includes(exit)
+exit.toLowerCase() === normalizedTarget ||
+normalizedRoomName === normalizedTarget ||
+roomName === target
 ){
 
 currentRoom = exit;
