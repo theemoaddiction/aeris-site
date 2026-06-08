@@ -646,9 +646,9 @@ go [location]
 take [item]
 use [item]
 listen
-inventory
 save
 load
+reset
 help
 
 Additional commands may exist.`
