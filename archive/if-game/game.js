@@ -614,7 +614,15 @@ print(
 state.moves++;
 
 randomCorruption();
+if(
+cmd.toLowerCase() === "reset"
+){
 
+localStorage.removeItem("if06162004");
+location.reload();
+return;
+
+}
 if(
 hiddenCommand(
 cmd.toLowerCase()
