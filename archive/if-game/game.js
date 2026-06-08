@@ -624,7 +624,7 @@ GAME_DATA.endings.connection
 setTimeout(()=>{
 
 window.location.href =
-"https://myliminalreality.com";
+"https://myliminalreality.com/owns-your-brain.html";
 
 },3000);
 
@@ -820,7 +820,7 @@ cmd.toLowerCase().includes(
 ){
 
 window.location.href =
-"https://myliminalreality.com";
+"https://myliminalreality.com/owns-your-brain.html";
 
 return;
 }
