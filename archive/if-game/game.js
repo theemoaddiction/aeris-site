@@ -26,6 +26,8 @@ mandrakeSpawned: false,
 
 cdPlayed: false,
 
+coinThrown: false,
+    
 endingReached: false
 
 };
@@ -257,6 +259,69 @@ function takeItem(item){
 item = item.toLowerCase();
 
 if(
+item.includes("coin") &&
+currentRoom === "fountain"
+){
+
+if(!inventory.includes("coin")){
+    print("You do not have a coin.");
+    return;
+}
+
+inventory.splice(inventory.indexOf("coin"),1);
+
+state.coinThrown = true;
+state.observationUnlocked = true;
+
+print(
+`The coin enters the dry fountain.
+
+It lands in water you cannot see.
+
+Somewhere below the mall, a lock disengages.
+
+The directory updates itself.`
+);
+
+updateSidebar();
+
+return;
+
+}
+
+if(
+item.includes("coin") &&
+currentRoom === "arcade"
+){
+
+if(!inventory.includes("coin")){
+    print("You do not have a coin.");
+    return;
+}
+
+inventory.splice(inventory.indexOf("coin"),1);
+
+print(
+`The arcade cabinet accepts the coin.
+
+The screen displays:
+
+WISHING CROWS / RECOVERED AUDIO
+
+Redirecting...`
+);
+
+updateSidebar();
+
+setTimeout(()=>{
+    window.location.href = "../secret.html";
+},1800);
+
+return;
+
+}
+    
+if(
 currentRoom === "foodcourt" &&
 item.includes("cd")
 ){
@@ -271,6 +336,23 @@ inventory.push(
 "burned cd-r"
 );
 
+if(
+currentRoom === "parking" &&
+(item.includes("coin") || item.includes("quarter"))
+){
+
+inventory.push("coin");
+
+print(
+"Taken: coin"
+);
+
+updateSidebar();
+
+return;
+
+}
+    
 print(
 "Taken: burned cd-r"
 );
@@ -612,7 +694,8 @@ function checkEndings(){
 if(
 currentRoom === "observation" &&
 state.cdPlayed &&
-state.crowEvent
+state.crowEvent &&
+state.coinThrown
 ){
 
 state.endingReached = true;
