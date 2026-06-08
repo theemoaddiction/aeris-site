@@ -52,7 +52,7 @@ body{
 /* MAIN GAME */
 
 #game{
-    max-width:1000px;
+    max-width:1400px;
     margin:auto;
     padding:24px;
     height:100vh;
@@ -184,11 +184,7 @@ h1{
 
 @media(max-width:800px){
     #mainArea{
-        grid-template-columns:1fr;
-    }
-
-    #sidebar{
-        order:-1;
+        grid-template-columns:1fr 210px;
     }
 }
 
