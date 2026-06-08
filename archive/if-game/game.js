@@ -1,6 +1,8 @@
 const output = document.getElementById("output");
 const commandInput = document.getElementById("command");
 const inventoryList = document.getElementById("inventoryList");
+const exitsList = document.getElementById("exitsList");
+const locationList = document.getElementById("locationList");
 
 let currentRoom = "atrium";
 
