@@ -1,5 +1,6 @@
 const output = document.getElementById("output");
 const commandInput = document.getElementById("command");
+const inventoryList = document.getElementById("inventoryList");
 
 let currentRoom = "atrium";
 
@@ -27,10 +28,27 @@ endingReached: false
 
 };
 
+function updateInventoryPanel(){
+
+    if(!inventoryList){
+        return;
+    }
+
+    if(inventory.length === 0){
+        inventoryList.innerHTML = "empty";
+        return;
+    }
+
+    inventoryList.innerHTML = inventory.join("<br>");
+
+}
+
 /* ---------- SAVE ---------- */
 
 function saveGame(){
 
+      updateInventoryPanel();
+  
 localStorage.setItem(
 "if06162004",
 JSON.stringify({
@@ -806,3 +824,5 @@ commandInput.value = "";
 
 }
 );
+
+updateInventoryPanel();
