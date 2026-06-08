@@ -314,7 +314,10 @@ Redirecting...`
 updateSidebar();
 
 setTimeout(()=>{
-    window.location.href = "../secret.html";
+    window.open(
+    "../../secret1.html",
+    "_blank"
+);
 },1800);
 
 return;
