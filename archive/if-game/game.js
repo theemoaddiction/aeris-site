@@ -45,6 +45,32 @@ function updateInventoryPanel(){
 
 }
 
+function updateSidebar(){
+
+    updateInventoryPanel();
+
+    const room =
+        GAME_DATA.rooms[currentRoom];
+
+    if(locationList){
+        locationList.innerHTML =
+            room.name;
+    }
+
+    if(exitsList){
+
+        if(room.exits.length === 0){
+            exitsList.innerHTML =
+                "none";
+        } else {
+            exitsList.innerHTML =
+                room.exits.join("<br>");
+        }
+
+    }
+
+}
+
 /* ---------- SAVE ---------- */
 
 function saveGame(){
