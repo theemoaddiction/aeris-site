@@ -83,7 +83,6 @@ h1{
 /* OUTPUT */
 
 #output{
-    flex:1;
     overflow-y:auto;
     white-space:pre-wrap;
     line-height:1.55;
@@ -140,6 +139,50 @@ h1{
 
 #command:focus{
     outline:none;
+}
+
+#mainArea{
+    flex:1;
+    display:grid;
+    grid-template-columns:1fr 260px;
+    gap:15px;
+    min-height:0;
+}
+
+#sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.panel{
+    border:1px solid rgba(255,99,181,.35);
+    padding:14px;
+    background:rgba(255,99,181,.035);
+    box-shadow:inset 0 0 25px rgba(255,99,181,.05);
+}
+
+.panel h2{
+    margin:0 0 10px 0;
+    font-size:14px;
+    color:white;
+    letter-spacing:2px;
+}
+
+#actionsList,
+#inventoryList{
+    font-size:14px;
+    line-height:1.55;
+}
+
+@media(max-width:800px){
+    #mainArea{
+        grid-template-columns:1fr;
+    }
+
+    #sidebar{
+        order:-1;
+    }
 }
 
 /* SPECIAL TEXT */
