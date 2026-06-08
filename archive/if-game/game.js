@@ -767,20 +767,7 @@ checkEndings();
 
 return;
 }
-function updateInventoryPanel(){
 
-    if(!inventoryList){
-        return;
-    }
-
-    if(inventory.length === 0){
-        inventoryList.innerHTML = "empty";
-        return;
-    }
-
-    inventoryList.innerHTML = inventory.join("<br>");
-
-}
 if(
 cmd.toLowerCase().includes(
 "myliminalreality"
