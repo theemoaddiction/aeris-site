@@ -9,7 +9,7 @@ html,body{
     color:#ff63b5;
     font-family:"Courier New", monospace;
     height:100%;
-    overflow:hidden;
+    overflow:auto;
 }
 
 body{
@@ -55,7 +55,7 @@ body{
     max-width:1000px;
     margin:auto;
     padding:24px;
-    height:100vh;
+    min-height:100vh;
     display:flex;
     flex-direction:column;
 }
