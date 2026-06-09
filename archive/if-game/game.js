@@ -257,9 +257,10 @@ inventory.join("\n")
 function takeItem(item){
 
 item = item.toLowerCase();
+
 if(
 currentRoom === "parking" &&
-(item.includes("coin") || item.includes("quarter"))
+(item.includes("coin") || item.includes("quarter") || item.includes("change"))
 ){
 
 inventory.push("coin");
@@ -273,72 +274,7 @@ updateSidebar();
 return;
 
 }
-if(
-item.includes("coin") &&
-currentRoom === "fountain"
-){
 
-if(!inventory.includes("coin")){
-    print("You do not have a coin.");
-    return;
-}
-
-inventory.splice(inventory.indexOf("coin"),1);
-
-state.coinThrown = true;
-state.observationUnlocked = true;
-
-print(
-`The coin enters the dry fountain.
-
-It lands in water you cannot see.
-
-Somewhere below the mall, a lock disengages.
-
-The directory updates itself.`
-);
-
-updateSidebar();
-
-return;
-
-}
-
-if(
-item.includes("coin") &&
-currentRoom === "arcade"
-){
-
-if(!inventory.includes("coin")){
-    print("You do not have a coin.");
-    return;
-}
-
-inventory.splice(inventory.indexOf("coin"),1);
-
-print(
-`The arcade cabinet accepts the coin.
-
-The screen displays:
-
-WISHING CROWS / RECOVERED AUDIO
-
-Redirecting...`
-);
-
-updateSidebar();
-
-setTimeout(()=>{
-    window.open(
-    "../../secret1.html",
-    "_blank"
-);
-},1800);
-
-return;
-
-}
-    
 if(
 currentRoom === "foodcourt" &&
 item.includes("cd")
@@ -354,8 +290,6 @@ inventory.push(
 "burned cd-r"
 );
 
-
-    
 print(
 "Taken: burned cd-r"
 );
@@ -442,12 +376,77 @@ print(
 );
 
 }
-
 /* ---------- USE ---------- */
 
 function useItem(item){
 
 item = item.toLowerCase();
+
+if(
+item.includes("coin") &&
+currentRoom === "fountain"
+){
+
+if(!inventory.includes("coin")){
+    print("You do not have a coin.");
+    return;
+}
+
+inventory.splice(inventory.indexOf("coin"),1);
+
+state.coinThrown = true;
+state.observationUnlocked = true;
+
+print(
+`The coin enters the dry fountain.
+
+It lands in water you cannot see.
+
+Somewhere below the mall, a lock disengages.
+
+The directory updates itself.`
+);
+
+updateSidebar();
+
+return;
+
+}
+
+if(
+item.includes("coin") &&
+currentRoom === "arcade"
+){
+
+if(!inventory.includes("coin")){
+    print("You do not have a coin.");
+    return;
+}
+
+inventory.splice(inventory.indexOf("coin"),1);
+
+print(
+`The arcade cabinet accepts the coin.
+
+The screen displays:
+
+MISS THE GIRL / RECOVERED AUDIO
+
+A hidden browser window appears.`
+);
+
+updateSidebar();
+
+setTimeout(()=>{
+    window.open(
+        "../../secret1.html",
+        "_blank"
+    );
+},1800);
+
+return;
+
+}
 
 if(
 item.includes("mandrake")
