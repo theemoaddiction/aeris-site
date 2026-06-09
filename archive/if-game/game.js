@@ -257,7 +257,22 @@ inventory.join("\n")
 function takeItem(item){
 
 item = item.toLowerCase();
+if(
+currentRoom === "parking" &&
+(item.includes("coin") || item.includes("quarter"))
+){
 
+inventory.push("coin");
+
+print(
+"Taken: coin"
+);
+
+updateSidebar();
+
+return;
+
+}
 if(
 item.includes("coin") &&
 currentRoom === "fountain"
@@ -339,22 +354,7 @@ inventory.push(
 "burned cd-r"
 );
 
-if(
-currentRoom === "parking" &&
-(item.includes("coin") || item.includes("quarter"))
-){
 
-inventory.push("coin");
-
-print(
-"Taken: coin"
-);
-
-updateSidebar();
-
-return;
-
-}
     
 print(
 "Taken: burned cd-r"
