@@ -438,10 +438,10 @@ A hidden browser window appears.`
 updateSidebar();
 
 setTimeout(()=>{
-    window.open(
-        "../../secret1.html",
-        "_blank"
-    );
+window.open(
+    "/archive/secret1.html",
+    "_blank"
+);
 },1800);
 
 return;
