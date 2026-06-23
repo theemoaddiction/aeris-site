@@ -7,15 +7,33 @@
     align-items:center;
     flex-wrap:wrap;
     gap:40px;
-    margin-top:20px;
+    margin:40px 0;
 }
 
-.streaming-links img{
-    height:48px;
-    width:auto;
-    transition:.2s;
+.streaming-links a{
+    color:var(--cyan);
+    text-decoration:none;
+    font-size:28px;
+    font-weight:bold;
+    text-shadow:
+        0 0 8px var(--cyan),
+        0 0 16px var(--pink);
+    transition:
+        transform .4s ease,
+        text-shadow .4s ease,
+        color .4s ease;
 }
 
-.streaming-links img:hover{
-    transform:scale(1.08);
+.streaming-links a:hover{
+    color:#fff;
+    transform:
+        translateY(-10px)
+        scale(1.35)
+        rotate(-2deg);
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 20px var(--cyan),
+        0 0 40px var(--pink),
+        0 0 60px var(--pink);
 }
