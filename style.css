@@ -43,3 +43,12 @@
         0 0 40px var(--pink),
         0 0 60px var(--pink);
 }
+
+@media (max-width:600px){
+
+  .streaming-links{
+    padding:0 24px;
+    box-sizing:border-box;
+  }
+
+}
