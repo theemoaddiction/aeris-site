@@ -43,16 +43,7 @@
         0 0 40px var(--pink),
         0 0 60px var(--pink);
 }
-.eye{
-    position:fixed;
-    right:12px;
-    bottom:12px;
-    width:72px;
-    height:72px;
 
-    box-sizing:border-box;
-    z-index:60;
-}
 @media (max-width:600px){
   html, body{
     width:100%;
@@ -66,4 +57,7 @@
   .streaming-links a:hover{
     transform:translateY(-6px) scale(1.12) rotate(-1deg);
   }
+ .eye{
+        display:none;
+ } 
 }
