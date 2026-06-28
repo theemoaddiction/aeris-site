@@ -44,3 +44,17 @@
         0 0 60px var(--pink);
 }
 
+@media (max-width:600px){
+  html, body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  .streaming-links{
+    margin-top:30px;
+  }
+
+  .streaming-links a:hover{
+    transform:translateY(-6px) scale(1.12) rotate(-1deg);
+  }
+}
