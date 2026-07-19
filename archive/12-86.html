@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>12:86 AM</title>
+<meta name="description" content="12:86 AM // recovered personal web cache">
+
+<style>
+:root{
+    --blue:#8eaec8;
+    --pale:#d9e3e9;
+    --dim:#657783;
+    --line:rgba(142,174,200,.48);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    background:#02070b;
+    color:var(--pale);
+    font-family:"Courier New", monospace;
+    margin:0;
+    padding:40px 24px;
+    line-height:1.5;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.022),
+        rgba(255,255,255,.022) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    opacity:.55;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 48%, rgba(0,0,0,.72) 100%);
+}
+
+.container{
+    position:relative;
+    z-index:1;
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+    color:var(--blue);
+    font-size:clamp(3.5rem, 12vw, 7rem);
+    font-weight:normal;
+    letter-spacing:-.08em;
+    line-height:.9;
+    margin:0;
+    text-shadow:0 0 14px rgba(142,174,200,.7);
+}
+
+h2{
+    color:#fff;
+    font-size:.9rem;
+    font-weight:normal;
+    letter-spacing:3px;
+    margin:18px 0 42px;
+}
+
+.photograph{
+    display:block;
+    width:100%;
+    max-width:650px;
+    margin:30px auto 44px;
+    filter:contrast(108%) saturate(78%);
+    box-shadow:0 0 28px rgba(81,132,169,.14);
+}
+
+.section{
+    border-top:1px solid var(--line);
+    margin-top:30px;
+    padding-top:26px;
+}
+
+.label{
+    color:var(--blue);
+    display:block;
+    font-size:.8rem;
+    letter-spacing:2px;
+    margin-bottom:6px;
+}
+
+.value{
+    color:#e8edf0;
+    margin-bottom:22px;
+}
+
+.notes{
+    color:#c8d0d5;
+    max-width:680px;
+}
+
+.notes p{
+    margin:0 0 18px;
+}
+
+.player{
+    border:1px solid rgba(142,174,200,.3);
+    background:rgba(142,174,200,.035);
+    margin-top:14px;
+    padding:18px;
+}
+
+.filename{
+    color:var(--dim);
+    font-size:.82rem;
+    margin-bottom:12px;
+}
+
+audio{
+    display:block;
+    width:100%;
+    filter:grayscale(1) invert(.84) hue-rotate(165deg);
+}
+
+.transcript{
+    color:#aebbc3;
+    max-width:680px;
+}
+
+.transcript p{
+    margin:0 0 25px;
+}
+
+.corrupt{
+    color:#78909f;
+    letter-spacing:.04em;
+}
+
+.footer{
+    color:#47555e;
+    font-size:.75rem;
+    margin-top:70px;
+}
+
+.blink{
+    animation:blink 3.2s steps(1,end) infinite;
+}
+
+@keyframes blink{
+    48%{opacity:1;}
+    50%{opacity:.18;}
+    52%{opacity:1;}
+}
+
+@media (max-width:600px){
+    body{padding:28px 18px;}
+    h2{margin-bottom:28px;}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>12:86 AM</h1>
+<h2>PERSONAL WEB CACHE / PARTIAL RECOVERY</h2>
+
+<img class="photograph" src="../assets/12-86-polaroid.jpg" alt="A worn instant photograph of an unmade bed, a computer, and a clock reading 12:86">
+
+<div class="section">
+    <span class="label">LOCAL TIME</span>
+    <div class="value blink">12:86 AM</div>
+
+    <span class="label">LAST MODIFIED</span>
+    <div class="value">UNKNOWN</div>
+
+    <span class="label">SOURCE</span>
+    <div class="value">DESKTOP / UNTITLED FOLDER</div>
+</div>
+
+<div class="section">
+    <span class="label">RECOVERED AUDIO</span>
+    <div class="value">SUPER HIRO // PIANO DEMO</div>
+
+    <div class="player">
+        <div class="filename">recording_04.mp3</div>
+        <audio controls preload="metadata" src="../audio/super-hiro-piano-demo.mp3"></audio>
+    </div>
+</div>
+
+<div class="section">
+    <span class="label">NOTES</span>
+    <div class="notes">
+        <p>I made this to remember what I was thinking about.</p>
+        <p>The clock has been like this for four hours.</p>
+    </div>
+</div>
+
+<div class="section">
+    <span class="label">TRANSCRIPT</span>
+    <div class="transcript">
+        <p>
+            Though my body may be dying<br>
+            And my heart has turned blue<br>
+            All my friends are now machines<br>
+            I&rsquo;ve been telegraphing you.<br>
+            I&rsquo;ll drive you for miles<br>
+            Just to cure my company.<br>
+            You can fill my head with ashes,<br>
+            By coming on to me.
+        </p>
+
+        <p>
+            Meaning, is so draining.<br>
+            I don&rsquo;t sleep so I can spend more time<br>
+            Thinking so deeply.<br>
+            I don&rsquo;t sleep so I won&rsquo;t forget of you<br>
+            (of you)<br>
+            For you to occupy my interests<br>
+            I won&rsquo;t tell you anything that you<br>
+            Should believe.<br>
+            To believe.<br>
+            Believing manifested dreams<br>
+            Two for you makes one for me&hellip;
+        </p>
+
+        <p>
+            Blue light crawling across your teeth.<br>
+            Four more hours dissolved in bed.<br>
+            Every thought arrives incomplete.<br>
+            I keep feeding the wires instead.<br>
+            <span class="corrupt">Smeal sp,ethomg e;se omtp ,y head</span><br>
+            It takes so much to write songs like this every day.
+        </p>
+
+        <p>
+            My eyes are filled with violence,<br>
+            They&rsquo;re reflecting what I see.<br>
+            And the streets are filled with sirens<br>
+            They&rsquo;re all running over me.
+        </p>
+
+        <p>
+            Meaning, is so draining.<br>
+            I don&rsquo;t sleep so I can spend more time<br>
+            Thinking so deeply.<br>
+            I don&rsquo;t sleep so I won&rsquo;t forget of you<br>
+            (of you)<br>
+            For you to occupy my interests<br>
+            I won&rsquo;t tell you anything that you<br>
+            Should believe.<br>
+            To believe.<br>
+            Believing manifested dreams<br>
+            Two for you makes one for me&hellip;
+        </p>
+
+        <p>
+            Blue light crawling across your teeth.<br>
+            Four more hours dissolved in bed.<br>
+            Every thought arrives incomplete.<br>
+            I keep feeding the wires instead.<br>
+            <span class="corrupt">Smeal sp,ethomg e;se omtp ,y head</span><br>
+            It takes so much to write songs like this every day.
+        </p>
+    </div>
+</div>
+
+<div class="footer">
+    CACHE ENDED BEFORE 12:87 AM
+</div>
+
+</div>
+</body>
+</html>
