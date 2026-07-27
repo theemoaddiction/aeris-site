@@ -63,3 +63,22 @@
         display:none;
  } 
 }
+
+.aeris-gallery .imgbox img{
+  aspect-ratio:1;
+  object-fit:cover;
+}
+
+.aeris-gallery .featured{
+  grid-column:span 2;
+}
+
+.aeris-gallery .featured img{
+  object-position:center 28%;
+}
+
+@media (max-width:760px){
+  .aeris-gallery .featured{
+    grid-column:span 1;
+  }
+}
