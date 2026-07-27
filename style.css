@@ -64,21 +64,30 @@
  } 
 }
 
+.aeris-intro{
+  display:grid;
+  grid-template-columns:minmax(280px,.82fr) minmax(0,1.35fr);
+  gap:24px;
+  align-items:start;
+  margin-bottom:24px;
+}
+
+.aeris-featured{
+  transform:rotate(-.4deg);
+}
+
+.aeris-featured img,
 .aeris-gallery .imgbox img{
   aspect-ratio:1;
   object-fit:cover;
 }
 
-.aeris-gallery .featured{
-  grid-column:span 2;
-}
-
-.aeris-gallery .featured img{
+.aeris-featured img{
   object-position:center 28%;
 }
 
 @media (max-width:760px){
-  .aeris-gallery .featured{
-    grid-column:span 1;
+  .aeris-intro{
+    grid-template-columns:1fr;
   }
 }
