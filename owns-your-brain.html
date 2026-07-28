@@ -1,172 +1,483 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OWNS YOUR BRAIN — an unstable mnemonic album reconstructed from thirteen audio fragments.">
+  <title>OWNS YOUR BRAIN // MNEMONIC FILE</title>
+  <style>
+    :root{
+      --ink:#07171d;
+      --paper:#e8e5d7;
+      --blue:#4b91a6;
+      --blue-dark:#123b49;
+      --rust:#8d4b36;
+      --ghost:rgba(232,229,215,.58);
+    }
 
-<title>OWNS YOUR BRAIN</title>
+    *{box-sizing:border-box}
 
-<style>
-body{
-  margin:0;
-  background:#030003;
-  color:#ff63b5;
-  font-family:"Courier New", monospace;
-  padding:24px;
-}
+    html{scroll-behavior:smooth}
 
-.wrap{
-  max-width:900px;
-  margin:auto;
-}
+    body{
+      margin:0;
+      color:var(--paper);
+      background:
+        repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 4px),
+        radial-gradient(circle at 80% 8%,#153e49 0,transparent 28%),
+        #03090c;
+      font-family:"Courier New",monospace;
+    }
 
-h1{
-  font-size:3rem;
-  margin-bottom:5px;
-}
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.17;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      mix-blend-mode:screen;
+    }
 
-.sub,.note{
-  color:#aaa;
-  line-height:1.6;
-}
+    a{color:inherit}
 
-.note{
-  border:1px solid rgba(255,99,181,.35);
-  padding:16px;
-  margin:28px 0;
-  background:rgba(255,99,181,.04);
-}
+    .wrap{
+      width:min(1080px,calc(100% - 36px));
+      margin:0 auto;
+      padding:34px 0 72px;
+    }
 
-.track{
-  border:1px solid rgba(255,99,181,.25);
-  padding:16px;
-  margin-bottom:14px;
-  background:rgba(0,0,0,.35);
-}
+    .return{
+      display:inline-block;
+      margin-bottom:30px;
+      color:#9bc9d5;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-decoration:none;
+    }
 
-.track-title{
-  color:#fff;
-  margin-bottom:10px;
-}
+    .return:hover{color:#fff}
 
-.status{
-  margin-top:8px;
-  font-size:.8rem;
-  letter-spacing:2px;
-  color:#7dff7d;
-}
+    .file-label,.section-label,.meta dt,.track-meta{
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
 
-audio{
-  width:100%;
-}
+    .file-label{
+      color:#8fc8d5;
+      font-size:12px;
+    }
 
-a{
-  color:#ff63b5;
-}
-</style>
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(280px,.9fr) minmax(340px,1.1fr);
+      gap:clamp(28px,6vw,72px);
+      align-items:center;
+      min-height:72vh;
+      padding:20px 0 58px;
+    }
+
+    .cover-shell{
+      position:relative;
+      border:1px solid rgba(155,201,213,.55);
+      padding:10px;
+      background:rgba(224,225,213,.06);
+      box-shadow:18px 22px 0 rgba(43,94,107,.12),0 0 55px rgba(75,145,166,.19);
+    }
+
+    .cover-shell::after{
+      content:"MEMORY OBJECT // VISUAL COHERENCE 61%";
+      position:absolute;
+      right:-18px;
+      bottom:-26px;
+      color:#6f9da8;
+      font-size:9px;
+      letter-spacing:.12em;
+    }
+
+    .cover{
+      display:block;
+      width:100%;
+      aspect-ratio:1;
+      object-fit:cover;
+      filter:saturate(.82) contrast(1.03);
+    }
+
+    h1{
+      max-width:680px;
+      margin:12px 0 20px;
+      color:#f2efe2;
+      font-size:clamp(45px,8vw,94px);
+      line-height:.82;
+      letter-spacing:-.075em;
+      text-transform:uppercase;
+    }
+
+    .dek{
+      max-width:620px;
+      color:#c9d1cf;
+      font-family:Georgia,serif;
+      font-size:clamp(18px,2.2vw,24px);
+      line-height:1.48;
+    }
+
+    .dek span{display:block}
+
+    .meta{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1px;
+      margin:30px 0 0;
+      background:rgba(155,201,213,.2);
+      border:1px solid rgba(155,201,213,.2);
+    }
+
+    .meta div{
+      min-height:72px;
+      padding:12px;
+      background:rgba(4,15,19,.92);
+    }
+
+    .meta dt{
+      margin-bottom:8px;
+      color:#7099a4;
+      font-size:9px;
+    }
+
+    .meta dd{
+      margin:0;
+      color:#e9e5d8;
+      font-size:13px;
+    }
+
+    .sequence-head{
+      margin:36px 0 24px;
+      padding:28px 0;
+      border-top:1px solid rgba(155,201,213,.35);
+      border-bottom:1px solid rgba(155,201,213,.35);
+    }
+
+    h2{
+      margin:8px 0 10px;
+      color:#e9e5d8;
+      font-size:clamp(28px,4vw,46px);
+      letter-spacing:-.04em;
+    }
+
+    .sequence-head p,.archive-note p{
+      max-width:760px;
+      color:#9eafaf;
+      line-height:1.65;
+    }
+
+    .track-list{
+      display:grid;
+      gap:12px;
+      counter-reset:fragment;
+    }
+
+    .track{
+      position:relative;
+      display:grid;
+      grid-template-columns:120px minmax(220px,.65fr) minmax(280px,1.35fr);
+      gap:22px;
+      padding:22px;
+      overflow:hidden;
+      border:1px solid rgba(155,201,213,.24);
+      background:linear-gradient(105deg,rgba(8,27,34,.94),rgba(5,11,14,.96));
+    }
+
+    .track::after{
+      content:"";
+      position:absolute;
+      width:120px;
+      height:120px;
+      right:-80px;
+      top:-80px;
+      border:1px solid rgba(141,75,54,.2);
+      transform:rotate(25deg);
+    }
+
+    .track-index{
+      color:#5c8d99;
+      font-size:clamp(28px,4vw,46px);
+      line-height:1;
+    }
+
+    .track h3{
+      margin:2px 0 10px;
+      color:#f1eee1;
+      font-size:clamp(20px,2.3vw,29px);
+      line-height:1.08;
+    }
+
+    .track-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px 14px;
+      color:#6fa5b2;
+      font-size:9px;
+    }
+
+    .fragment-note{
+      margin:0;
+      align-self:center;
+      color:#aab6b4;
+      font-family:Georgia,serif;
+      font-size:16px;
+      line-height:1.48;
+    }
+
+    audio{
+      width:100%;
+      height:34px;
+      margin-top:15px;
+      opacity:.72;
+      filter:grayscale(1) sepia(.2) hue-rotate(135deg);
+    }
+
+    .track:nth-child(n+8){
+      transform:translateX(calc((var(--drift, 0)) * 1px));
+      border-color:rgba(141,75,54,.3);
+    }
+
+    .track:nth-child(8){--drift:3}
+    .track:nth-child(9){--drift:-2}
+    .track:nth-child(10){--drift:5}
+    .track:nth-child(11){--drift:-4}
+    .track:nth-child(12){--drift:2}
+
+    .track.final{
+      margin-top:5px;
+      border-color:rgba(141,75,54,.65);
+      background:linear-gradient(110deg,rgba(40,24,22,.95),rgba(6,15,18,.97));
+      box-shadow:0 0 38px rgba(141,75,54,.12);
+    }
+
+    .track.final .track-index,.track.final .track-meta{color:#ad715d}
+
+    .archive-note{
+      margin-top:42px;
+      padding:32px;
+      border:1px solid rgba(141,75,54,.48);
+      background:rgba(30,18,18,.45);
+    }
+
+    .archive-note strong{
+      color:#e6c7b9;
+      font-weight:normal;
+    }
+
+    .sting{
+      margin:55px 0 30px;
+      color:#d8d2c4;
+      text-align:center;
+      letter-spacing:.16em;
+      font-size:12px;
+    }
+
+    @media(max-width:820px){
+      .hero{grid-template-columns:1fr;min-height:0}
+      .cover-shell{width:min(100%,540px)}
+      .track{grid-template-columns:72px 1fr}
+      .fragment-note{grid-column:2}
+    }
+
+    @media(max-width:560px){
+      .wrap{width:min(100% - 24px,1080px);padding-top:20px}
+      .hero{padding-bottom:34px}
+      .meta{grid-template-columns:1fr}
+      .track{grid-template-columns:1fr;gap:8px;padding:17px}
+      .fragment-note{grid-column:1}
+      .track:nth-child(n){transform:none}
+      .archive-note{padding:21px}
+    }
+  </style>
 </head>
-
 <body>
+  <main class="wrap">
+    <a class="return" href="index.html#anomalies">← RETURN TO ANOMALY INDEX</a>
 
-<div class="wrap">
+    <section class="hero">
+      <div class="cover-shell">
+        <img class="cover" src="assets/owns-your-brain-mnemonic.jpg" alt="Abstract blue and ivory fragments attempting to form a face and architecture">
+      </div>
 
-<h1>OWNS YOUR BRAIN</h1>
+      <div>
+        <div class="file-label">MNEMONIC FILE // RECONSTRUCTION ACTIVE</div>
+        <h1>OWNS YOUR BRAIN</h1>
+        <p class="dek">
+          <span>Thirteen audio fragments have assembled around a shared identity.</span>
+          <span>Several resemble later recordings. None match them completely.</span>
+          <span>The archive appears to remember an album that may never have existed.</span>
+        </p>
 
-<div class="sub">
-RECOVERED AUDIO ARCHIVE<br>
-FILES RECOVERED: 13 / 13<br>
-STATUS: PARTIAL CONTEXT LOSS
-</div>
+        <dl class="meta">
+          <div><dt>Fragments detected</dt><dd>13</dd></div>
+          <div><dt>Coherence</dt><dd>INCREASING</dd></div>
+          <div><dt>Original source</dt><dd>UNCONFIRMED</dd></div>
+          <div><dt>Current status</dt><dd>RECONVENING</dd></div>
+        </dl>
+      </div>
+    </section>
 
-<div class="note">
-FILES WERE RECOVERED FROM A DAMAGED STORAGE DEVICE.<br>
-SEVERAL TIMESTAMPS APPEAR INCONSISTENT.<br>
-NO FURTHER EXPLANATION IS AVAILABLE.
-</div>
+    <section class="sequence-head">
+      <div class="section-label">RECONSTRUCTED SEQUENCE</div>
+      <h2>AVAILABLE FRAGMENTS</h2>
+      <p>
+        Playback may strengthen the reconstruction. Discrepancies between these fragments and known
+        recordings should be expected. They are not earlier versions in any reliable sense.
+      </p>
+    </section>
 
-<div class="track">
-  <div class="track-title">01. god</div>
-  <audio controls src="audio/owns-your-brain/01.%20god.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+    <section class="track-list" aria-label="OWNS YOUR BRAIN reconstructed track sequence">
+      <article class="track">
+        <div class="track-index">01</div>
+        <div>
+          <h3>god</h3>
+          <div class="track-meta"><span>00:32</span><span>CORRESPONDENCE: INCOMPLETE</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/01.%20god.mp3"></audio>
+        </div>
+        <p class="fragment-note">A brief invocation with no identified recipient. The title returns at the end of the sequence, altered by repetition.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">02. Heck No</div>
-  <audio controls src="audio/owns-your-brain/02. Heck No.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">02</div>
+        <div>
+          <h3>Heck No</h3>
+          <div class="track-meta"><span>02:48</span><span>CORRESPONDENCE: PENDING</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/02.%20Heck%20No.mp3"></audio>
+        </div>
+        <p class="fragment-note">The fragment expresses refusal without preserving the original request. No one remembers what was declined.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">03. You Know, That I Know, That You</div>
-  <audio controls src="audio/owns-your-brain/03. You Know, That I Know, That You.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">03</div>
+        <div>
+          <h3>You Know, That I Know, That You Know...</h3>
+          <div class="track-meta"><span>03:46</span><span>CORRESPONDENCE: UNSTABLE</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/03.%20You%20Know,%20That%20I%20Know,%20That%20You.mp3"></audio>
+        </div>
+        <p class="fragment-note">A closed circuit of mutual recognition. The recording contains no reliable indication of who knew first.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">04. Tap My Mind</div>
-  <audio controls src="audio/owns-your-brain/04. Tap My Mind.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">04</div>
+        <div>
+          <h3>Tap My Mind</h3>
+          <div class="track-meta"><span>04:45</span><span>CORRESPONDENCE: PARTIAL</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/04.%20Tap%20My%20Mind.mp3"></audio>
+        </div>
+        <p class="fragment-note">An invitation, a command, or evidence of unauthorized access. The distinction has degraded.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">05. DYM</div>
-  <audio controls src="audio/owns-your-brain/05. DYM.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">05</div>
+        <div>
+          <h3>DYM</h3>
+          <div class="track-meta"><span>01:33</span><span>CORRESPONDENCE: DISPUTED</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/05.%20DYM.mp3"></audio>
+        </div>
+        <p class="fragment-note">A compressed identity appears before its expanded form. Whether it became <em>Dashing Young Man</em> or was produced by remembering it incorrectly remains unresolved.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">06. I Smashed My Typewriter</div>
-  <audio controls src="audio/owns-your-brain/06. I Smashed My Typewriter.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">06</div>
+        <div>
+          <h3>I Smashed My Typewriter</h3>
+          <div class="track-meta"><span>02:25</span><span>CORRESPONDENCE: PENDING</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/06.%20I%20Smashed%20My%20Typewriter.mp3"></audio>
+        </div>
+        <p class="fragment-note">The mechanism was destroyed after producing the text. The text survived.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">07. Wishing Crows</div>
-  <audio controls src="audio/owns-your-brain/07. Wishing Crows.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">07</div>
+        <div>
+          <h3>Wishing Crows</h3>
+          <div class="track-meta"><span>03:42</span><span>CORRESPONDENCE: HIGH</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/07.%20Wishing%20Crows.mp3"></audio>
+        </div>
+        <p class="fragment-note">One of the archive’s strongest correspondences with a known recording. Small objects have moved between versions. The crows refuse to account for them.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">08. Ebbinghaus</div>
-  <audio controls src="audio/owns-your-brain/08. Ebbinghaus.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">08</div>
+        <div>
+          <h3>Ebbinghaus</h3>
+          <div class="track-meta"><span>03:13</span><span>CORRESPONDENCE: DECAYING</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/08.%20Ebbinghaus.mp3"></audio>
+        </div>
+        <p class="fragment-note">The fragment appears to understand the conditions of its own disappearance. Each recovery produces a slightly different curve.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">09. Requiem for a</div>
-  <audio controls src="audio/owns-your-brain/09. Requiem for a.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">09</div>
+        <div>
+          <h3>Requiem for a Silent eMotion</h3>
+          <div class="track-meta"><span>02:11</span><span>CORRESPONDENCE: UNRESOLVED</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/09.%20Requiem%20for%20a.mp3"></audio>
+        </div>
+        <p class="fragment-note">The capitalization has been preserved despite repeated attempts to normalize it. The archive identifies an emotional event but retains no sound from its occurrence.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">10. Dashing Young Man</div>
-  <audio controls src="audio/owns-your-brain/10. Dashing Young Man.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">10</div>
+        <div>
+          <h3>Dashing Young Man</h3>
+          <div class="track-meta"><span>03:56</span><span>CORRESPONDENCE: CONTESTED</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/10.%20Dashing%20Young%20Man.mp3"></audio>
+        </div>
+        <p class="fragment-note">A complete name emerges five positions after its abbreviation. The two fragments claim the same identity. They do not contain the same person.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">11. Smoke Break</div>
-  <audio controls src="audio/owns-your-brain/11. Smoke Break.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">11</div>
+        <div>
+          <h3>Smoke Break</h3>
+          <div class="track-meta"><span>01:33</span><span>CORRESPONDENCE: INTERRUPTED</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/11.%20Smoke%20Break.mp3"></audio>
+        </div>
+        <p class="fragment-note">Sequence activity briefly decreases. The recording may be an intermission, an absence, or the memory of someone leaving the room.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">12. X-Rock</div>
-  <audio controls src="audio/owns-your-brain/12. X-Rock.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track">
+        <div class="track-index">12</div>
+        <div>
+          <h3>X-Rock</h3>
+          <div class="track-meta"><span>07:35</span><span>CORRESPONDENCE: EXCESSIVE</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/12.%20X-Rock.mp3"></audio>
+        </div>
+        <p class="fragment-note">The longest fragment in the archive. Multiple structures occupy the same file. Separation attempts have produced additional material.</p>
+      </article>
 
-<div class="track">
-  <div class="track-title">13. god god</div>
-  <audio controls src="audio/owns-your-brain/13. god god.mp3"></audio>
-  <div class="status">RECOVERED</div>
-</div>
+      <article class="track final">
+        <div class="track-index">13</div>
+        <div>
+          <h3>god god</h3>
+          <div class="track-meta"><span>03:32</span><span>CORRESPONDENCE: RECURSIVE</span></div>
+          <audio controls preload="none" src="audio/owns-your-brain/13.%20god%20god.mp3"></audio>
+        </div>
+        <p class="fragment-note">The opening title returns doubled and substantially longer. The archive may be repeating itself to improve recall. It may also be attempting to receive an answer.</p>
+      </article>
+    </section>
 
-<p>
-<a href="index.html">RETURN TO ROOT</a>
-</p>
+    <section class="archive-note">
+      <div class="section-label">ARCHIVE NOTE</div>
+      <p>
+        <strong>OWNS YOUR BRAIN</strong> has been identified as an unstable mnemonic object:
+        thirteen recordings attempting to reconstruct themselves from incomplete musical memory.
+      </p>
+      <p>
+        Whether it preceded <em>if…</em>, emerged from it, or merely believes it did remains unresolved.
+        The recurrence of names, identities, and incomplete thoughts suggests that the sequence is not
+        simply remembering individual songs. It is attempting to remember the conditions under which it
+        became an album.
+      </p>
+      <p><strong>Do not mistake familiarity for confirmation.</strong></p>
+    </section>
 
-</div>
-
+    <p class="sting">THE ALBUM DOES NOT REMEMBER YOU YET.</p>
+  </main>
 </body>
 </html>
