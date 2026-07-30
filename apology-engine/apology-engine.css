@@ -23,6 +23,29 @@ body {
 
 button { font: inherit; }
 
+
+.archive-return {
+  position: fixed;
+  z-index: 22;
+  top: 7px;
+  left: max(27px, calc((100vw - 1180px) / 2 + 3px));
+  color: #b8c2b4;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-decoration: none;
+  opacity: .72;
+  transition: color .15s ease, opacity .15s ease;
+}
+.archive-return:hover,
+.archive-return:focus-visible {
+  color: #e8e1bd;
+  opacity: 1;
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
 .machine-shell {
   min-height: 100vh;
   padding: 24px;
@@ -467,6 +490,7 @@ blockquote span { display: block; margin-bottom: 4px; font: 9px "Courier New"; l
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
 @media (max-width: 760px) {
+  .archive-return { top: 6px; left: 13px; font-size: 8px; }
   .machine-shell { padding: 10px; }
   .utility-bar { display: none; }
   .machine { min-height: calc(100vh - 45px); }
