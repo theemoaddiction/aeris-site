@@ -17,4 +17,5 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   function catchIt(){const n=Math.max(caught(),1);localStorage.setItem(key,n);finish();count.textContent=`${n}/8`;modal.hidden=false;document.body.classList.add('raven-caught');close.focus();audio.currentTime=0;audio.play().catch(()=>{})}
   function closeIt(){audio.pause();modal.hidden=true;document.body.classList.remove('raven-caught')}
   raven.addEventListener('click',catchIt);raven.addEventListener('animationend',e=>{if(e.animationName==='raven-flight')finish()});close.addEventListener('click',closeIt);modal.addEventListener('click',e=>{if(e.target===modal)closeIt()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeIt()});count.textContent=`${Math.min(caught(),8)}/8`;schedule();
+  if(new URLSearchParams(location.search).has('release-raven'))setTimeout(release,300);
 })();
