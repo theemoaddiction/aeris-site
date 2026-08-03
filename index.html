@@ -31,6 +31,22 @@
     <span>🧠</span>
   </div>
 
+  <button class="pixel-raven" type="button" aria-label="Catch the raven" hidden>
+    <span class="pixel-raven__bird" aria-hidden="true"><span class="pixel-raven__wing pixel-raven__wing--top"></span><span class="pixel-raven__body"></span><span class="pixel-raven__wing pixel-raven__wing--bottom"></span></span>
+  </button>
+  <div class="raven-catch" role="dialog" aria-modal="true" aria-labelledby="raven-catch-title" hidden>
+    <div class="raven-catch__noise" aria-hidden="true"></div>
+    <div class="raven-catch__window">
+      <button class="raven-catch__close" type="button" aria-label="Close">×</button>
+      <p class="raven-catch__eyebrow">CORVID SIGNAL RECOVERED</p>
+      <h2 id="raven-catch-title">YOU CAUGHT ONE.</h2>
+      <p>It was carrying a different memory.</p>
+      <p class="raven-catch__count">RAVENS CAUGHT: <strong>0/8</strong></p>
+      <p class="raven-catch__track">RAVEN // CRYING IN THE FOOD COURT</p>
+      <audio class="raven-catch__audio" controls preload="metadata"></audio>
+    </div>
+  </div>
+
   <div class="topbar">
     <a href="#home">HOME</a>
     <a href="#stream">STREAM</a>
