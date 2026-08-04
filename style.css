@@ -345,3 +345,77 @@
     height:auto;
   }
 }
+
+
+/* Recovered anomalies tracker */
+.recovery-tracker{
+  position:fixed;
+  right:18px;
+  bottom:104px;
+  z-index:59;
+  width:min(250px,calc(100vw - 36px));
+  padding:10px 12px;
+  border:2px solid var(--green);
+  background:rgba(2,8,8,.94);
+  box-shadow:4px 4px 0 var(--pink),0 0 18px rgba(141,255,141,.45);
+  color:var(--green);
+  font-family:"Courier New",monospace;
+  pointer-events:none;
+}
+.recovery-tracker__label{
+  display:block;
+  margin-bottom:3px;
+  font-size:10px;
+  letter-spacing:.13em;
+}
+.recovery-tracker__count{
+  display:block;
+  color:#fff;
+  font-size:20px;
+  text-shadow:2px 0 var(--hot),-2px 0 var(--cyan);
+}
+.recovery-tracker__bar{
+  display:block;
+  height:5px;
+  margin-top:7px;
+  overflow:hidden;
+  border:1px solid rgba(141,255,141,.55);
+  background:#07110d;
+}
+.recovery-tracker__bar span{
+  display:block;
+  width:var(--recovery-progress,0%);
+  height:100%;
+  background:linear-gradient(90deg,var(--cyan),var(--green),var(--pink));
+  box-shadow:0 0 8px var(--green);
+  transition:width .45s steps(4,end);
+}
+.anomaly-card[data-recovered="true"]{
+  position:relative;
+}
+.anomaly-card[data-recovered="true"]::after{
+  content:"RECOVERED";
+  position:absolute;
+  top:8px;
+  right:-28px;
+  width:105px;
+  padding:3px 0;
+  transform:rotate(35deg);
+  background:var(--green);
+  color:#031006;
+  font:700 10px/1 "Courier New",monospace;
+  letter-spacing:.08em;
+  text-align:center;
+  box-shadow:0 0 10px rgba(141,255,141,.8);
+}
+@media (max-width:600px){
+  .recovery-tracker{
+    right:10px;
+    bottom:10px;
+    width:auto;
+    min-width:185px;
+    padding:8px 10px;
+  }
+  .recovery-tracker__label{font-size:9px}
+  .recovery-tracker__count{font-size:16px}
+}
