@@ -58,6 +58,12 @@
     <a href="#contact">CONTACT</a>
   </div>
 
+  <aside class="recovery-tracker" aria-live="polite" aria-label="Anomaly recovery progress">
+    <span class="recovery-tracker__label">ANOMALIES RECOVERED</span>
+    <strong class="recovery-tracker__count">0 / 4</strong>
+    <span class="recovery-tracker__bar" aria-hidden="true"><span></span></span>
+  </aside>
+
   <section id="home" class="hero">
     <div class="container">
       <img class="logo" src="assets/if-promo-aeris-mandrake.png" alt="Aeris Mandrake logo">
@@ -229,7 +235,7 @@
       </p>
 
       <div class="anomaly-grid">
-        <a class="anomaly-card anomaly-aeris" href="archive/if-06162004.html">
+        <a class="anomaly-card anomaly-aeris" href="archive/if-06162004.html" data-anomaly-id="aeris-mandrake">
           <div class="anomaly-image">
             <img src="assets/mandrake-lowrez.png" alt="Aeris Mandrake">
           </div>
@@ -241,7 +247,7 @@
           </div>
         </a>
 
-        <a class="anomaly-card anomaly-time" href="archive/12-86.html">
+        <a class="anomaly-card anomaly-time" href="archive/12-86.html" data-anomaly-id="12-86-am">
           <div class="anomaly-image">
             <img src="assets/12-86-polaroid.jpg" alt="Recovered room photograph marked 12:86 AM">
           </div>
@@ -253,7 +259,7 @@
           </div>
         </a>
 
-        <a class="anomaly-card anomaly-mnemonic" href="owns-your-brain.html">
+        <a class="anomaly-card anomaly-mnemonic" href="owns-your-brain.html" data-anomaly-id="owns-your-brain">
           <div class="anomaly-image">
             <img src="assets/owns-your-brain-melting-cd.jpg" alt="A melting CD album held inside a faded, liminal room">
           </div>
@@ -265,7 +271,7 @@
           </div>
         </a>
 
-        <a class="anomaly-card anomaly-engine" href="apology-engine/">
+        <a class="anomaly-card anomaly-engine" href="apology-engine/" data-anomaly-id="apology-engine">
           <div class="anomaly-image">
             <img src="assets/apology-engine-preview.png" alt="The Apology Engine recovered Mandrake Systems interface">
           </div>
@@ -495,8 +501,6 @@
     <div class="counter">000000042</div>
     <p class="under-construction">🚧 UNDER CONSTRUCTION FOREVER 🚧</p>
   </div>
-
-  <div class="eye">👁️</div>
 
   <script src="script.js"></script>
 </body>
