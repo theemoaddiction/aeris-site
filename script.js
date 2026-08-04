@@ -29,3 +29,44 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   if(new URLSearchParams(location.search).has('release-raven'))setTimeout(release,300);
 })();
 // Raven collection deployment refresh: 2026-08-03
+
+
+(() => {
+  const tracker=document.querySelector('.recovery-tracker');
+  const cards=[...document.querySelectorAll('[data-anomaly-id]')];
+  if(!tracker||!cards.length)return;
+
+  const key='aeris-anomalies-recovered-v1';
+  const count=tracker.querySelector('.recovery-tracker__count');
+  const bar=tracker.querySelector('.recovery-tracker__bar');
+  const knownIds=new Set(cards.map(card=>card.dataset.anomalyId));
+
+  const read=()=>{
+    try{
+      const saved=JSON.parse(localStorage.getItem(key)||'[]');
+      return Array.isArray(saved)?saved.filter(id=>knownIds.has(id)):[];
+    }catch{
+      return [];
+    }
+  };
+
+  const render=()=>{
+    const recovered=new Set(read());
+    cards.forEach(card=>card.dataset.recovered=String(recovered.has(card.dataset.anomalyId)));
+    count.textContent=`${recovered.size} / ${cards.length}`;
+    const progress=(recovered.size/cards.length)*100;
+    tracker.style.setProperty('--recovery-progress',`${progress}%`);
+    bar.setAttribute('aria-label',`${recovered.size} of ${cards.length} anomalies recovered`);
+  };
+
+  const recover=id=>{
+    const recovered=new Set(read());
+    recovered.add(id);
+    localStorage.setItem(key,JSON.stringify([...recovered]));
+    render();
+  };
+
+  cards.forEach(card=>card.addEventListener('click',()=>recover(card.dataset.anomalyId)));
+  window.addEventListener('storage',event=>{if(event.key===key)render()});
+  render();
+})();
