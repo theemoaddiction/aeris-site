@@ -351,9 +351,9 @@
 .recovery-tracker{
   position:fixed;
   right:18px;
-  bottom:104px;
+  bottom:18px;
   z-index:59;
-  width:min(250px,calc(100vw - 36px));
+  width:min(215px,calc(100vw - 36px));
   padding:10px 12px;
   border:2px solid var(--green);
   background:rgba(2,8,8,.94);
