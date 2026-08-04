@@ -28,3 +28,4 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   raven.addEventListener('click',catchIt);raven.addEventListener('animationend',e=>{if(e.animationName==='raven-flight')finish()});close.addEventListener('click',closeIt);modal.addEventListener('click',e=>{if(e.target===modal)closeIt()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeIt()});count.textContent=`${Math.min(caught().length,total)}/${total}`;schedule();
   if(new URLSearchParams(location.search).has('release-raven'))setTimeout(release,300);
 })();
+// Raven collection deployment refresh: 2026-08-03
