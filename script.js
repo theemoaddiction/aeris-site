@@ -70,3 +70,47 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   window.addEventListener('storage',event=>{if(event.key===key)render()});
   render();
 })();
+
+
+(() => {
+  const display = document.querySelector('[data-visitor-counter]');
+  if (!display) return;
+
+  const storageKey = 'aeris-visitor-counted-v1';
+  const baseCount = 42;
+  const endpoint = 'https://api.counterapi.dev/v1/myliminalreality-com/unique-visitors';
+  let alreadyCounted = false;
+
+  try {
+    alreadyCounted = localStorage.getItem(storageKey) === 'yes';
+  } catch {}
+
+  const url = alreadyCounted ? endpoint : `${endpoint}/up`;
+
+  fetch(url, { method: 'GET', mode: 'cors', cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error(`Counter returned ${response.status}`);
+      return response.json();
+    })
+    .then(result => {
+      const remoteCount = Number(
+        result.count ??
+        result.value ??
+        result.data?.count ??
+        result.data?.value
+      );
+
+      if (!Number.isFinite(remoteCount)) throw new Error('Counter response had no numeric value');
+
+      display.textContent = String(baseCount + remoteCount).padStart(9, '0');
+
+      if (!alreadyCounted) {
+        try {
+          localStorage.setItem(storageKey, 'yes');
+        } catch {}
+      }
+    })
+    .catch(() => {
+      display.title = 'Visitor signal temporarily unavailable';
+    });
+})();
