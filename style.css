@@ -186,6 +186,29 @@
   letter-spacing:.04em;
 }
 
+.anomaly-butterscotch{
+  border:3px double #d5c48f;
+  box-shadow:0 0 16px rgba(213,196,143,.42),inset 0 0 25px rgba(49,88,75,.22);
+}
+
+.anomaly-butterscotch .anomaly-record{
+  background:linear-gradient(135deg,#1d302a,#4b3128);
+}
+
+.anomaly-butterscotch .anomaly-image img{
+  filter:sepia(.22) saturate(.7) contrast(1.08);
+}
+
+.anomaly-butterscotch .anomaly-type,
+.anomaly-butterscotch .anomaly-open{
+  color:#ead9a8;
+}
+
+.anomaly-butterscotch:hover,
+.anomaly-butterscotch:focus-visible{
+  box-shadow:0 0 28px #d5c48f,0 0 44px rgba(163,72,52,.4);
+}
+
 .anomaly-aeris{
   border:3px solid var(--cyan);
   box-shadow:0 0 18px rgba(41,247,255,.55),inset 0 0 24px rgba(255,42,168,.13);
