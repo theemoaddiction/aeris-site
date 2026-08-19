@@ -60,6 +60,7 @@ button, a { font: inherit; }
 .department { font-size: 13px; letter-spacing: .19em; text-transform: uppercase; font-weight: 700; }
 .division { margin-top: 4px; color: var(--muted); font-size: 14px; }
 
+.return-link,
 .accessibility {
   margin-left: auto;
   padding: 8px 10px;
@@ -69,6 +70,23 @@ button, a { font: inherit; }
   font: 700 10px/1.2 Arial, sans-serif;
   letter-spacing: .12em;
   cursor: pointer;
+}
+
+.return-link {
+  margin-left: auto;
+  color: var(--green-dark);
+  text-decoration: none;
+}
+
+.accessibility { margin-left: 0; }
+
+.return-link:hover,
+.return-link:focus-visible,
+.accessibility:hover,
+.accessibility:focus-visible {
+  color: var(--paper);
+  background: var(--green-dark);
+  outline: none;
 }
 
 #tour {
@@ -224,6 +242,10 @@ body.off-route .site-header, body.off-route .site-footer { opacity: .38; }
 @media (max-width: 780px) {
   .site-header { min-height: 82px; }
   .division { display: none; }
+  .department { font-size: 10px; }
+  .return-link { font-size: 0; }
+  .return-link::after { content: "← SITE"; font-size: 10px; }
+  .accessibility { display: none; }
   .seal { width: 48px; height: 48px; flex-basis: 48px; }
   .record { grid-template-columns: 1fr; }
   .photo { max-height: 52vh; }
