@@ -471,8 +471,10 @@
 
 /* The homepage that was not approved for circulation */
 .paper-home{display:none}
-html[data-home-variant="paper"] body{background:#e9dfc8;color:#171614;overflow:hidden}
-html[data-home-variant="paper"] body> :not(.paper-home):not(.recovery-tracker){display:none!important}
+html[data-home-variant="paper"] body{background:#e9dfc8;color:#171614;overflow-x:hidden}
+html[data-home-variant="paper"] .starfield,
+html[data-home-variant="paper"] .floaties,
+html[data-home-variant="paper"] .hero{display:none!important}
 html[data-home-variant="paper"] .paper-home{position:relative;display:block;width:100vw;height:100svh;min-height:620px;overflow:hidden;background:radial-gradient(circle at 13% 18%,rgba(111,74,37,.14) 0 2px,transparent 3px),radial-gradient(circle at 82% 71%,rgba(111,74,37,.1) 0 1px,transparent 2px),repeating-linear-gradient(7deg,rgba(72,50,30,.025) 0 1px,transparent 1px 7px),#e9dfc8;font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive}
 .paper-home__grain{position:absolute;inset:0;pointer-events:none;opacity:.42;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E")}
 .paper-home__title{position:absolute;left:8vw;top:11vh;z-index:3;transform:rotate(-2deg);color:#171614}.paper-home__title span{display:block;font-size:clamp(18px,2.4vw,36px);letter-spacing:.09em}.paper-home__title strong{display:block;font:700 clamp(78px,14vw,190px)/.82 Georgia,serif;letter-spacing:-.12em;border-bottom:7px solid #171614}.paper-home__title small{position:absolute;left:105%;top:38%;width:190px;font-size:clamp(15px,1.6vw,25px);line-height:1.35;transform:rotate(3deg)}
@@ -483,4 +485,27 @@ html[data-home-variant="paper"] .paper-home{position:relative;display:block;widt
 .paper-home__plug{position:absolute;left:22vw;bottom:4vh;width:42vw;height:34vh;color:#171614;text-shadow:none;text-decoration:none}.paper-home__cord{position:absolute;left:8%;bottom:16%;width:100%;height:100%;border-bottom:7px solid #171614;border-right:7px solid #171614;border-radius:0 0 70% 0;transform:rotate(-6deg)}.paper-home__jack{position:absolute;left:-2%;bottom:4%;width:75px;height:24px;border:4px solid #171614;border-radius:6px;background:#282520;transform:rotate(12deg)}.paper-home__jack:before{content:"";position:absolute;left:-36px;top:5px;width:38px;height:7px;background:#6a6259}.paper-home__plug strong{position:absolute;left:55%;bottom:5%;font-size:15px;font-weight:400;transform:rotate(-2deg)}.paper-home__whisper{position:absolute;right:34vw;bottom:5vh;margin:0;font-size:15px;line-height:1.5;transform:rotate(-3deg)}
 .paper-home__asterisk{position:absolute;font:46px/1 Georgia,serif;color:#171614}.paper-home__asterisk--one{left:5%;top:4%;transform:rotate(12deg)}.paper-home__asterisk--two{right:7%;top:5%;color:#9e3d43}.paper-home__asterisk--three{right:18%;bottom:8%;transform:rotate(-18deg)}
 html[data-home-variant="paper"] .recovery-tracker{border-color:#26231f;background:#ded2b8;color:#26231f;box-shadow:4px 4px 0 #9e3d43;transform:rotate(-1deg)}html[data-home-variant="paper"] .recovery-tracker__count{color:#26231f;text-shadow:2px 0 #9e3d43,-2px 0 #315b89}html[data-home-variant="paper"] .recovery-tracker__bar{border-color:#26231f;background:#cbbda1}html[data-home-variant="paper"] .recovery-tracker__bar span{background:#26231f;box-shadow:none}
+html[data-home-variant="paper"] .topbar{position:sticky;background:#d9cdb2;border:0;border-top:2px solid #26231f;border-bottom:3px solid #26231f;box-shadow:0 5px 0 rgba(158,61,67,.24);font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive;transform:rotate(-.15deg)}
+html[data-home-variant="paper"] .topbar a{display:inline-block;margin:4px 10px;color:#26231f;text-shadow:none;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;transform:rotate(-1deg)}
+html[data-home-variant="paper"] .topbar a:nth-child(even){color:#315b89;transform:rotate(1deg)}
+html[data-home-variant="paper"] .marquee{background:#9e3d43;color:#efe3ca;border:0;border-top:4px double #26231f;border-bottom:4px double #26231f;font-family:"Courier New",monospace;transform:rotate(.2deg)}
+html[data-home-variant="paper"] main.container{width:min(1080px,92vw);font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive}
+html[data-home-variant="paper"] .panel{position:relative;background:rgba(231,221,199,.91);border:3px solid #26231f;box-shadow:8px 8px 0 rgba(49,91,137,.26),inset 0 0 30px rgba(89,68,40,.07);transform:rotate(-.2deg)}
+html[data-home-variant="paper"] .panel:nth-of-type(even){transform:rotate(.25deg);box-shadow:-7px 8px 0 rgba(158,61,67,.2),inset 0 0 30px rgba(89,68,40,.07)}
+html[data-home-variant="paper"] .panel:before{content:"";position:absolute;left:44%;top:-12px;width:110px;height:23px;background:rgba(176,151,105,.38);transform:rotate(-2deg);pointer-events:none}
+html[data-home-variant="paper"] .panel h1,html[data-home-variant="paper"] .panel h2,html[data-home-variant="paper"] .panel h3{color:#26231f;text-shadow:2px 1px 0 rgba(158,61,67,.32);font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive}
+html[data-home-variant="paper"] .panel h2{border-bottom:3px solid #26231f;padding-bottom:8px}
+html[data-home-variant="paper"] .panel a{color:#315b89;text-shadow:none}
+html[data-home-variant="paper"] .imgbox{background:#d7c9ab;border:7px solid #f0e6d0;outline:2px solid #26231f;box-shadow:4px 5px 0 rgba(38,35,31,.22);filter:saturate(.72) contrast(.94)}
+html[data-home-variant="paper"] .caption{color:#26231f;font-family:"Courier New",monospace}
+html[data-home-variant="paper"] .cta{background:#9e3d43;color:#f3e8cf!important;border:3px solid #26231f;box-shadow:5px 5px 0 #315b89;text-shadow:none;font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive;transform:rotate(-1deg)}
+html[data-home-variant="paper"] .cta:hover{filter:none;transform:rotate(1deg) scale(1.02)}
+html[data-home-variant="paper"] .warning,html[data-home-variant="paper"] .badge{background:#d8ceb7;color:#26231f;border-color:#26231f;box-shadow:none}
+html[data-home-variant="paper"] .anomaly-card{background:#ded3bb;border-color:#26231f;box-shadow:5px 5px 0 rgba(38,35,31,.18);filter:saturate(.72)}
+html[data-home-variant="paper"] .anomaly-card:hover,html[data-home-variant="paper"] .anomaly-card:focus-visible{box-shadow:8px 8px 0 rgba(49,91,137,.35),0 0 0 3px #9e3d43;filter:saturate(.9)}
+html[data-home-variant="paper"] .anomaly-placeholder{background:repeating-linear-gradient(-8deg,#d7cbb0 0 10px,#cec0a2 10px 11px);color:#26231f}
+html[data-home-variant="paper"] .testimonial,html[data-home-variant="paper"] .product{background:#e0d4ba;color:#26231f;border-color:#9e3d43}
+html[data-home-variant="paper"] .footer{background:#d6c9ab;color:#26231f;border-top:3px solid #26231f;font-family:"Courier New",monospace}
+html[data-home-variant="paper"] .under-construction{color:#9e3d43;text-shadow:none}
+html[data-home-variant="paper"] .counter{border-color:#26231f;background:#26231f;box-shadow:4px 4px 0 #315b89}
 @media(max-width:760px){html[data-home-variant="paper"] body{overflow:auto}html[data-home-variant="paper"] .paper-home{min-height:760px}.paper-home__title{left:7vw;top:8vh}.paper-home__title small{left:0;top:120%;width:180px}.paper-home__door{left:39%;top:27%;width:53vw;height:43vh}.paper-home__furniture{left:5%;bottom:9%;width:42vw;height:20vh}.paper-home__note{right:5vw;bottom:9vh;width:155px;padding:12px;font-size:13px}.paper-home__plug{left:11vw;bottom:1vh;width:65vw;height:25vh}.paper-home__whisper{display:none}html[data-home-variant="paper"] .recovery-tracker{top:auto;right:8px;bottom:8px;transform:scale(.78);transform-origin:right bottom}}
