@@ -22,9 +22,47 @@
 <meta name="twitter:description" content="if... Out Now. Follow Aeris Mandrake and enter the liminal reality.">
 <meta name="twitter:image" content="https://myliminalreality.com/assets/if-promo-aeris-mandrake.png">
   <link rel="stylesheet" href="style.css">
+  <script>
+    (() => {
+      const key = 'aeris-home-variant-v1';
+      const params = new URLSearchParams(location.search);
+      let variant = localStorage.getItem(key);
+      if (!variant) {
+        variant = Math.random() < 0.1 ? 'paper' : 'standard';
+        localStorage.setItem(key, variant);
+      }
+      if (params.has('paper')) variant = 'paper';
+      if (params.has('standard')) variant = 'standard';
+      document.documentElement.dataset.homeVariant = variant;
+    })();
+  </script>
 </head>
 
 <body>
+  <section class="paper-home" aria-label="A misplaced Aeris Mandrake homepage">
+    <div class="paper-home__grain" aria-hidden="true"></div>
+    <span class="paper-home__asterisk paper-home__asterisk--one" aria-hidden="true">✳</span>
+    <span class="paper-home__asterisk paper-home__asterisk--two" aria-hidden="true">✳</span>
+    <span class="paper-home__asterisk paper-home__asterisk--three" aria-hidden="true">✳</span>
+    <div class="paper-home__title">
+      <span>Aeris Mandrake</span><strong>if...</strong>
+      <small>nothing makes sense<br>on purpose.</small>
+    </div>
+    <button class="paper-home__door" type="button" data-enter-standard="#home" aria-label="Open the door and enter the regular website">
+      <span class="paper-home__doorframe" aria-hidden="true"><span class="paper-home__door-panel"></span><span class="paper-home__sky"><i></i><b></b><em></em></span></span>
+      <span class="paper-home__door-label">come in, i guess</span>
+    </button>
+    <div class="paper-home__furniture" aria-hidden="true"><span class="paper-home__chair"></span><span class="paper-home__table"><i></i></span><span class="paper-home__flower">⌇</span></div>
+    <button class="paper-home__note" type="button" data-enter-standard="#anomalies">
+      <span>13 songs<br>0 answers<br>infinite detours</span>
+      <strong>look where<br>you shouldn't →</strong>
+    </button>
+    <a class="paper-home__plug" href="https://open.spotify.com/artist/5r0SY4RXPBuZCKy9KeLPWX" target="_blank" rel="noopener" aria-label="Listen to Aeris Mandrake">
+      <span class="paper-home__cord" aria-hidden="true"></span><span class="paper-home__jack" aria-hidden="true"></span><strong>listen somewhere else</strong>
+    </a>
+    <p class="paper-home__whisper">you don't have to understand.<br>just keep going.</p>
+  </section>
+
   <div class="starfield"></div>
 
   <div class="floaties">

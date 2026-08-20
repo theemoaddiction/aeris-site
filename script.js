@@ -37,9 +37,11 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   if(!tracker||!cards.length)return;
 
   const key='aeris-anomalies-recovered-v1';
+  const unlistedIds=['misplaced-homepage'];
   const count=tracker.querySelector('.recovery-tracker__count');
   const bar=tracker.querySelector('.recovery-tracker__bar');
-  const knownIds=new Set(cards.map(card=>card.dataset.anomalyId));
+  const knownIds=new Set([...cards.map(card=>card.dataset.anomalyId),...unlistedIds]);
+  const total=knownIds.size;
 
   const read=()=>{
     try{
@@ -53,10 +55,10 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   const render=()=>{
     const recovered=new Set(read());
     cards.forEach(card=>card.dataset.recovered=String(recovered.has(card.dataset.anomalyId)));
-    count.textContent=`${recovered.size} / ${cards.length}`;
-    const progress=(recovered.size/cards.length)*100;
+    count.textContent=`${recovered.size} / ${total}`;
+    const progress=(recovered.size/total)*100;
     tracker.style.setProperty('--recovery-progress',`${progress}%`);
-    bar.setAttribute('aria-label',`${recovered.size} of ${cards.length} anomalies recovered`);
+    bar.setAttribute('aria-label',`${recovered.size} of ${total} anomalies recovered`);
   };
 
   const recover=id=>{
@@ -67,6 +69,19 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   };
 
   cards.forEach(card=>card.addEventListener('click',()=>recover(card.dataset.anomalyId)));
+  if(document.documentElement.dataset.homeVariant==='paper')recover('misplaced-homepage');
   window.addEventListener('storage',event=>{if(event.key===key)render()});
   render();
+})();
+
+(() => {
+  const paper=document.querySelector('.paper-home');
+  if(!paper)return;
+  paper.querySelectorAll('[data-enter-standard]').forEach(link=>{
+    link.addEventListener('click',()=>{
+      document.documentElement.dataset.homeVariant='standard';
+      const target=document.querySelector(link.dataset.enterStandard);
+      requestAnimationFrame(()=>target?.scrollIntoView({behavior:'smooth'}));
+    });
+  });
 })();
