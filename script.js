@@ -77,10 +77,9 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
 (() => {
   const paper=document.querySelector('.paper-home');
   if(!paper)return;
-  paper.querySelectorAll('[data-enter-standard]').forEach(link=>{
+  paper.querySelectorAll('[data-paper-jump]').forEach(link=>{
     link.addEventListener('click',()=>{
-      document.documentElement.dataset.homeVariant='standard';
-      const target=document.querySelector(link.dataset.enterStandard);
+      const target=document.querySelector(link.dataset.paperJump);
       requestAnimationFrame(()=>target?.scrollIntoView({behavior:'smooth'}));
     });
   });
