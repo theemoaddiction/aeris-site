@@ -1,9 +1,10 @@
 
 function playBoot(){const a=document.getElementById('boot-audio'); if(a){a.volume=.35; a.play().catch(()=>{});} document.body.classList.add('activated');}
 const phrases=['RECIRCULATED EXHALE DETECTED','SPENCER\'S ENCOUNTER LOGGED','IF... HAS ENTERED THE ROOM','DO NOT TRUST THE ESCALATOR','SHE SINGS'];
-setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)];},1800);
+if(document.documentElement.dataset.homeVariant!=='mold')setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)];},1800);
 
 (() => {
+  if(document.documentElement.dataset.homeVariant==='mold')return;
   const raven=document.querySelector('.pixel-raven'),modal=document.querySelector('.raven-catch');
   if(!raven||!modal)return;
   const close=modal.querySelector('.raven-catch__close'),count=modal.querySelector('.raven-catch__count strong'),audio=modal.querySelector('audio'),trackName=modal.querySelector('.raven-catch__track'),flavor=modal.querySelector('.raven-catch__flavor'),behavior=modal.querySelector('.raven-catch__behavior');
@@ -72,6 +73,15 @@ setInterval(()=>{document.title=phrases[Math.floor(Math.random()*phrases.length)
   if(document.documentElement.dataset.homeVariant==='paper')recover('misplaced-homepage');
   window.addEventListener('storage',event=>{if(event.key===key)render()});
   render();
+})();
+
+(() => {
+  if(document.documentElement.dataset.homeVariant!=='mold')return;
+  const params=new URLSearchParams(location.search);
+  if(!params.has('submitted'))return;
+  const form=document.querySelector('.mold-form');
+  const confirmation=document.querySelector('.mold-confirmation');
+  if(form&&confirmation){form.hidden=true;confirmation.hidden=false;confirmation.scrollIntoView({block:'center'});}
 })();
 
 (() => {
