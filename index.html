@@ -24,21 +24,117 @@
   <link rel="stylesheet" href="style.css">
   <script>
     (() => {
-      const key = 'aeris-home-variant-v1';
+      const key = 'aeris-home-assignment-v2';
+      const oldKey = 'aeris-home-variant-v1';
+      const moldKey = 'aeris-mold-roll-v1';
       const params = new URLSearchParams(location.search);
       let variant = localStorage.getItem(key);
       if (!variant) {
-        variant = Math.random() < 0.1 ? 'paper' : 'standard';
+        const previous = localStorage.getItem(oldKey);
+        if (previous === 'paper' || previous === 'standard') variant = previous;
+        else variant = Math.random() < 0.1 ? 'paper' : 'standard';
         localStorage.setItem(key, variant);
+      }
+      if (params.has('mold')) {
+        variant = 'mold';
+        sessionStorage.setItem(moldKey, 'shown');
+        params.delete('mold');
+        const query = params.toString();
+        history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
+      } else if (!sessionStorage.getItem(moldKey)) {
+        const showMold = Math.random() < 0.01;
+        sessionStorage.setItem(moldKey, showMold ? 'shown' : 'missed');
+        if (showMold) variant = 'mold';
       }
       if (params.has('paper')) variant = 'paper';
       if (params.has('standard')) variant = 'standard';
       document.documentElement.dataset.homeVariant = variant;
+      if (variant === 'mold') {
+        document.title = 'Residential Mold Assessment | Chicago, IL';
+        const icon = document.querySelector('link[rel="icon"]');
+        if (icon) icon.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%2331483b'/><path d='M12 31 32 14l20 17v21H12z' fill='%23f4f4f1'/><rect x='27' y='36' width='10' height='16' fill='%2331483b'/></svg>";
+      }
     })();
   </script>
 </head>
 
 <body>
+  <main class="mold-site">
+    <header class="mold-header">
+      <div class="mold-header__inner">
+        <div>
+          <p class="mold-kicker">RESIDENTIAL ENVIRONMENTAL SERVICES</p>
+          <h1>SCHRENK RESIDENTIAL<br>MOLD ASSESSMENT</h1>
+        </div>
+        <p class="mold-header__service">Serving Chicago and adjacent municipalities<br>Monday–Friday, 8:00 a.m.–4:30 p.m.</p>
+      </div>
+    </header>
+
+    <section class="mold-intro">
+      <div>
+        <p class="mold-eyebrow">PROPERTY MOISTURE AND MOLD EVALUATION</p>
+        <h2>Residential assessment without unnecessary disruption.</h2>
+        <p>We provide visual moisture evaluations and non-invasive residential mold assessments for homeowners, condominium owners, landlords, and property managers.</p>
+        <p>Each visit documents visible conditions, likely moisture sources, affected building materials, and recommended next steps. Laboratory sampling can be coordinated when appropriate.</p>
+      </div>
+      <aside class="mold-notice">
+        <strong>PLEASE NOTE</strong>
+        <p>This office does not provide emergency water extraction, structural repairs, or mold remediation services.</p>
+        <p>Active flooding and sewage events should be directed to an emergency restoration provider.</p>
+      </aside>
+    </section>
+
+    <section class="mold-services">
+      <h2>Assessment services</h2>
+      <div class="mold-service-grid">
+        <article><span>01</span><h3>Visual assessment</h3><p>Inspection of accessible interior areas for visible fungal growth, staining, condensation, and material deterioration.</p></article>
+        <article><span>02</span><h3>Moisture screening</h3><p>Non-destructive screening of walls, ceilings, floors, and other accessible materials where moisture intrusion is suspected.</p></article>
+        <article><span>03</span><h3>Sampling coordination</h3><p>Surface or air sampling when site conditions and the purpose of the assessment indicate that laboratory analysis may be useful.</p></article>
+        <article><span>04</span><h3>Written findings</h3><p>A concise written summary of observed conditions, probable contributing factors, and practical recommendations.</p></article>
+      </div>
+    </section>
+
+    <section class="mold-process">
+      <h2>What to expect</h2>
+      <ol>
+        <li><strong>Submit the property information below.</strong><span>Provide the location, building type, affected area, and a brief description of the concern.</span></li>
+        <li><strong>We review the request.</strong><span>Requests are generally reviewed within one business day. Additional information may be requested before scheduling.</span></li>
+        <li><strong>An on-site visit is scheduled.</strong><span>Most residential assessments require approximately 45–90 minutes, depending on the property and scope.</span></li>
+        <li><strong>Findings are delivered.</strong><span>Written findings are ordinarily provided within two business days following the assessment.</span></li>
+      </ol>
+    </section>
+
+    <section class="mold-request" id="assessment-request">
+      <div class="mold-request__heading">
+        <p class="mold-eyebrow">SERVICE REQUEST</p>
+        <h2>Request a residential assessment</h2>
+        <p>Submission of this form does not confirm an appointment. Provide a general description only. Do not include a property address, medical information, or other sensitive personal information.</p>
+      </div>
+      <form class="mold-form" action="https://formsubmit.co/theemoaddiction@yahoo.com" method="POST">
+        <input type="hidden" name="_subject" value="New Residential Mold Assessment Request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://myliminalreality.com/?mold=1&amp;submitted=1">
+        <input class="mold-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
+        <label class="mold-form__wide">Email address<input type="email" name="Email address" autocomplete="email" required></label>
+        <label class="mold-form__wide">General description of observed condition<textarea name="General description" rows="6" placeholder="Do not include the property address or sensitive personal information." required></textarea></label>
+        <div class="mold-form__submit mold-form__wide">
+          <button type="submit">SUBMIT ASSESSMENT REQUEST</button>
+          <p>Information submitted through this form is used only to evaluate and respond to the service request.</p>
+        </div>
+      </form>
+      <div class="mold-confirmation" hidden>
+        <strong>REQUEST RECEIVED</strong>
+        <p>Your information has been submitted for review. If the property is within the service area and the requested scope is appropriate, you will be contacted regarding availability.</p>
+      </div>
+    </section>
+
+    <footer class="mold-footer">
+      <strong>SCHRENK RESIDENTIAL MOLD ASSESSMENT</strong>
+      <p>Residential visual assessment and moisture screening services. Chicago, Illinois.</p>
+      <p>Not an emergency response or remediation contractor.</p>
+    </footer>
+  </main>
+
   <section class="paper-home" aria-label="A misplaced Aeris Mandrake homepage">
     <div class="paper-home__grain" aria-hidden="true"></div>
     <span class="paper-home__asterisk paper-home__asterisk--one" aria-hidden="true">✳</span>
