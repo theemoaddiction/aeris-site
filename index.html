@@ -50,7 +50,7 @@
       if (params.has('standard')) variant = 'standard';
       document.documentElement.dataset.homeVariant = variant;
       if (variant === 'mold') {
-        document.title = 'Residential Mold Assessment | Chicago, IL';
+        document.title = 'Residential Mold Assessment | Northern Illinois';
         const icon = document.querySelector('link[rel="icon"]');
         if (icon) icon.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%2331483b'/><path d='M12 31 32 14l20 17v21H12z' fill='%23f4f4f1'/><rect x='27' y='36' width='10' height='16' fill='%2331483b'/></svg>";
       }
@@ -66,17 +66,21 @@
           <p class="mold-kicker">RESIDENTIAL ENVIRONMENTAL SERVICES</p>
           <h1>SCHRENK RESIDENTIAL<br>MOLD ASSESSMENT</h1>
         </div>
-        <p class="mold-header__service">Serving Chicago and adjacent municipalities<br>Monday–Friday, 8:00 a.m.–4:30 p.m.</p>
+        <p class="mold-header__service">Serving rural Northern Illinois and adjacent communities<br>Monday–Friday, 8:00 a.m.–4:30 p.m.</p>
       </div>
     </header>
 
     <section class="mold-intro">
-      <div>
+      <div class="mold-intro__copy">
         <p class="mold-eyebrow">PROPERTY MOISTURE AND MOLD EVALUATION</p>
         <h2>Residential assessment without unnecessary disruption.</h2>
-        <p>We provide visual moisture evaluations and non-invasive residential mold assessments for homeowners, condominium owners, landlords, and property managers.</p>
+        <p>Schrenk Residential Mold Assessment is a family-operated rural property service. We provide visual moisture evaluations and non-invasive residential mold assessments for homeowners, landlords, and property managers throughout Northern Illinois.</p>
         <p>Each visit documents visible conditions, likely moisture sources, affected building materials, and recommended next steps. Laboratory sampling can be coordinated when appropriate.</p>
       </div>
+      <figure class="mold-family-photo">
+        <img src="assets/schrenk-family-darlene-bernard-wedding.jpg" alt="Schrenk family group portrait at Darlene and Bernard's wedding">
+        <figcaption>Schrenk Family Photo<br>(Darlene &amp; Bernard's Wedding)</figcaption>
+      </figure>
       <aside class="mold-notice">
         <strong>PLEASE NOTE</strong>
         <p>This office does not provide emergency water extraction, structural repairs, or mold remediation services.</p>
@@ -94,28 +98,24 @@
       </div>
     </section>
 
-    <section class="mold-documentation">
-      <div class="mold-documentation__heading">
-        <p class="mold-eyebrow">SELECTED SITE RECORDS</p>
-        <h2>Representative property documentation</h2>
-        <p>Images are retained for reference to document accessible conditions at the time of assessment.</p>
+    <section class="mold-properties">
+      <div class="mold-properties__heading">
+        <p class="mold-eyebrow">PROPERTIES WE ASSESS</p>
+        <h2>Every building presents different conditions.</h2>
+        <p>Assessment scope varies with the age, construction, occupancy, and accessibility of the property.</p>
       </div>
-      <div class="mold-documentation__grid">
+      <div class="mold-properties__grid">
         <figure>
           <img src="assets/mold-documentation-room-01.jpg" alt="Vacant open-plan interior with fluorescent ceiling lights, blue-gray carpet, and support columns" loading="lazy">
-          <figcaption><strong>INTERIOR RECORD 01</strong><span>General accessible area / existing condition</span></figcaption>
+          <figcaption>Large and converted-use interiors</figcaption>
         </figure>
         <figure>
           <img src="assets/mold-documentation-room-02.jpg" alt="Vacant room with worn carpet, damaged ceiling tiles, and sunlight entering through a window" loading="lazy">
-          <figcaption><strong>INTERIOR RECORD 02</strong><span>Perimeter wall and window assembly</span></figcaption>
+          <figcaption>Vacant and seasonally occupied properties</figcaption>
         </figure>
         <figure>
           <img src="assets/mold-documentation-room-03.jpg" alt="Older vacant interior with a curtained window, utility panel, dividing wall, and staircase" loading="lazy">
-          <figcaption><strong>INTERIOR RECORD 03</strong><span>Lower-level circulation area</span></figcaption>
-        </figure>
-        <figure class="mold-documentation__family">
-          <img src="assets/schrenk-family-darlene-bernard-wedding.jpg" alt="Schrenk family group portrait at Darlene and Bernard's wedding" loading="lazy">
-          <figcaption><strong>FAMILY RECORD 04</strong><span>Schrenk Family Photo (Darlene &amp; Bernard's Wedding)</span></figcaption>
+          <figcaption>Lower levels, stairwells, and enclosed spaces</figcaption>
         </figure>
       </div>
     </section>
@@ -123,7 +123,7 @@
     <section class="mold-process">
       <h2>What to expect</h2>
       <ol>
-        <li><strong>Submit the property information below.</strong><span>Provide the location, building type, affected area, and a brief description of the concern.</span></li>
+        <li><strong>Submit the property information below.</strong><span>Describe the affected area and observed condition without including the property address.</span></li>
         <li><strong>We review the request.</strong><span>Requests are generally reviewed within one business day. Additional information may be requested before scheduling.</span></li>
         <li><strong>An on-site visit is scheduled.</strong><span>Most residential assessments require approximately 45–90 minutes, depending on the property and scope.</span></li>
         <li><strong>Findings are delivered.</strong><span>Written findings are ordinarily provided within two business days following the assessment.</span></li>
@@ -156,7 +156,7 @@
 
     <footer class="mold-footer">
       <strong>SCHRENK RESIDENTIAL MOLD ASSESSMENT</strong>
-      <p>Residential visual assessment and moisture screening services. Chicago, Illinois.</p>
+      <p>Residential visual assessment and moisture screening services. Northern Illinois.</p>
       <p>Not an emergency response or remediation contractor.</p>
     </footer>
   </main>
