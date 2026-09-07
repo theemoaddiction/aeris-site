@@ -191,6 +191,29 @@
   box-shadow:0 0 16px rgba(213,196,143,.42),inset 0 0 25px rgba(49,88,75,.22);
 }
 
+.anomaly-vhs{
+  border:3px solid #e9bd4d;
+  box-shadow:0 0 16px rgba(233,189,77,.48),inset 0 0 25px rgba(40,110,147,.28);
+}
+
+.anomaly-vhs .anomaly-record{
+  background:linear-gradient(135deg,#152c47,#286e93);
+}
+
+.anomaly-vhs .anomaly-image img{
+  filter:saturate(.8) contrast(1.04);
+}
+
+.anomaly-vhs .anomaly-type,
+.anomaly-vhs .anomaly-open{
+  color:#f5d16e;
+}
+
+.anomaly-vhs:hover,
+.anomaly-vhs:focus-visible{
+  box-shadow:0 0 18px #fff,0 0 34px #e9bd4d,0 0 62px rgba(40,110,147,.9);
+}
+
 .anomaly-office{
   border:3px solid #8ba18f;
   box-shadow:0 0 16px rgba(139,161,143,.42),inset 0 0 25px rgba(17,32,22,.42);

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+  <rect width="640" height="640" fill="#152c47"/>
+  <path fill="#286e93" d="M0 0h640v115H0z"/>
+  <path fill="#e9bd4d" d="M0 115h640v18H0z"/>
+  <path fill="#b13a32" d="M0 133h640v10H0z"/>
+  <g transform="translate(126 174) rotate(-3 190 184)">
+    <rect width="388" height="314" rx="18" fill="#111" stroke="#070707" stroke-width="12"/>
+    <rect x="34" y="50" width="320" height="202" rx="10" fill="#202629" stroke="#e9dfc4" stroke-width="6"/>
+    <circle cx="124" cy="151" r="55" fill="#d6ccb0" stroke="#666054" stroke-width="12"/>
+    <circle cx="264" cy="151" r="55" fill="#d6ccb0" stroke="#666054" stroke-width="12"/>
+    <circle cx="124" cy="151" r="17" fill="#171b1d"/>
+    <circle cx="264" cy="151" r="17" fill="#171b1d"/>
+    <path fill="#b13a32" d="M77 271h233v20H77z"/>
+  </g>
+  <text x="320" y="555" fill="#e9dfc4" font-family="monospace" font-size="42" font-weight="700" text-anchor="middle">VHS OF THE DAY</text>
+  <text x="320" y="590" fill="#e9bd4d" font-family="monospace" font-size="18" text-anchor="middle">ONE CASSETTE. NO SUBSTITUTIONS.</text>
+</svg>
