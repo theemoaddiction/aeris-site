@@ -50,7 +50,6 @@
   }
 
   async function loadTape(){
-    el('loading').hidden = false;
     el('record').hidden = true;
     el('screening').hidden = true;
     el('failure').hidden = true;
@@ -69,7 +68,6 @@
       render(data, seed);
     }catch(error){
       console.error(error);
-      el('loading').hidden = true;
       el('failure').hidden = false;
     }
   }
@@ -104,7 +102,6 @@
     el('inventory').textContent = `INVENTORY // ${identifier.toUpperCase()} // COPY ${(seed % 4) + 1}`;
     el('archive-link').href = `https://archive.org/details/${encodeURIComponent(identifier)}`;
     renderFrames(screenshots, video ? source(video.name) : null, source, seed);
-    el('loading').hidden = true;
     el('record').hidden = false;
     el('screening').hidden = false;
   }
