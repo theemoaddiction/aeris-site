@@ -191,6 +191,29 @@
   box-shadow:0 0 16px rgba(213,196,143,.42),inset 0 0 25px rgba(49,88,75,.22);
 }
 
+.anomaly-office{
+  border:3px solid #8ba18f;
+  box-shadow:0 0 16px rgba(139,161,143,.42),inset 0 0 25px rgba(17,32,22,.42);
+}
+
+.anomaly-office .anomaly-record{
+  background:linear-gradient(135deg,#111814,#242a24);
+}
+
+.anomaly-office .anomaly-image img{
+  filter:saturate(.4) sepia(.08) hue-rotate(66deg) brightness(.82) contrast(1.12);
+}
+
+.anomaly-office .anomaly-type,
+.anomaly-office .anomaly-open{
+  color:#bfd5c1;
+}
+
+.anomaly-office:hover,
+.anomaly-office:focus-visible{
+  box-shadow:0 0 18px #fff,0 0 34px #8ba18f,0 0 62px rgba(84,113,91,.85);
+}
+
 .anomaly-butterscotch .anomaly-record{
   background:linear-gradient(135deg,#1d302a,#4b3128);
 }
