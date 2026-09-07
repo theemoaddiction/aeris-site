@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="b2515cd4-603c-48f1-873d-98b10e5ff5d2"></script>
+  <script defer src="../analytics.js"></script>
+  <title>VHS OF THE DAY // MANDRAKE VIDEO ANNEX</title>
+  <meta name="description" content="One cassette selected daily from the Internet Archive VHS Vault. Staff may not substitute another title.">
+  <link rel="canonical" href="https://myliminalreality.com/vhs-of-the-day/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VHS of the Day">
+  <meta property="og:description" content="Selected automatically. Staff may not substitute another title.">
+  <meta property="og:image" content="https://myliminalreality.com/assets/vhs-of-the-day-preview.svg">
+  <meta property="og:url" content="https://myliminalreality.com/vhs-of-the-day/">
+  <meta property="og:site_name" content="Aeris Mandrake">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vhs.css">
+</head>
+<body>
+  <div class="tracking" aria-hidden="true"></div>
+  <header class="store-header">
+    <a href="../" class="return">← MY LIMINAL REALITY</a>
+    <div class="store-name"><span>MANDRAKE</span><strong>VIDEO ANNEX</strong></div>
+    <p>DAILY CASSETTE CIRCULATION DESK</p>
+  </header>
+
+  <main>
+    <section class="daily-slip">
+      <div>
+        <span class="label">TODAY'S CASSETTE</span>
+        <time id="display-date"></time>
+      </div>
+      <p>SELECTED AUTOMATICALLY.<br>STAFF MAY NOT SUBSTITUTE ANOTHER TITLE.</p>
+      <div class="date-nav">
+        <button id="previous" type="button">← PREVIOUS DAY</button>
+        <button id="today" type="button">TODAY</button>
+        <button id="next" type="button">NEXT DAY →</button>
+      </div>
+    </section>
+
+    <section class="loading" id="loading" aria-live="polite">
+      <div class="rewind"><i></i><i></i></div>
+      <p>REWINDING DAILY INVENTORY...</p>
+    </section>
+
+    <section class="cassette-record" id="record" hidden>
+      <div class="box-column">
+        <figure class="vhs-box">
+          <div class="vhs-box__spine"><span>MANDRAKE VIDEO ANNEX</span></div>
+          <img id="box-art" alt="">
+          <div class="vhs-box__wear" aria-hidden="true"></div>
+        </figure>
+        <div class="condition-sticker">
+          <span>TAPE CONDITION</span>
+          <strong id="condition"></strong>
+        </div>
+      </div>
+
+      <article class="metadata">
+        <p class="inventory" id="inventory"></p>
+        <h1 id="title"></h1>
+        <p class="facts" id="facts"></p>
+        <div class="description" id="description"></div>
+        <dl>
+          <div><dt>DISTRIBUTED BY</dt><dd id="creator"></dd></div>
+          <div><dt>RUNNING TIME</dt><dd id="runtime"></dd></div>
+          <div><dt>LAST RENTED</dt><dd id="last-rented"></dd></div>
+          <div><dt>LATE FEES</dt><dd id="fees"></dd></div>
+        </dl>
+        <aside class="staff-note">
+          <span>EMPLOYEE NOTE</span>
+          <p id="staff-note"></p>
+        </aside>
+        <a class="archive-link" id="archive-link" target="_blank" rel="noopener">VIEW SOURCE CASSETTE AT INTERNET ARCHIVE ↗</a>
+      </article>
+    </section>
+
+    <section class="screening" id="screening" hidden>
+      <div class="screening__header">
+        <h2>CONDITION SCREENING</h2>
+        <span>THREE FRAMES RECOVERED</span>
+      </div>
+      <div class="frames" id="frames"></div>
+      <p class="screening__notice">Screens are taken from the circulating copy. Color and events may vary from the packaging.</p>
+    </section>
+
+    <section class="failure" id="failure" hidden>
+      <h1>CASSETTE NOT RETURNED</h1>
+      <p>The assigned title could not be recovered from daily inventory.</p>
+      <button type="button" id="retry">CHECK DROP BOX AGAIN</button>
+    </section>
+  </main>
+
+  <footer>
+    <span>BE KIND. REWIND.</span>
+    <span>MEMBERSHIP STATUS: QUESTIONABLE</span>
+    <span>NO REFUNDS AFTER PLAYBACK</span>
+  </footer>
+  <script src="vhs.js"></script>
+</body>
+</html>
