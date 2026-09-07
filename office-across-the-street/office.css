@@ -1,0 +1,56 @@
+:root{color-scheme:dark;--phosphor:#bfd5c1;--dim:#829486;--frame:#101511}
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0;background:#040605}
+body{display:grid;place-items:center;color:var(--phosphor);font-family:"Courier New",monospace;overflow:hidden}
+.monitor{width:100vw;height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(8px,1.6vw,22px);background:radial-gradient(circle at center,#172018 0,#080b09 68%,#020302 100%)}
+.monitor__header,.monitor__footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 4px;font-size:clamp(9px,1vw,13px);letter-spacing:.12em}
+.monitor__header div{display:flex;align-items:baseline;gap:18px}
+.monitor__header strong{font-size:1.35em;color:#eef8ee}
+.monitor__header a,.monitor__footer button{color:var(--dim);text-decoration:none;text-shadow:none}
+.monitor__header a:hover,.monitor__header a:focus-visible{color:#eef8ee}
+.feed{position:relative;min-height:0;overflow:hidden;border:1px solid #415044;background:#050706;box-shadow:0 0 0 4px #0b100c,0 0 0 5px #263129,0 18px 60px #000}
+.feed__still{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.48) sepia(.08) hue-rotate(66deg) brightness(.78) contrast(1.12)}
+.feed__still--changed{opacity:0}
+.feed:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px 20px rgba(0,0,0,.8);mix-blend-mode:multiply}
+.feed__scan{position:absolute;z-index:7;inset:0;pointer-events:none;opacity:.25;background:repeating-linear-gradient(0deg,rgba(205,237,207,.08) 0 1px,transparent 1px 4px)}
+.feed__noise{position:absolute;z-index:8;inset:-40%;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:noise .18s steps(2) infinite}
+.feed__osd{position:absolute;z-index:12;left:clamp(12px,2vw,28px);right:clamp(12px,2vw,28px);display:flex;justify-content:space-between;font-size:clamp(10px,1.3vw,17px);font-weight:bold;letter-spacing:.08em;text-shadow:0 1px 3px #000}
+.feed__osd--top{top:clamp(11px,2vw,26px)}
+.feed__osd--bottom{bottom:clamp(11px,2vw,26px)}
+.live{display:flex;align-items:center;gap:8px}
+.live i{width:8px;height:8px;border-radius:50%;background:#cfd8cb;box-shadow:0 0 8px #fff;animation:pulse 1.2s steps(2) infinite}
+.feed__light-loss{position:absolute;z-index:2;left:24%;top:8%;width:34%;height:20%;background:radial-gradient(ellipse at top,rgba(0,0,0,.8),rgba(0,0,0,.35) 45%,transparent 72%);opacity:0;transition:opacity .5s}
+.feed__cup{position:absolute;z-index:4;width:1.15%;aspect-ratio:1;border-radius:0 0 40% 40%;background:#b8b69f;box-shadow:inset -2px -1px rgba(0,0,0,.25),0 1px 2px #111;opacity:0}
+.feed__cup:after{content:"";position:absolute;right:-45%;top:18%;width:55%;height:55%;border:2px solid #a8a890;border-left:0;border-radius:0 50% 50% 0}
+.feed__cup--one{left:51%;top:54%}
+.feed__cup--two{left:59%;top:50%}
+.feed__board{position:absolute;z-index:5;left:39.1%;top:32.3%;width:10.2%;height:15%;display:grid;place-items:center;transform:perspective(600px) rotateY(-1deg);opacity:0}
+.feed__board span{display:block;padding:5px 4px;color:#242821;background:rgba(211,207,185,.72);font:700 clamp(5px,.65vw,11px)/1.05 Arial,sans-serif;letter-spacing:.01em;text-align:center;transform:rotate(-2deg);box-shadow:0 1px 2px rgba(0,0,0,.5)}
+.feed__message{position:absolute;z-index:15;left:50%;bottom:12%;margin:0;padding:5px 9px;transform:translateX(-50%);background:rgba(3,6,4,.75);color:#b5c7b7;font-size:clamp(8px,.85vw,12px);letter-spacing:.13em;opacity:0;transition:opacity 1s}
+.monitor__footer button{padding:0;border:0;background:none;font:inherit;letter-spacing:inherit;cursor:pointer}
+.monitor__footer button:hover,.monitor__footer button:focus-visible{color:#eef8ee}
+.state-2 .feed__still--first,.state-3 .feed__still--first,.state-4 .feed__still--first,.state-5 .feed__still--first,.state-6 .feed__still--first{opacity:0}
+.state-2 .feed__still--changed,.state-3 .feed__still--changed,.state-4 .feed__still--changed,.state-5 .feed__still--changed,.state-6 .feed__still--changed{opacity:1}
+.state-3 .feed__cup--one,.state-4 .feed__cup--one,.state-5 .feed__cup,.state-6 .feed__cup{opacity:1}
+.state-4 .feed__light-loss,.state-5 .feed__light-loss,.state-6 .feed__light-loss{opacity:1}
+.state-5 .feed__board,.state-6 .feed__board{opacity:1}
+.state-5 .feed__board span:after{content:"STILL THERE?"}
+.state-6 .feed__board span:after{content:"STOP REFRESHING"}
+.state-6 .monitor__footer>span:first-child{color:#eef8ee}
+.state-6 .signal{visibility:hidden}
+@keyframes noise{0%{transform:translate(0)}
+25%{transform:translate(3%,-2%)}
+50%{transform:translate(-2%,3%)}
+75%{transform:translate(2%,2%)}
+}
+@keyframes pulse{50%{opacity:.25}
+}
+@media(max-width:650px){.monitor{padding:7px}
+.monitor__header span{display:none}
+.monitor__footer{font-size:8px}
+.feed__still{object-position:center}
+.feed__board{left:39%;top:35%;width:13%;height:12%}
+.feed__cup{width:1.8%}
+}
+@media(prefers-reduced-motion:reduce){.feed__noise,.live i{animation:none}
+}
