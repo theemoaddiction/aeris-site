@@ -94,6 +94,39 @@
           ></div>
           <p>1 SPARE<br />0 REQUIRED</p>
         </section>
+        <aside class="audit item" id="audit" data-feed="audit" hidden>
+          <span>OCCUPANCY RECONCILIATION</span>
+          <dl>
+            <div>
+              <dt>DECLARED</dt>
+              <dd>1</dd>
+            </div>
+            <div>
+              <dt>OBSERVED</dt>
+              <dd id="observed">3</dd>
+            </div>
+            <div>
+              <dt>RESPONSIBLE</dt>
+              <dd>1</dd>
+            </div>
+          </dl>
+          <button id="certify" type="button">CERTIFY COUNT</button>
+        </aside>
+        <section
+          class="mini-room"
+          id="mini-room"
+          aria-label="Live view of this room"
+          hidden
+        >
+          <header><span>ROOM 2B</span><span>LIVE</span></header>
+          <div class="mini-field">
+            <i class="mini-hole" id="mini-hole"></i>
+            <i class="mini-ball" id="mini-ball"></i>
+            <i class="mini-user" id="mini-user"></i>
+            <i class="mini-other" id="mini-other"></i>
+          </div>
+        </section>
+        <div class="ticket-tray" id="ticket-tray" aria-live="polite"></div>
         <div class="message" id="message" aria-live="polite"></div>
       </section>
       <footer class="footer item" data-feed="footer">

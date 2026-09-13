@@ -17,6 +17,15 @@
     hatch = document.querySelector("#hatch"),
     drawer = document.querySelector("#drawer"),
     drawerBall = document.querySelector("#drawer-ball");
+  const audit = document.querySelector("#audit"),
+    observed = document.querySelector("#observed"),
+    certify = document.querySelector("#certify"),
+    miniRoom = document.querySelector("#mini-room");
+  const miniHole = document.querySelector("#mini-hole"),
+    miniBall = document.querySelector("#mini-ball"),
+    miniUser = document.querySelector("#mini-user"),
+    miniOther = document.querySelector("#mini-other"),
+    ticketTray = document.querySelector("#ticket-tray");
   document.querySelector("#date").textContent = new Date()
     .toLocaleDateString("en-US", {
       month: "short",
@@ -49,7 +58,8 @@
     controlled = false,
     thirdVisible = false,
     denyCount = 0,
-    pointerTrail = [];
+    pointerTrail = [],
+    ticketNumber = 1;
   let last = performance.now(),
     lastCursorGoal = 0,
     lastNudge = 0,
@@ -136,6 +146,9 @@
           : "SPACE STATUS: DEGRADING";
     if (drops === 3) say("");
     if (drops === 4) hatch.hidden = false;
+    if (drops === 3 || drops === 6) {
+      issueTicket("BALL CONTACTED LOWER BOUNDARY", "PREVENT PRIOR EVENT");
+    }
     if (drops >= 6 && !hungry) {
       hungry = true;
       sheet.dataset.hungry = "true";
@@ -149,12 +162,28 @@
     vx += (Math.random() - 0.5) * 2;
     ball.focus({ preventScroll: true });
   }
+  function issueTicket(reason, action) {
+    const ticket = document.createElement("div");
+    ticket.className = "citation item";
+    ticket.dataset.feed = "citation";
+    ticket.style.left = 7 + Math.random() * 68 + "%";
+    ticket.style.setProperty("--ticket-top", 12 + Math.random() * 58 + "%");
+    ticket.style.setProperty("--ticket-turn", -8 + Math.random() * 16 + "deg");
+    const heading = document.createElement("strong");
+    heading.textContent =
+      "CORRECTION " + String(ticketNumber++).padStart(3, "0");
+    const copy = document.createElement("span");
+    copy.textContent = reason + " / REQUIRED ACTION: " + action;
+    ticket.append(heading, copy);
+    ticketTray.append(ticket);
+  }
   function grantControl() {
     if (controlled) return;
     controlled = true;
     request.hidden = true;
     sheet.dataset.controlled = "true";
     status.textContent = "SPACE STATUS: SHARED";
+    issueTicket("CONTROL TRANSFER COMPLETED", "RETAIN RESPONSIBILITY");
     goalX = ballAlive ? ballX : holeCenter().x;
     goalY = ballAlive ? ballY : holeCenter().y;
   }
@@ -166,11 +195,21 @@
     const h = holeCenter();
     third.style.left = h.x + "px";
     third.style.top = h.y + "px";
+    audit.hidden = false;
+    miniRoom.hidden = false;
+    setTimeout(
+      () => issueTicket("UNDECLARED OCCUPANT", "RECOUNT USING ORIGINAL TOTAL"),
+      500,
+    );
   }
   function animate(t) {
     const dt = Math.min((t - last) / 16.67, 2);
     last = t;
     const r = bounds();
+    if (hungry) {
+      hole.style.left = 72 + Math.sin(t / 2700) * 14 + "%";
+      hole.style.top = 67 + Math.cos(t / 3400) * 11 + "%";
+    }
     if (ballAlive && dragging?.el !== ball) {
       vy += 0.23 * dt;
       ballX += vx * dt;
@@ -248,6 +287,23 @@
         third.style.left = clamp(delayed.x + 18, 4, r.width - 25) + "px";
         third.style.top = clamp(delayed.y + 12, 4, r.height - 32) + "px";
       }
+      const miniField = miniRoom.querySelector(".mini-field");
+      const mw = miniField.clientWidth;
+      const mh = miniField.clientHeight;
+      const placeMini = (el, x, y) => {
+        el.style.left = clamp((x / r.width) * mw, 1, mw - 10) + "px";
+        el.style.top = clamp((y / r.height) * mh, 1, mh - 11) + "px";
+      };
+      const h = holeCenter();
+      placeMini(miniHole, h.x, h.y);
+      if (ballAlive) {
+        miniBall.style.opacity = 1;
+        placeMini(miniBall, ballX, ballY);
+      } else {
+        miniBall.style.opacity = 0;
+      }
+      placeMini(miniUser, pointer.x, pointer.y);
+      placeMini(miniOther, cursorX, cursorY);
     }
     if (message.textContent && t - lastMessage > 3500) message.textContent = "";
     if (hungry && t - lastNudge > 12000) {
@@ -354,6 +410,19 @@
     } else {
       grantControl();
     }
+  });
+  certify.addEventListener("click", () => {
+    certify.disabled = true;
+    certify.textContent = "COUNT CERTIFIED";
+    issueTicket(
+      "CERTIFIED COUNT DOES NOT MATCH CERTIFIED COUNT",
+      "DO NOT AMEND",
+    );
+    setTimeout(() => {
+      observed.textContent = "4";
+      visitors.textContent = "4 PEOPLE HERE";
+      certify.textContent = "CERTIFIED BY VISITOR 2";
+    }, 900);
   });
   hatch.addEventListener("click", () => {
     const open = drawer.classList.toggle("open");
