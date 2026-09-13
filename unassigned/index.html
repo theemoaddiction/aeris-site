@@ -1,29 +1,108 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UNASSIGNED SPACE // My Liminal Reality</title>
-  <meta name="description" content="An unassigned page. No maintenance is required.">
-  <link rel="canonical" href="https://myliminalreality.com/unassigned/">
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="space.css">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="b2515cd4-603c-48f1-873d-98b10e5ff5d2"></script>
-  <script defer src="../analytics.js"></script>
-  <script defer src="space.js"></script>
-</head>
-<body>
-  <main class="sheet" id="sheet">
-    <header class="header item" data-feed="header"><span>MY LIMINAL REALITY / UNASSIGNED SPACE</span><span id="visitors">1 PERSON HERE</span></header>
-    <section class="field" id="field" aria-label="Unassigned space">
-      <div class="memo item" data-feed="memo"><span>FILE 08 / OPEN</span><h1>No activity required.</h1><p>This space has not been assigned a function.</p></div>
-      <div class="note item" data-feed="note"><span>LAST CHECKED</span><strong id="date"></strong><small>Contents accounted for.</small></div>
-      <div class="stamp item" data-feed="stamp">AVAILABLE</div>
-      <div class="hole" id="hole" role="button" tabindex="0" aria-label="A small hole in the page"></div>
-      <div class="ball" id="ball" role="button" tabindex="0" aria-label="Falling ball. Press Enter or Space to toss it upward"></div>
-      <div class="other" id="other" aria-hidden="true"><svg width="25" height="32" viewBox="0 0 25 32"><path d="M2 2v25l6-6 5 10 5-3-5-10 10-1z" fill="#e3e6cc" stroke="#28332d" stroke-width="2"/></svg></div>
-      <div class="message" id="message" aria-live="polite"></div>
-    </section>
-    <footer class="footer item" data-feed="footer"><span id="status">SPACE STATUS: STABLE</span><div><button id="undo" type="button" hidden>UNDO</button><a id="exit" href="../#anomalies">BACK TO SITE ↗</a></div></footer>
-  </main>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNASSIGNED SPACE // My Liminal Reality</title>
+    <meta
+      name="description"
+      content="An unassigned page. No maintenance is required."
+    />
+    <link rel="canonical" href="https://myliminalreality.com/unassigned/" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="space.css" />
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="b2515cd4-603c-48f1-873d-98b10e5ff5d2"
+    ></script>
+    <script defer src="../analytics.js"></script>
+    <script defer src="space.js"></script>
+  </head>
+  <body>
+    <main class="sheet" id="sheet">
+      <header class="header item" data-feed="header">
+        <span>MY LIMINAL REALITY / UNASSIGNED SPACE</span
+        ><span id="visitors">1 PERSON HERE</span>
+      </header>
+      <section class="field" id="field" aria-label="Unassigned space">
+        <div class="memo item" data-feed="memo">
+          <span>FILE 08 / OPEN</span>
+          <h1>No activity required.</h1>
+          <p>This space has not been assigned a function.</p>
+        </div>
+        <div class="note item" data-feed="note">
+          <span>LAST CHECKED</span><strong id="date"></strong
+          ><small>Contents accounted for.</small>
+        </div>
+        <div class="stamp item" data-feed="stamp">AVAILABLE</div>
+        <div
+          class="hole"
+          id="hole"
+          role="button"
+          tabindex="0"
+          aria-label="A small hole in the page"
+        ></div>
+        <div
+          class="ball"
+          id="ball"
+          role="button"
+          tabindex="0"
+          aria-label="Falling ball. Press Enter or Space to toss it upward"
+        ></div>
+        <div class="other" id="other" aria-hidden="true">
+          <svg width="25" height="32" viewBox="0 0 25 32">
+            <path
+              d="M2 2v25l6-6 5 10 5-3-5-10 10-1z"
+              fill="#e3e6cc"
+              stroke="#28332d"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div class="third" id="third" aria-hidden="true">
+          <svg width="25" height="32" viewBox="0 0 25 32">
+            <path
+              d="M2 2v25l6-6 5 10 5-3-5-10 10-1z"
+              fill="#d7c4bd"
+              stroke="#71392f"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <aside class="request" id="request" aria-live="polite" hidden>
+          <span>LOCAL ACCESS REQUEST</span>
+          <strong>VISITOR 2 would like to help.</strong>
+          <div>
+            <button id="deny" type="button">DENY</button
+            ><button id="allow" type="button">ALLOW</button>
+          </div>
+        </aside>
+        <div class="returned item" id="returned" data-feed="returned" hidden>
+          <span>RETURNED PROPERTY</span><strong>NOT YOURS</strong
+          ><small>Do not re-submit.</small>
+        </div>
+        <button class="hatch" id="hatch" type="button" hidden>
+          <span>MAINTENANCE ACCESS</span><i></i>
+        </button>
+        <section class="drawer" id="drawer" aria-hidden="true">
+          <span>SERVICE VOID / DO NOT STORE PERSONAL ITEMS</span>
+          <div
+            class="drawer-ball"
+            id="drawer-ball"
+            aria-label="A spare ball"
+          ></div>
+          <p>1 SPARE<br />0 REQUIRED</p>
+        </section>
+        <div class="message" id="message" aria-live="polite"></div>
+      </section>
+      <footer class="footer item" data-feed="footer">
+        <span id="status">SPACE STATUS: STABLE</span>
+        <div>
+          <button id="undo" type="button" hidden>UNDO</button
+          ><a id="exit" href="../#anomalies">BACK TO SITE ↗</a>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
