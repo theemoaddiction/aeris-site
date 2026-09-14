@@ -463,8 +463,9 @@ button[hidden] {
 }
 .item.dragging {
   transition: none;
-  z-index: 9;
+  z-index: 30 !important;
   cursor: grabbing;
+  animation: none !important;
 }
 .sheet[data-damage="1"] .field {
   filter: saturate(0.8);
@@ -534,25 +535,27 @@ button[hidden] {
     max-width: 55%;
   }
   .field {
-    height: 69svh;
-    min-height: 470px;
+    height: 800px;
+    min-height: 800px;
   }
   .memo {
-    left: 7%;
-    top: 12%;
-    width: 72%;
+    left: 6%;
+    top: 5%;
+    width: 87%;
   }
   .memo h1 {
     margin: 18px 0;
   }
   .note {
-    top: 48%;
-    right: 7%;
-    width: 115px;
+    top: 28%;
+    left: 6%;
+    right: auto;
+    width: 155px;
   }
   .stamp {
-    left: 8%;
-    bottom: 14%;
+    left: 7%;
+    top: 40%;
+    bottom: auto;
   }
   .footer {
     align-items: flex-start;
@@ -563,20 +566,27 @@ button[hidden] {
     gap: 8px;
   }
   .request {
-    right: 4%;
-    top: 6%;
-    width: 245px;
+    left: 6%;
+    right: auto;
+    top: 48%;
+    width: 88%;
   }
   .mini-room {
     width: 145px;
     height: 104px;
     right: 3%;
-    top: 53%;
+    top: 68%;
   }
   .audit {
     width: 185px;
-    left: 4%;
-    bottom: 9%;
+    left: 3%;
+    bottom: 3%;
+  }
+  .returned {
+    left: 3%;
+    right: auto;
+    top: 64%;
+    bottom: auto;
   }
   .drawer {
     left: 8%;

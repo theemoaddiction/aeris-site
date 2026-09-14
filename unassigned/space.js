@@ -96,7 +96,7 @@
     holeSize = Math.min(120, holeSize + 12);
     setHole();
     if (el === returned) {
-      returned.querySelector("strong").textContent = "STILL NOT YOURS";
+      returned.querySelector("strong").textContent = "STILL YOURS";
       setTimeout(() => {
         returned.classList.remove("consumed");
         returned.hidden = false;
@@ -127,7 +127,7 @@
     if (fed.length >= 3) {
       hungry = true;
       sheet.dataset.hungry = "true";
-      status.textContent = "SPACE STATUS: INCOMPLETE";
+      status.textContent = "CONDITION: FAILURE NOW SELF-SUSTAINING";
     }
   }
   function nearHole(x, y, pad = 0) {
@@ -140,14 +140,14 @@
     sheet.dataset.damage = damage;
     status.textContent =
       damage < 3
-        ? "SPACE STATUS: STABLE"
+        ? "CONDITION: DISAPPOINTING WITHIN TOLERANCE"
         : damage < 6
-          ? "SPACE STATUS: UNVERIFIED"
-          : "SPACE STATUS: DEGRADING";
+          ? "CONDITION: WORSE UNDER OBSERVATION"
+          : "CONDITION: NO LONGER PLAUSIBLY ACCIDENTAL";
     if (drops === 3) say("");
     if (drops === 4) hatch.hidden = false;
     if (drops === 3 || drops === 6) {
-      issueTicket("BALL CONTACTED LOWER BOUNDARY", "PREVENT PRIOR EVENT");
+      issueTicket("AVOIDABLE FAILURE OBSERVED", "HAVE ALREADY BEEN BETTER");
     }
     if (drops >= 6 && !hungry) {
       hungry = true;
@@ -167,8 +167,10 @@
     ticket.className = "citation item";
     ticket.dataset.feed = "citation";
     ticket.style.left = 7 + Math.random() * 68 + "%";
-    ticket.style.setProperty("--ticket-top", 12 + Math.random() * 58 + "%");
-    ticket.style.setProperty("--ticket-turn", -8 + Math.random() * 16 + "deg");
+    const settledTop = 12 + Math.random() * 58 + "%";
+    const settledTurn = -8 + Math.random() * 16 + "deg";
+    ticket.style.setProperty("--ticket-top", settledTop);
+    ticket.style.setProperty("--ticket-turn", settledTurn);
     const heading = document.createElement("strong");
     heading.textContent =
       "CORRECTION " + String(ticketNumber++).padStart(3, "0");
@@ -176,14 +178,23 @@
     copy.textContent = reason + " / REQUIRED ACTION: " + action;
     ticket.append(heading, copy);
     ticketTray.append(ticket);
+    ticket.addEventListener(
+      "animationend",
+      () => {
+        ticket.style.top = settledTop;
+        ticket.style.transform = `rotate(${settledTurn})`;
+        ticket.style.animation = "none";
+      },
+      { once: true },
+    );
   }
   function grantControl() {
     if (controlled) return;
     controlled = true;
     request.hidden = true;
     sheet.dataset.controlled = "true";
-    status.textContent = "SPACE STATUS: SHARED";
-    issueTicket("CONTROL TRANSFER COMPLETED", "RETAIN RESPONSIBILITY");
+    status.textContent = "CONDITION: REPLACED WITHOUT IMPROVEMENT";
+    issueTicket("RELIEF REQUESTED", "RETAIN ALL RESPONSIBILITY");
     goalX = ballAlive ? ballX : holeCenter().x;
     goalY = ballAlive ? ballY : holeCenter().y;
   }
@@ -198,7 +209,7 @@
     audit.hidden = false;
     miniRoom.hidden = false;
     setTimeout(
-      () => issueTicket("UNDECLARED OCCUPANT", "RECOUNT USING ORIGINAL TOTAL"),
+      () => issueTicket("ADDITIONAL WITNESS", "LEAVE DEFECT UNCHANGED"),
       500,
     );
   }
@@ -206,7 +217,7 @@
     const dt = Math.min((t - last) / 16.67, 2);
     last = t;
     const r = bounds();
-    if (hungry) {
+    if (hungry && !dragging) {
       hole.style.left = 72 + Math.sin(t / 2700) * 14 + "%";
       hole.style.top = 67 + Math.cos(t / 3400) * 11 + "%";
     }
@@ -386,10 +397,20 @@
   field.addEventListener("pointerup", (e) => {
     if (!dragging) return;
     const { el, x, y } = dragging;
-    dragging = null;
     el.classList.remove("dragging");
     const p = fieldPoint(e);
-    if (nearHole(p.x, p.y, Math.min(24, el.offsetWidth * 0.1))) swallow(el);
+    const rect = el.getBoundingClientRect();
+    const f = bounds();
+    const center = {
+      x: rect.left + rect.width / 2 - f.left,
+      y: rect.top + rect.height / 2 - f.top,
+    };
+    dragging = null;
+    if (
+      nearHole(p.x, p.y, Math.max(30, el.offsetWidth * 0.15)) ||
+      nearHole(center.x, center.y, Math.min(45, el.offsetWidth * 0.25))
+    )
+      swallow(el);
     else if (el === ball) {
       vx = clamp((e.clientX - x) * 0.09, -8, 8);
       vy = clamp((e.clientY - y) * 0.07 - 7, -15, 6);
@@ -401,9 +422,9 @@
   deny.addEventListener("click", () => {
     denyCount++;
     if (denyCount === 1) {
-      deny.textContent = "DENY LOCALLY";
+      deny.textContent = "DENY PRIVATELY";
       request.querySelector("strong").textContent =
-        "VISITOR 2 has renewed the request.";
+        "VISITOR 2 has reviewed your objection and found the same problem.";
       const rect = allow.getBoundingClientRect();
       goalX = rect.left - bounds().left;
       goalY = rect.top - bounds().top;
@@ -413,28 +434,28 @@
   });
   certify.addEventListener("click", () => {
     certify.disabled = true;
-    certify.textContent = "COUNT CERTIFIED";
+    certify.textContent = "FAULT CERTIFIED";
     issueTicket(
-      "CERTIFIED COUNT DOES NOT MATCH CERTIFIED COUNT",
-      "DO NOT AMEND",
+      "SELF-ASSESSMENT EXCEEDS AVAILABLE EVIDENCE",
+      "REVISE DOWNWARD",
     );
     setTimeout(() => {
-      observed.textContent = "4";
+      observed.textContent = "WORSE THAN DECLARED";
       visitors.textContent = "4 PEOPLE HERE";
-      certify.textContent = "CERTIFIED BY VISITOR 2";
+      certify.textContent = "CONFIRMED BY SOMEONE BETTER";
     }, 900);
   });
   hatch.addEventListener("click", () => {
     const open = drawer.classList.toggle("open");
     drawer.setAttribute("aria-hidden", String(!open));
     hatch.querySelector("span").textContent = open
-      ? "CLOSE MAINTENANCE ACCESS"
-      : "MAINTENANCE ACCESS";
+      ? "STOP LOOKING FOR THE CAUSE"
+      : "CAUSE OF FAILURE";
   });
   drawerBall.addEventListener("click", () => {
     if (drawerBall.style.opacity === "0") return;
     drawerBall.style.opacity = 0;
-    drawer.querySelector("p").innerHTML = "0 SPARE<br>1 REQUIRED";
+    drawer.querySelector("p").innerHTML = "0 EXCUSES<br>1 EXPECTED";
     if (!ballAlive) {
       ball.classList.remove("consumed");
       ballAlive = true;
@@ -485,7 +506,7 @@
       other.style.opacity = 1;
       visitors.textContent = "2 PEOPLE HERE";
     }
-    status.textContent = "SPACE STATUS: RESTORED";
+    status.textContent = "CONDITION: RESTORED TO PREVIOUS FAILURE";
   });
   function evade() {
     if (exitTries >= 3 || exit.classList.contains("consumed")) return;
