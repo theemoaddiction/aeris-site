@@ -7,7 +7,23 @@ window.RECORDS = [
     "kind": "EP",
     "cover": "analog.webp",
     "summary": "Bass chords, voice, occasional overdubs. Recorded on a Fostex tape recorder, at the beginning of the solo project.",
-    "tracks": [],
+    "tracks": [
+      {
+        "title": "The Begining..."
+      },
+      {
+        "title": "Understand"
+      },
+      {
+        "title": "Gone Again (Analog)"
+      },
+      {
+        "title": "Drought Away"
+      },
+      {
+        "title": "So Much"
+      }
+    ],
     "links": [],
     "related": [],
     "approx": true,
@@ -133,16 +149,16 @@ window.RECORDS = [
     "id": "cameras",
     "title": "Make All the Cameras Scream Rejoice",
     "artist": "Jet-Set Stereo",
-    "year": null,
+    "year": 2005,
     "kind": "Compilation",
     "cover": "cameras.jpg",
-    "summary": "Part compilation, part home for recordings that had nowhere else to go: two tracks from a defunct band, songs from Silent eMotion, unused Owns Your Brain material, and a Microphones cover.",
+    "summary": "Part compilation, part home for recordings that had nowhere else to go: recordings by The Forgetting Curve, songs from Silent eMotion, and an Owns Your Brain B-side.",
     "tracks": [
       {
         "title": "Irisch!"
       },
       {
-        "title": "Owner’s Manual"
+        "title": "Owner’s Manual (Version)"
       },
       {
         "title": "David Bowie"
@@ -170,9 +186,6 @@ window.RECORDS = [
       },
       {
         "title": "Home Again"
-      },
-      {
-        "title": "I’ll Not Contain You (Microphones cover)"
       }
     ],
     "links": [
@@ -183,34 +196,12 @@ window.RECORDS = [
     ],
     "related": [
       "silent-emotion",
-      "owns-your-brain"
+      "owns-your-brain",
+      "black-rose",
+      "licker",
+      "vapid"
     ],
-    "trackNote": "Main sequence from the supplied archive listing. Bonus tracks to be added."
-  },
-  {
-    "id": "best-week",
-    "title": "Best Week Ever EP",
-    "artist": "LICKER",
-    "year": 2007,
-    "kind": "EP",
-    "cover": null,
-    "summary": "Early recordings by Gordon Vanguard and Mitch Fedie in Gordon’s mother’s basement. Later collected on LICKER Anthology.",
-    "tracks": [
-      {
-        "title": "Perfect Hair"
-      },
-      {
-        "title": "Hardon U"
-      },
-      {
-        "title": "Silver Bullet (Original)"
-      }
-    ],
-    "links": [],
-    "related": [
-      "anthology"
-    ],
-    "edition": "Included in LICKER Anthology"
+    "trackNote": "Thank God for Excursion, 1 2 3 4, MX-23, and Home Again come from Silent eMotion. Sound & Ability and Snow Business were originally recorded by The Forgetting Curve. Sickness is an Owns Your Brain B-side and a precursor to This Girl. This archive edition omits the Microphones cover I’ll Not Contain You, which also appears on Black Rose EP."
   },
   {
     "id": "keen-tongue",
@@ -329,10 +320,10 @@ window.RECORDS = [
     "id": "anthology",
     "title": "LICKER Anthology",
     "artist": "Jet-Set Stereo",
-    "year": 2014,
+    "year": 2017,
     "kind": "Compilation",
     "cover": "anthology.jpg",
-    "summary": "Twenty-three recordings gathering the self-titled album, OJ Dingo, Keen Tongue, and Best Week Ever. A record of LICKER’s Minneapolis and Chicago chapters.",
+    "summary": "Released July 2017. Twenty-three recordings gathering the self-titled album, OJ Dingo, Keen Tongue, and the previously unofficial Best Week Ever recordings. A record of LICKER’s Minneapolis and Chicago chapters.",
     "tracks": [
       {
         "title": "Silver Bullet"
@@ -408,10 +399,8 @@ window.RECORDS = [
     "related": [
       "licker",
       "oj-dingo",
-      "keen-tongue",
-      "best-week"
-    ],
-    "approx": true
+      "keen-tongue"
+    ]
   },
   {
     "id": "mating",
