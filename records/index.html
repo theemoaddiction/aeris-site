@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Record Room · My Liminal Reality</title>
+  <meta name="description" content="The recordings of Jet-Set Stereo, LICKER, and Aeris Mandrake. Albums, EPs, old versions, and things that stayed.">
+  <link rel="canonical" href="https://myliminalreality.com/records/">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="The Record Room · My Liminal Reality">
+  <meta property="og:description" content="Jet-Set Stereo / LICKER / Aeris Mandrake. A growing archive of recordings.">
+  <meta property="og:image" content="https://myliminalreality.com/records/assets/owns-your-brain.jpg">
+  <link rel="stylesheet" href="room.css">
+  <script defer src="catalog.js"></script>
+  <script defer src="room.js"></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="b2515cd4-603c-48f1-873d-98b10e5ff5d2"></script>
+  <script defer src="../analytics.js"></script>
+</head>
+<body>
+  <a class="skip" href="#catalog">Skip to the records</a>
+  <header class="masthead"><a href="../" class="home">← MY LIMINAL REALITY</a><span class="stamp">SODALITE / RECORD ARCHIVE</span><a href="#about" class="about-link">About this room ↗</a></header>
+  <main>
+    <section class="intro" aria-labelledby="room-title">
+      <div class="intro-copy"><p class="eyebrow"><span class="light"></span> THE DOOR WAS OPEN</p><h1 id="room-title">The<br>Record <em>Room.</em></h1><p class="lede">Different names.<br>Some of the same ghosts.</p><p class="intro-note">The recordings of Jet-Set Stereo, LICKER, and Aeris Mandrake. From bedroom tapes to the songs they became.</p><a href="#catalog" class="browse">FLIP THROUGH THE RECORDS <span>↓</span></a></div>
+      <div class="sleeves" aria-label="Three records from the archive">
+        <a class="sleeve sleeve-back" href="#release=lovestar"><img src="assets/lovestar.webp" alt="Lovestar(ved) — pink and gray diagonal stripes" width="1254" height="1254"><span>JET-SET STEREO / 2005</span></a>
+        <a class="sleeve sleeve-mid" href="#release=owns-your-brain"><img src="assets/owns-your-brain.jpg" alt="Owns Your Brain — original blue school hallway cover" width="1536" height="1528"><span>JET-SET STEREO / 2004</span></a>
+        <a class="sleeve sleeve-front" href="#release=anthology"><img src="assets/anthology.jpg" alt="LICKER Anthology — pink lettering and an inverted triangle" width="800" height="800"><span>LICKER ANTHOLOGY / c. 2014</span></a>
+        <span class="shelf-note">please put them back<br>in whatever order.</span>
+      </div>
+    </section>
+    <section id="catalog" class="catalog" aria-labelledby="catalog-title">
+      <div class="section-top"><div><p class="eyebrow">THE COLLECTION</p><h2 id="catalog-title">Everything that stayed.</h2></div><span id="record-count" class="count" aria-live="polite"></span></div>
+      <div class="controls"><div class="filters" role="group" aria-label="Filter by artist"><button type="button" data-artist="all" aria-pressed="true">All records</button><button type="button" data-artist="Jet-Set Stereo" aria-pressed="false">Jet-Set Stereo</button><button type="button" data-artist="LICKER" aria-pressed="false">LICKER</button><button type="button" data-artist="Aeris Mandrake" aria-pressed="false">Aeris Mandrake</button></div><div class="find"><label class="sr-only" for="search">Find a release or song</label><input id="search" type="search" placeholder="Find a record or song…"><label class="sr-only" for="sort">Sort records</label><select id="sort"><option value="old">Oldest first</option><option value="new">Newest first</option><option value="title">A–Z</option></select></div></div>
+      <div id="records" class="records"></div><p id="empty" hidden>No records found. Try another title or artist.</p>
+      <p class="collection-note">An ongoing collection. Approximate dates are marked “c.”; undated releases sit at the end. Some early records have new archive artwork.</p>
+    </section>
+    <section id="about" class="about"><p class="eyebrow">A NOTE LEFT IN THE ROOM</p><div><h2>Some songs<br>take the long way home.</h2><p>These recordings were made under different names, in different rooms, over more than twenty years. Some became albums. Some waited in folders. Some turned up again with different words, different voices, or a different reason to exist.</p><p>This room brings those releases together. Open a sleeve for the recordings, credits, and connections we’ve recovered so far.</p><a href="#release=owns-your-brain" class="text-link">Start with Owns Your Brain (2004) →</a></div></section>
+  </main>
+  <footer><a href="../">MY LIMINAL REALITY</a><span>JET-SET STEREO / LICKER / AERIS MANDRAKE</span><a href="#room-title">Back upstairs ↑</a></footer>
+  <dialog id="release-dialog" aria-labelledby="release-title"><button class="close" type="button" aria-label="Close release">×</button><div id="release-content"></div></dialog>
+  <noscript><p class="no-script">Enable JavaScript to browse the collection. You can still <a href="../owns-your-brain.html">listen to Owns Your Brain</a> or <a href="https://soundcloud.com/jetsetstereo/tracks">visit the SoundCloud archive</a>.</p></noscript>
+</body>
+</html>
