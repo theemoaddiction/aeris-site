@@ -16,11 +16,11 @@ Edit `catalog.js`. Each record contains an `id`, title, artist, year (or `null`)
 
 ## Initial source notes
 
-Dates and personal descriptions follow Gordon's account in the archive conversation. Analog Recordings is circa 2001; the anthology is provisionally circa 2014. Cameras is undated: the screenshot's filesystem dates are not treated as publication dates.
+Dates and personal descriptions follow Gordon's account in the archive conversation. Analog Recordings is circa 2001; its supplied filesystem dates are not publication dates. Gordon dated Cameras to 2005 and LICKER Anthology to July 2017. Analog’s supplied track titles preserve their original spelling. Cameras’ track note records the confirmed song origins and omission of I’ll Not Contain You from this archive edition; the cover remains on Black Rose EP.
 
-LICKER's track lists and production credits come from the supplied `JetSetStereo-LickerAnthology.txt`. Best Week Ever and Keen Tongue are represented as early recording collections subsequently included in the anthology, without claiming they were commercially released independently.
+LICKER's track lists and production credits come from the supplied `JetSetStereo-LickerAnthology.txt`. Best Week Ever was never officially released and has no separate catalog entry; its three recordings remain on the anthology. Keen Tongue is represented as an early collection subsequently included in the anthology.
 
-Later digital release dates and track lists were checked against Apple Music and Amazon Music. Further from Familiar's sequence remains unverified and is explicitly labeled alphabetical. Mating in Captivity and the earliest records do not yet have complete track lists here.
+Later digital release dates and track lists were checked against Apple Music and Amazon Music. Further from Familiar's sequence remains unverified and is explicitly labeled alphabetical. Mating in Captivity, Silent eMotion, Black Rose EP, and Lovestar(ved) do not yet have complete track lists here.
 
 Owns Your Brain uses the thirteen MP3s already present in the repository, with their existing display titles. Its blue hallway cover is the original supplied by Gordon. The Aeris entry currently uses artwork already present on the main site and labels it accordingly.
 
