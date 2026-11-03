@@ -292,7 +292,12 @@ window.RECORDS = [
         "title": "Vincent Price is Right"
       }
     ],
-    "links": [],
+    "links": [
+      {
+        "label": "Listen on Spotify",
+        "url": "https://open.spotify.com/album/0NZvzNzGD0mI5P3OYq8Wy5"
+      }
+    ],
     "related": [
       "anthology"
     ]
@@ -344,6 +349,10 @@ window.RECORDS = [
       {
         "label": "Listen on Amazon Music",
         "url": "https://music.amazon.in/albums/B006LZ572Y"
+      },
+      {
+        "label": "Listen on Spotify",
+        "url": "https://open.spotify.com/album/3Hik1Eqi4swuLLSpv2KEeS"
       }
     ],
     "related": [
@@ -498,6 +507,10 @@ window.RECORDS = [
       {
         "label": "Listen on Apple Music",
         "url": "https://music.apple.com/us/album/mating-in-captivity/986017637"
+      },
+      {
+        "label": "Listen on Spotify",
+        "url": "https://open.spotify.com/album/6R92rjbL1MZcvl9k7OOKii"
       }
     ],
     "related": []
@@ -555,6 +568,10 @@ window.RECORDS = [
       {
         "label": "Listen on Apple Music",
         "url": "https://music.apple.com/us/album/vapid/1123153474"
+      },
+      {
+        "label": "Listen on Spotify",
+        "url": "https://open.spotify.com/album/1eZdRUh5ZxYrZLo0CloTCn"
       }
     ],
     "related": [
@@ -604,6 +621,10 @@ window.RECORDS = [
       {
         "label": "Listen on Apple Music",
         "url": "https://music.apple.com/us/album/too-much-is-not-enough/1453201601"
+      },
+      {
+        "label": "Listen on Spotify",
+        "url": "https://open.spotify.com/album/3UmX4imLYltfJsnPc5DOhs"
       }
     ],
     "related": []
@@ -637,6 +658,10 @@ window.RECORDS = [
       {
         "label": "Listen on Apple Music",
         "url": "https://music.apple.com/us/album/further-from-familiar-pt-1-ep/1756579271"
+      },
+      {
+        "label": "Listen on Spotify",
+        "url": "https://open.spotify.com/album/4SpgH7bkNlYZKSPzt5v8X1"
       }
     ],
     "related": []
