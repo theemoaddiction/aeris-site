@@ -140,10 +140,48 @@ window.RECORDS = [
     "kind": "Album",
     "cover": "lovestar.webp",
     "summary": "A pleading breakup record: acoustic songs, synths, distortion, and very little percussion. Includes covers of When You Sleep and High and Dry.",
-    "tracks": [],
+    "tracks": [
+      {
+        "title": "Lovestar(ved)"
+      },
+      {
+        "title": "Breakup Sung"
+      },
+      {
+        "title": "When You Sleep (My Bloody Valentine Cover)"
+      },
+      {
+        "title": "My Old Ex-Girlfriend is Not as Attractive as My New One"
+      },
+      {
+        "title": "Alpha Beta Amy"
+      },
+      {
+        "title": "High and Dry (Radiohead Cover)"
+      },
+      {
+        "title": "Little Friendship Girl"
+      },
+      {
+        "title": "Happy V-Day"
+      },
+      {
+        "title": "Don't Forget to Breathe"
+      },
+      {
+        "title": "Requiem"
+      },
+      {
+        "title": "Suicide Song"
+      }
+    ],
     "links": [],
-    "related": [],
-    "artNote": "New archive artwork"
+    "related": [
+      "oj-dingo",
+      "anthology"
+    ],
+    "artNote": "New archive artwork",
+    "trackNote": "Breakup Sung is the same song as LICKER’s Vincent Price Is Right, included on OJ Dingo EP and LICKER Anthology."
   },
   {
     "id": "cameras",
@@ -209,7 +247,7 @@ window.RECORDS = [
     "artist": "LICKER",
     "year": 2008,
     "kind": "EP",
-    "cover": null,
+    "cover": "keen-tongue.jpg",
     "summary": "Three recordings from the Minneapolis period, including Panic Reflex. Later collected on LICKER Anthology.",
     "tracks": [
       {
@@ -234,7 +272,7 @@ window.RECORDS = [
     "artist": "LICKER",
     "year": 2010,
     "kind": "EP",
-    "cover": null,
+    "cover": "oj-dingo.jpg",
     "summary": "The Minneapolis lineup: Gordon Vanguard, Mitch Fedie, Randall Zidones, and Kevin Anhut. Written in 2008–2009, tracked at IPR, and subsequently mixed at Droptone Studio.",
     "tracks": [
       {
@@ -434,8 +472,30 @@ window.RECORDS = [
     "year": 2015,
     "kind": "Album",
     "cover": "mating.jpg",
-    "summary": "Seven tracks. Released May 8, 2015 through Sodalite Records.",
-    "tracks": [],
+    "summary": "Seven tracks of Ween-inspired, chaotic lo-fi. Released May 8, 2015 through Sodalite Records.",
+    "tracks": [
+      {
+        "title": "2 Peaches"
+      },
+      {
+        "title": "Sweet 16"
+      },
+      {
+        "title": "Desire"
+      },
+      {
+        "title": "Aerial View"
+      },
+      {
+        "title": "Levitate"
+      },
+      {
+        "title": "Ashley"
+      },
+      {
+        "title": "I Can't Hear You"
+      }
+    ],
     "links": [
       {
         "label": "Listen on Apple Music",
@@ -451,7 +511,7 @@ window.RECORDS = [
     "year": 2016,
     "kind": "Album",
     "cover": "vapid.jpg",
-    "summary": "Thirteen tracks, including This Girl, Movie Star, and Robot 1. Released July 10, 2016 through Sodalite Records.",
+    "summary": "A spiritual follow-up to LICKER’s 2011 self-titled album, carrying its grunge-pop sound into Jet-Set Stereo. Distorted guitars and prominent bass meet synthesizers, bright melodies, and dance rhythms, with influences ranging from the Smashing Pumpkins and Silversun Pickups to the Killers, Death Cab for Cutie, and Midwest emo. Released July 10, 2016 through Sodalite Records.",
     "tracks": [
       {
         "title": "I Shot an Arrow"
@@ -499,7 +559,11 @@ window.RECORDS = [
         "url": "https://music.apple.com/us/album/vapid/1123153474"
       }
     ],
-    "related": []
+    "related": [
+      "licker",
+      "mating"
+    ],
+    "trackNote": "The original release pitch promised “simultaneous inner exploration and neglectful escapism.” It also claimed the record restored hair loss. Results remain unverified."
   },
   {
     "id": "too-much",
@@ -552,9 +616,15 @@ window.RECORDS = [
     "artist": "Jet-Set Stereo",
     "year": 2024,
     "kind": "EP",
-    "cover": "further.jpg",
+    "cover": "further.png",
     "summary": "Five tracks. Released August 2, 2024.",
     "tracks": [
+      {
+        "title": "Happiness Is..."
+      },
+      {
+        "title": "Mirror Mirror"
+      },
       {
         "title": "Bump in the Night"
       },
@@ -563,12 +633,6 @@ window.RECORDS = [
       },
       {
         "title": "Grunge Pop Baby"
-      },
-      {
-        "title": "Happiness Is..."
-      },
-      {
-        "title": "Mirror Mirror"
       }
     ],
     "links": [
@@ -577,8 +641,7 @@ window.RECORDS = [
         "url": "https://music.apple.com/us/album/further-from-familiar-pt-1-ep/1756579271"
       }
     ],
-    "related": [],
-    "trackNote": "Tracks listed alphabetically; original running order to be confirmed."
+    "related": []
   },
   {
     "id": "if",
