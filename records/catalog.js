@@ -644,6 +644,27 @@ window.RECORDS = [
     "related": []
   },
   {
+    "id": "oh1god",
+    "title": "OH1GOD",
+    "artist": "Aeris Mandrake",
+    "year": 2026,
+    "kind": "Single",
+    "cover": "oh1god-single.png",
+    "summary": "A huge chorus, reckless momentum, and a quieter moment with two people in the car.",
+    "tracks": [
+      {
+        "title": "OH1GOD"
+      }
+    ],
+    "links": [
+      {
+        "label": "Buy / download on Ko-fi",
+        "url": "https://ko-fi.com/s/8d25fae79e"
+      }
+    ],
+    "related": []
+  },
+  {
     "id": "if",
     "title": "if…",
     "artist": "Aeris Mandrake",
@@ -654,13 +675,41 @@ window.RECORDS = [
     "tracks": [],
     "links": [
       {
+        "label": "Buy / download on Ko-fi",
+        "url": "https://ko-fi.com/s/68863f0246"
+      },
+      {
         "label": "Listen on Spotify",
         "url": "https://open.spotify.com/album/2C6z8lhzted3RomL6VgOjq"
       }
     ],
     "related": [
-      "owns-your-brain"
+      "owns-your-brain",
+      "smile"
     ],
     "artNote": "Artwork from the Aeris site"
+  },
+  {
+    "id": "smile",
+    "title": "Smile",
+    "artist": "Aeris Mandrake",
+    "year": 2026,
+    "kind": "Single",
+    "cover": "smile-single.png",
+    "summary": "The debut single. A familiar instruction turns into a demand: compulsory pleasantness, and the expectation that you’ll make yourself agreeable.",
+    "tracks": [
+      {
+        "title": "Smile"
+      }
+    ],
+    "links": [
+      {
+        "label": "Buy / download on Ko-fi",
+        "url": "https://ko-fi.com/s/6fbe23aeb3"
+      }
+    ],
+    "related": [
+      "if"
+    ]
   }
 ];
