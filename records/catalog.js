@@ -35,15 +35,14 @@ window.RECORDS = [
     "artist": "Jet-Set Stereo",
     "year": 2002,
     "kind": "Album",
-    "cover": "silent.webp",
+    "cover": "silent-emotion-updated.webp",
     "summary": "The first full-length: bass chords, quiet introspection, and earnest hope. Written and recorded at night in a downstairs bedroom on a digital Fostex workstation.",
     "tracks": [],
     "links": [],
     "related": [
       "cameras",
       "owns-your-brain"
-    ],
-    "artNote": "New archive artwork"
+    ]
   },
   {
     "id": "owns-your-brain",
@@ -125,12 +124,11 @@ window.RECORDS = [
     "artist": "Jet-Set Stereo",
     "year": 2005,
     "kind": "EP",
-    "cover": "black-rose.webp",
-    "summary": "An emo love letter from 2005. The original artwork used densely superimposed photographic imagery; this edition has a new sleeve.",
+    "cover": "black-rose-updated.webp",
+    "summary": "An emo love letter from 2005. Densely superimposed photographs, a black rose, and the remains of a room.",
     "tracks": [],
     "links": [],
-    "related": [],
-    "artNote": "New archive artwork"
+    "related": []
   },
   {
     "id": "lovestar",
@@ -706,6 +704,10 @@ window.RECORDS = [
       {
         "label": "Buy / download on Ko-fi",
         "url": "https://ko-fi.com/s/6fbe23aeb3"
+      },
+      {
+        "label": "Listen on Spotify",
+        "url": "https://open.spotify.com/track/33TZrYJpPC0UFC8WozZaGa"
       }
     ],
     "related": [
