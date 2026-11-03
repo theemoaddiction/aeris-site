@@ -317,6 +317,31 @@ window.RECORDS = [
     ]
   },
   {
+    "id": "until-were-dead",
+    "title": "Until We’re Dead: A Tribute to Random, Vol. 1",
+    "artist": "LICKER",
+    "year": 2012,
+    "kind": "EP",
+    "cover": "until-were-dead.jpg",
+    "summary": "Released April 2012.",
+    "tracks": [
+      {
+        "title": "Rainbow Show"
+      },
+      {
+        "title": "Martania"
+      },
+      {
+        "title": "Bulldog’s March"
+      },
+      {
+        "title": "Leafy Green Trees"
+      }
+    ],
+    "links": [],
+    "related": []
+  },
+  {
     "id": "anthology",
     "title": "LICKER Anthology",
     "artist": "Jet-Set Stereo",

@@ -16,7 +16,7 @@ Edit `catalog.js`. Each record contains an `id`, title, artist, year (or `null`)
 
 ## Initial source notes
 
-Dates and personal descriptions follow Gordon's account in the archive conversation. Analog Recordings is circa 2001; its supplied filesystem dates are not publication dates. Gordon dated Cameras to 2005 and LICKER Anthology to July 2017. Analog’s supplied track titles preserve their original spelling. Cameras’ track note records the confirmed song origins and omission of I’ll Not Contain You from this archive edition; the cover remains on Black Rose EP.
+Dates and personal descriptions follow Gordon's account in the archive conversation. Analog Recordings is circa 2001; its supplied filesystem dates are not publication dates. Gordon dated Cameras to 2005, Until We’re Dead to April 2012, and LICKER Anthology to July 2017. Until We’re Dead uses the supplied original cover and four track titles in confirmed order, with title case applied as requested. Analog’s supplied track titles preserve their original spelling. Cameras’ track note records the confirmed song origins and omission of I’ll Not Contain You from this archive edition; the cover remains on Black Rose EP.
 
 LICKER's track lists and production credits come from the supplied `JetSetStereo-LickerAnthology.txt`. Best Week Ever was never officially released and has no separate catalog entry; its three recordings remain on the anthology. Keen Tongue is represented as an early collection subsequently included in the anthology.
 
