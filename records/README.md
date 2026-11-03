@@ -20,7 +20,7 @@ Dates and personal descriptions follow Gordon's account in the archive conversat
 
 LICKER's track lists and production credits come from the supplied `JetSetStereo-LickerAnthology.txt`. Best Week Ever was never officially released and has no separate catalog entry; its three recordings remain on the anthology. Keen Tongue is represented as an early collection subsequently included in the anthology.
 
-Later digital release dates and track lists were checked against Apple Music and Amazon Music. Further from Familiar's sequence remains unverified and is explicitly labeled alphabetical. Mating in Captivity, Silent eMotion, Black Rose EP, and Lovestar(ved) do not yet have complete track lists here.
+Later digital release dates and track lists were checked against Apple Music and Amazon Music. Gordon confirmed the running orders for Mating in Captivity, Vapid, and Further from Familiar, Pt. 1 and supplied their cover files. Vapid’s description is adapted from his original release copy; its archival note retains two lines from that pitch. Silent eMotion, Black Rose EP, and Lovestar(ved) do not yet have complete track lists here.
 
 Owns Your Brain uses the thirteen MP3s already present in the repository, with their existing display titles. Its blue hallway cover is the original supplied by Gordon. The Aeris entry currently uses artwork already present on the main site and labels it accordingly.
 
