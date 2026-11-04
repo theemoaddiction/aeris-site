@@ -245,7 +245,7 @@ window.RECORDS = [
     "artist": "LICKER",
     "year": 2007,
     "kind": "EP",
-    "cover": "best-week-ever.webp",
+    "cover": "best-week-ever-v2.webp",
     "summary": "LICKER’s first demo. Gordon started the project with Mitch Fedie, his manager at Jimmy John’s. They found an immediate musical rapport and, for a stretch, were writing a song a week. Grungier than Jet-Set Stereo, these early recordings capture the beginning of that partnership.",
     "tracks": [
       {
