@@ -134,7 +134,7 @@ window.RECORDS = [
     "id": "lovestar",
     "title": "Lovestar(ved)",
     "artist": "Jet-Set Stereo",
-    "year": 2005,
+    "year": 2006,
     "kind": "Album",
     "cover": "lovestar.webp",
     "summary": "A pleading breakup record: acoustic songs, synths, distortion, and very little percussion. Includes covers of When You Sleep and High and Dry.",
@@ -240,6 +240,32 @@ window.RECORDS = [
     "trackNote": "Thank God for Excursion, 1 2 3 4, MX-23, and Home Again come from Silent eMotion. Sound & Ability and Snow Business were originally recorded by The Forgetting Curve. Sickness is an Owns Your Brain B-side and a precursor to This Girl. This archive edition omits the Microphones cover I’ll Not Contain You, which also appears on Black Rose EP."
   },
   {
+    "id": "best-week-ever",
+    "title": "Best Week Ever EP",
+    "artist": "LICKER",
+    "year": 2007,
+    "kind": "EP",
+    "cover": null,
+    "summary": "LICKER’s first demo. Gordon started the project with Mitch Fedie, his manager at Jimmy John’s. They found an immediate musical rapport and, for a stretch, were writing a song a week. Grungier than Jet-Set Stereo, these early recordings capture the beginning of that partnership.",
+    "tracks": [
+      {
+        "title": "Perfect Hair"
+      },
+      {
+        "title": "Hardon U"
+      },
+      {
+        "title": "Silver Bullet (Original)"
+      }
+    ],
+    "links": [],
+    "related": [
+      "keen-tongue",
+      "anthology"
+    ],
+    "edition": "The 2007 demo recordings were later collected on LICKER Anthology."
+  },
+  {
     "id": "keen-tongue",
     "title": "Keen Tongue EP",
     "artist": "LICKER",
@@ -260,6 +286,7 @@ window.RECORDS = [
     ],
     "links": [],
     "related": [
+      "best-week-ever",
       "anthology"
     ],
     "edition": "Included in LICKER Anthology"
@@ -469,7 +496,8 @@ window.RECORDS = [
     "related": [
       "licker",
       "oj-dingo",
-      "keen-tongue"
+      "keen-tongue",
+      "best-week-ever"
     ]
   },
   {
