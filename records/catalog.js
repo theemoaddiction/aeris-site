@@ -270,10 +270,19 @@ window.RECORDS = [
         "title": "Pregnant Brain (2012 Remix)"
       },
       {
-        "title": "Kiss Me, Kill Me (2012 Remix)"
+        "title": "Hardon U (2012 Remix)"
       },
       {
-        "title": "Hardon U (2012 Remix)"
+        "title": "The Nose Knows (Basement Demo)"
+      },
+      {
+        "title": "Sleuth (Basement Demo)"
+      },
+      {
+        "title": "Sudden Friendships Often Scare Me (Basement Demo)"
+      },
+      {
+        "title": "Rollover Rhyme (Basement Demo)"
       }
     ],
     "links": [],
@@ -281,7 +290,7 @@ window.RECORDS = [
       "keen-tongue",
       "anthology"
     ],
-    "edition": "Deluxe edition: the five original 2007 demo tracks, followed by four 2012 remixes. Selected demo recordings were later collected on LICKER Anthology.",
+    "edition": "Deluxe edition: the five original 2007 demo tracks, followed by three 2012 remixes and four basement demos. Selected demo recordings were later collected on LICKER Anthology.",
     "artNote": "New archive artwork"
   },
   {
