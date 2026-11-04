@@ -6,14 +6,14 @@
   const content = document.querySelector('#release-content');
   const search = document.querySelector('#search');
   const sort = document.querySelector('#sort');
-  let artist = 'all', currentId = null, audio = null, playingIndex = -1, previousFocus = null;
+  let artist = 'all', releaseType = 'all', currentId = null, audio = null, playingIndex = -1, previousFocus = null;
   const escape = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
   const date = r => r.year ? `${r.approx ? 'c. ' : ''}${r.year}` : 'Undated';
   const imagePath = r => r.cover && (r.cover.startsWith('../') ? r.cover : `assets/${r.cover}`);
   const art = (r, index) => r.cover ? `<img src="${escape(imagePath(r))}" alt="${escape(r.title)} cover" loading="lazy" width="600" height="600">` : `<span class="number">ARCHIVE / ${String(index + 1).padStart(2, '0')}</span><strong>${escape(r.title)}</strong><small>ARTWORK TO FOLLOW</small>`;
   function render() {
     const query = search.value.trim().toLocaleLowerCase();
-    const filtered = releases.filter(r => (artist === 'all' || r.artist === artist) && [r.title,r.artist,r.year,...r.tracks.map(t => t.title)].join(' ').toLocaleLowerCase().includes(query));
+    const filtered = releases.filter(r => (artist === 'all' || r.artist === artist) && (releaseType === 'all' || (releaseType === 'singles' ? r.kind === 'Single' : r.kind !== 'Single')) && [r.title,r.artist,r.year,...r.tracks.map(t => t.title)].join(' ').toLocaleLowerCase().includes(query));
     filtered.sort((a,b) => sort.value === 'title' ? a.title.localeCompare(b.title) : a.year == null ? (b.year == null ? 0 : 1) : b.year == null ? -1 : (sort.value === 'new' ? b.year-a.year : a.year-b.year));
     grid.innerHTML = filtered.map(r => `<a class="record" href="#release=${encodeURIComponent(r.id)}" aria-label="Open ${escape(r.title)} by ${escape(r.artist)}"><div class="art ${r.cover ? '' : 'art-placeholder'}">${art(r,releases.indexOf(r))}${r.artNote === 'New archive artwork' ? '<span class="art-note">NEW ARCHIVE SLEEVE</span>' : ''}<span class="open" aria-hidden="true">↗</span></div><div class="record-meta"><span>${date(r)}</span><span>${escape(r.kind.toUpperCase())}</span></div><h3>${escape(r.title)}</h3><p class="record-artist">${escape(r.artist)}</p></a>`).join('');
     document.querySelector('#record-count').textContent = `${String(filtered.length).padStart(2,'0')} RECORD${filtered.length === 1 ? '' : 'S'}`;
@@ -22,6 +22,11 @@
   document.querySelectorAll('[data-artist]').forEach(button => button.addEventListener('click', () => {
     artist = button.dataset.artist;
     document.querySelectorAll('[data-artist]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    render();
+  }));
+  document.querySelectorAll('[data-type]').forEach(button => button.addEventListener('click', () => {
+    releaseType = button.dataset.type;
+    document.querySelectorAll('[data-type]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
     render();
   }));
   search.addEventListener('input',render); sort.addEventListener('change',render);
