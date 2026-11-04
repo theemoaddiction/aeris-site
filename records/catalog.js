@@ -241,11 +241,11 @@ window.RECORDS = [
   },
   {
     "id": "best-week-ever",
-    "title": "Best Week Ever EP",
+    "title": "Best Week Ever EP (Deluxe)",
     "artist": "LICKER",
     "year": 2007,
     "kind": "EP",
-    "cover": null,
+    "cover": "best-week-ever.webp",
     "summary": "LICKER’s first demo. Gordon started the project with Mitch Fedie, his manager at Jimmy John’s. They found an immediate musical rapport and, for a stretch, were writing a song a week. Grungier than Jet-Set Stereo, these early recordings capture the beginning of that partnership.",
     "tracks": [
       {
@@ -255,7 +255,25 @@ window.RECORDS = [
         "title": "Hardon U"
       },
       {
-        "title": "Silver Bullet (Original)"
+        "title": "Confucious"
+      },
+      {
+        "title": "Pregnant Brain"
+      },
+      {
+        "title": "Silver Bullet"
+      },
+      {
+        "title": "Perfect Hair (2012 Remix)"
+      },
+      {
+        "title": "Pregnant Brain (2012 Remix)"
+      },
+      {
+        "title": "Kiss Me, Kill Me (2012 Remix)"
+      },
+      {
+        "title": "Hardon U (2012 Remix)"
       }
     ],
     "links": [],
@@ -263,7 +281,8 @@ window.RECORDS = [
       "keen-tongue",
       "anthology"
     ],
-    "edition": "The 2007 demo recordings were later collected on LICKER Anthology."
+    "edition": "Deluxe edition: the five original 2007 demo tracks, followed by four 2012 remixes. Selected demo recordings were later collected on LICKER Anthology.",
+    "artNote": "New archive artwork"
   },
   {
     "id": "keen-tongue",
