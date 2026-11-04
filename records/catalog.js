@@ -249,40 +249,52 @@ window.RECORDS = [
     "summary": "LICKER’s first demo. Gordon started the project with Mitch Fedie, his manager at Jimmy John’s. They found an immediate musical rapport and, for a stretch, were writing a song a week. Grungier than Jet-Set Stereo, these early recordings capture the beginning of that partnership.",
     "tracks": [
       {
-        "title": "Perfect Hair"
+        "title": "Perfect Hair",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/01 Perfect Hair.mp3"
       },
       {
-        "title": "Hardon U"
+        "title": "Hardon U",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/02 Hardon U.mp3"
       },
       {
-        "title": "Confucious"
+        "title": "Confucious",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/03 Confucious.mp3"
       },
       {
-        "title": "Pregnant Brain"
+        "title": "Pregnant Brain",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/04 Pregnant Brain.mp3"
       },
       {
-        "title": "Silver Bullet"
+        "title": "Silver Bullet",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/05 Silver Bullet.mp3"
       },
       {
-        "title": "Perfect Hair (2012 Remix)"
+        "title": "Perfect Hair (2012 Remix)",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/06 Perfect Hair (2012 Remix).mp3"
       },
       {
-        "title": "Pregnant Brain (2012 Remix)"
+        "title": "Pregnant Brain (2012 Remix)",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/07 Pregnant Brain (2012 Remix).mp3"
       },
       {
-        "title": "Hardon U (2012 Remix)"
+        "title": "Hardon U (2012 Remix)",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/08 Hardon U (2012 Remix).mp3"
       },
       {
-        "title": "The Nose Knows (Basement Demo)"
+        "title": "The Nose Knows (Basement Demo)",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/09 The Nose Knows (Basement Demo).mp3"
       },
       {
-        "title": "Sleuth (Basement Demo)"
+        "title": "Sleuth (Basement Demo)",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/10 Sleuth (Basement Demo).mp3"
       },
       {
-        "title": "Sudden Friendships Often Scare Me (Basement Demo)"
+        "title": "Sudden Friendships Often Scare Me (Basement Demo)",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/11 Sudden Friendships Often Scare Me (Basement Demo).mp3"
       },
       {
-        "title": "Rollover Rhyme (Basement Demo)"
+        "title": "Rollover Rhyme (Basement Demo)",
+        "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/12 Rollover Rhyme (Basement Demo).mp3"
       }
     ],
     "links": [],
