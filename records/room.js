@@ -11,6 +11,24 @@
   const date = r => r.year ? `${r.approx ? 'c. ' : ''}${r.year}` : 'Undated';
   const imagePath = r => r.cover && (r.cover.startsWith('../') ? r.cover : `assets/${r.cover}`);
   const art = (r, index) => r.cover ? `<img src="${escape(imagePath(r))}" alt="${escape(r.title)} cover" loading="lazy" width="600" height="600">` : `<span class="number">ARCHIVE / ${String(index + 1).padStart(2, '0')}</span><strong>${escape(r.title)}</strong><small>ARTWORK TO FOLLOW</small>`;
+  // Choose three distinct album/EP sleeves once per page load.
+  const headerAlbums = releases.filter(r => r.cover && r.kind !== 'Single');
+  for (let i = headerAlbums.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [headerAlbums[i], headerAlbums[j]] = [headerAlbums[j], headerAlbums[i]];
+  }
+  document.querySelectorAll('.sleeves .sleeve').forEach((sleeve, i) => {
+    const r = headerAlbums[i];
+    if (!r) return;
+    sleeve.href = `#release=${encodeURIComponent(r.id)}`;
+    sleeve.setAttribute('aria-label', `Open ${r.title} by ${r.artist}`);
+    const img = sleeve.querySelector('img');
+    img.src = imagePath(r);
+    img.alt = `${r.title} cover`;
+    img.width = 600;
+    img.height = 600;
+    sleeve.querySelector('span').textContent = `${r.artist.toUpperCase()} / ${date(r)}`;
+  });
   function render() {
     const query = search.value.trim().toLocaleLowerCase();
     const filtered = releases.filter(r => (artist === 'all' || r.artist === artist) && (releaseType === 'all' || (releaseType === 'singles' ? r.kind === 'Single' : r.kind !== 'Single')) && [r.title,r.artist,r.year,...r.tracks.map(t => t.title)].join(' ').toLocaleLowerCase().includes(query));

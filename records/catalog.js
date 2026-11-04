@@ -5,23 +5,28 @@ window.RECORDS = [
     "artist": "Jet-Set Stereo",
     "year": 2001,
     "kind": "EP",
-    "cover": "analog.webp",
+    "cover": "../audio/Analog_Recordings_EP_MP3/cover.jpg",
     "summary": "Bass chords, voice, occasional overdubs. Recorded on a Fostex tape recorder, at the beginning of the solo project.",
     "tracks": [
       {
-        "title": "The Begining..."
+        "title": "The Begining...",
+        "audio": "../audio/Analog_Recordings_EP_MP3/01 The Begining....mp3"
       },
       {
-        "title": "Understand"
+        "title": "Understand",
+        "audio": "../audio/Analog_Recordings_EP_MP3/02 Understand.mp3"
       },
       {
-        "title": "Gone Again (Analog)"
+        "title": "Gone Again (Analog)",
+        "audio": "../audio/Analog_Recordings_EP_MP3/03 Gone Again (Analog).mp3"
       },
       {
-        "title": "Drought Away"
+        "title": "Drought Away",
+        "audio": "../audio/Analog_Recordings_EP_MP3/04 Drought Away.mp3"
       },
       {
-        "title": "So Much"
+        "title": "So Much",
+        "audio": "../audio/Analog_Recordings_EP_MP3/05 So Much.mp3"
       }
     ],
     "links": [],
@@ -31,13 +36,66 @@ window.RECORDS = [
   },
   {
     "id": "silent-emotion",
-    "title": "Silent eMotion",
+    "title": "Silent eMotion (Deluxe)",
     "artist": "Jet-Set Stereo",
     "year": 2002,
     "kind": "Album",
-    "cover": "silent-emotion-updated.webp",
+    "cover": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/cover.jpg",
     "summary": "The first full-length: bass chords, quiet introspection, and earnest hope. Written and recorded at night in a downstairs bedroom on a digital Fostex workstation.",
-    "tracks": [],
+    "tracks": [
+      {
+        "title": "MX-23",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/01 MX-23.mp3"
+      },
+      {
+        "title": "Sky-Blue",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/02 Sky-Blue.mp3"
+      },
+      {
+        "title": "Owners Manual",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/03 Owners Manual.mp3"
+      },
+      {
+        "title": "Thank God for Excursion",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/04 Thank God for Excursion.mp3"
+      },
+      {
+        "title": "1 2 3 4",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/05 1 2 3 4.mp3"
+      },
+      {
+        "title": "Silent eMotion",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/06 Silent eMotion.mp3"
+      },
+      {
+        "title": "EYN Song",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/07 EYN Song.mp3"
+      },
+      {
+        "title": "Gone Again",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/08 Gone Again.mp3"
+      },
+      {
+        "title": "Tree Of Intense Summer",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/09 Tree Of Intense Summer.mp3"
+      },
+      {
+        "title": "Home Again",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/10 Home Again.mp3"
+      },
+      {
+        "title": "Speak to Me (Bonus Track)",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/11 Speak to Me (Bonus Track).mp3"
+      },
+      {
+        "title": "Take Me Home (Bonus Track)",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/12 Take Me Home (Bonus Track).mp3"
+      },
+      {
+        "title": "Prohibition (Bonus Track)",
+        "audio": "../audio/Jet-Set_Stereo-Silent_eMotion_Deluxe-MP3/13 Prohibition (Bonus Track).mp3"
+      }
+    ],
     "links": [],
     "related": [
       "cameras",
@@ -183,45 +241,60 @@ window.RECORDS = [
   },
   {
     "id": "cameras",
-    "title": "Make All the Cameras Scream Rejoice",
+    "title": "Make All The Cameras Scream, Rejoice! (Deluxe)",
     "artist": "Jet-Set Stereo",
     "year": 2005,
     "kind": "Compilation",
-    "cover": "cameras.jpg",
-    "summary": "Part compilation, part home for recordings that had nowhere else to go: recordings by The Forgetting Curve, songs from Silent eMotion, and an Owns Your Brain B-side.",
+    "cover": "cameras-deluxe.jpg",
+    "summary": "A revised collection of early recordings, alternate versions, and songs by The Forgetting Curve.",
     "tracks": [
       {
-        "title": "Irisch!"
+        "title": "Irisch!",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/01 Irisch!.mp3"
       },
       {
-        "title": "Owner’s Manual (Version)"
+        "title": "Owner's Manual (Non-Album Vers.)",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/02 Owner's Manual (Non-Album Vers.).mp3"
       },
       {
-        "title": "David Bowie"
+        "title": "David Bowie",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/03 David Bowie.mp3"
       },
       {
-        "title": "Thank God for Excursion"
+        "title": "Five Minutes",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/04 Five Minutes.mp3"
       },
       {
-        "title": "1 2 3 4"
+        "title": "Mermaid In A Manhole (Original)",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/05 Mermaid In A Manhole (Original).mp3"
       },
       {
-        "title": "Santa Doesn’t Visit Prisons"
+        "title": "Santa Doesn't Visit Prisons",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/06 Santa Doesn't Visit Prisons.mp3"
       },
       {
-        "title": "Sickness"
+        "title": "Sickness",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/07 Sickness.mp3"
       },
       {
-        "title": "Sound & Ability"
+        "title": "Space Zombie Bingo",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/08 Space Zombie Bingo.mp3"
       },
       {
-        "title": "Snow Business"
+        "title": "Sound & Ability",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/09 Sound & Ability.mp3"
       },
       {
-        "title": "MX-23"
+        "title": "Snow Business",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/10 Snow Business.mp3"
       },
       {
-        "title": "Home Again"
+        "title": "Alaska",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/11 Alaska.mp3"
+      },
+      {
+        "title": "Ashley (Original)",
+        "audio": "../audio/Jet-Set_Stereo-Make_All_The_Cameras_Scream_Rejoice_Deluxe-MP3/12 Ashley (Original).mp3"
       }
     ],
     "links": [
@@ -237,7 +310,7 @@ window.RECORDS = [
       "licker",
       "vapid"
     ],
-    "trackNote": "Thank God for Excursion, 1 2 3 4, MX-23, and Home Again come from Silent eMotion. Sound & Ability and Snow Business were originally recorded by The Forgetting Curve. Sickness is an Owns Your Brain B-side and a precursor to This Girl. This archive edition omits the Microphones cover I’ll Not Contain You, which also appears on Black Rose EP."
+    "trackNote": "Sound & Ability and Snow Business were originally recorded by The Forgetting Curve. Sickness is an Owns Your Brain B-side and a precursor to This Girl."
   },
   {
     "id": "best-week-ever",
@@ -806,5 +879,46 @@ window.RECORDS = [
     "related": [
       "if"
     ]
+  },
+  {
+    "id": "exceptionally-good",
+    "title": "Exceptionally Good",
+    "artist": "Counterweight",
+    "year": 2001,
+    "kind": "Album",
+    "summary": "Gordon’s very first work: a ska band with an emo streak. Two demo recordings followed by five live tracks, gathered as one album.",
+    "links": [],
+    "related": [],
+    "tracks": [
+      {
+        "title": "Waiting for You (Demo)",
+        "audio": "../audio/Counterweight-Exceptionally_Good-MP3/01 Waiting for You (Demo).mp3"
+      },
+      {
+        "title": "Escaping Myself (Demo)",
+        "audio": "../audio/Counterweight-Exceptionally_Good-MP3/02 Escaping Myself (Demo).mp3"
+      },
+      {
+        "title": "Waiting for You (Live)",
+        "audio": "../audio/Counterweight-Exceptionally_Good-MP3/03 Waiting for You (Live).mp3"
+      },
+      {
+        "title": "Fade Away (Live)",
+        "audio": "../audio/Counterweight-Exceptionally_Good-MP3/04 Fade Away (Live).mp3"
+      },
+      {
+        "title": "Escaping Myself (Live)",
+        "audio": "../audio/Counterweight-Exceptionally_Good-MP3/05 Escaping Myself (Live).mp3"
+      },
+      {
+        "title": "It's All Okay (Live)",
+        "audio": "../audio/Counterweight-Exceptionally_Good-MP3/06 It's All Okay (Live).mp3"
+      },
+      {
+        "title": "Welcome to My Life (Live)",
+        "audio": "../audio/Counterweight-Exceptionally_Good-MP3/07 Welcome to My Life (Live).mp3"
+      }
+    ],
+    "cover": "../audio/Counterweight-Exceptionally_Good-MP3/cover.jpg"
   }
 ];
