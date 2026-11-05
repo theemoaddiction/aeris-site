@@ -17,7 +17,7 @@
   };
   const isUpcoming = r => Boolean(r.releaseDate && todayLocal() < r.releaseDate);
   const shopLink = r => (r.links || []).find(link => link.url && /^https:\/\/ko-fi\.com\/s\//.test(link.url));
-  const releaseDateLabel = r => r.releaseDate ? r.releaseDate.slice(5,7) + '-' + r.releaseDate.slice(8,10) + '-' + r.releaseDate.slice(2,4) : '';
+  const releaseDateLabel = r => r.releaseDate ? Number(r.releaseDate.slice(5,7)) + '-' + Number(r.releaseDate.slice(8,10)) + '-' + r.releaseDate.slice(2,4) : '';
   // Choose three distinct album/EP sleeves once per page load.
   const headerAlbums = releases.filter(r => r.cover && r.kind !== 'Single');
   for (let i = headerAlbums.length - 1; i > 0; i--) {
