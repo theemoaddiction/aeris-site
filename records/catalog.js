@@ -476,47 +476,47 @@ window.RECORDS = [
     "tracks": [
       {
         "title": "Silver Bullet",
-        "audio": "../audio/LICKER/01 Silver Bullet.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/01 Silver Bullet.mp3"
       },
       {
         "title": "Celebrity Politics",
-        "audio": "../audio/LICKER/02 Celebrity Politics.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/02 Celebrity Politics.mp3"
       },
       {
         "title": "Party Monster",
-        "audio": "../audio/LICKER/03 Party Monster.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/03 Party Monster.mp3"
       },
       {
         "title": "Adrenochrome",
-        "audio": "../audio/LICKER/04 Adrenochrome.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/04 Adrenochrome.mp3"
       },
       {
         "title": "Mermaid in a Manhole",
-        "audio": "../audio/LICKER/05 Mermaid in a Manhole.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/05 Mermaid in a Manhole.mp3"
       },
       {
         "title": "This Girl",
-        "audio": "../audio/LICKER/06 This Girl.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/06 This Girl.mp3"
       },
       {
         "title": "Love is a Battle",
-        "audio": "../audio/LICKER/07 Love is a Battle.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/07 Love is a Battle.mp3"
       },
       {
         "title": "Movie Star",
-        "audio": "../audio/LICKER/08 Movie Star.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/08 Movie Star.mp3"
       },
       {
         "title": "Disco Bloodbath",
-        "audio": "../audio/LICKER/09 Disco Bloodbath.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/09 Disco Bloodbath.mp3"
       },
       {
         "title": "Kings on Fire",
-        "audio": "../audio/LICKER/10 Kings on Fire.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/10 Kings on Fire.mp3"
       },
       {
         "title": "2012",
-        "audio": "../audio/LICKER/11 2012.aif"
+        "audio": "../audio/LICKER (2011) (248 kbps)/11 2012-Final.mp3"
       },
       {
         "title": "Break Me (Cover)",
@@ -550,7 +550,7 @@ window.RECORDS = [
       "anthology",
       "vapid"
     ],
-    "edition": "Deluxe edition of the 2011 album, including eleven original album tracks and four additional cover recordings. Original tracks are available in AIFF format."
+    "edition": "Deluxe edition with the eleven original 2011 album tracks in MP3 format plus four additional cover recordings."
   },
   {
     "id": "until-were-dead",
