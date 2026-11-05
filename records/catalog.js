@@ -864,6 +864,7 @@ window.RECORDS = [
     "title": "OH1GOD",
     "artist": "Aeris Mandrake",
     "year": 2026,
+    "releaseDate": "2026-11-06",
     "kind": "Single",
     "cover": "oh1god-single.png",
     "summary": "A huge chorus, reckless momentum, and a quieter moment with two people in the car.",
