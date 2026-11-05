@@ -407,7 +407,7 @@ window.RECORDS = [
   },
   {
     "id": "oj-dingo",
-    "title": "OJ Dingo EP",
+    "title": "OJ Dingo EP (Deluxe)",
     "artist": "LICKER",
     "year": 2010,
     "kind": "EP",
@@ -415,22 +415,43 @@ window.RECORDS = [
     "summary": "The Minneapolis lineup: Gordon Vanguard, Mitch Fedie, Randall Zidones, and Kevin Anhut. Written in 2008–2009, tracked at IPR, and subsequently mixed at Droptone Studio.",
     "tracks": [
       {
-        "title": "Kerouac"
+        "title": "Kerouac",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/01 Kerouac.mp3"
       },
       {
-        "title": "Stupid Girl"
+        "title": "Regeneration",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/02 Regeneration.mp3"
       },
       {
-        "title": "Regeneration"
+        "title": "Pregnant Brain",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/03 Pregnant Brain.mp3"
       },
       {
-        "title": "Pregnant Brain"
+        "title": "Back to the Future",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/04 Back to the Future.mp3"
       },
       {
-        "title": "Back to the Future"
+        "title": "Stupid Girl",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/05 Stupid Girl.mp3"
       },
       {
         "title": "Vincent Price is Right"
+      },
+      {
+        "title": "Panic Reflex (Rough Mix)",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Extras/Panic Reflex (Rough Mix).mp3"
+      },
+      {
+        "title": "Regeneration (Rough Mix)",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Extras/Regeneration (Rough Mix).mp3"
+      },
+      {
+        "title": "Back to the Future (Basement Demo A)",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Extras/Back to the Future (Basement Demo A).mp3"
+      },
+      {
+        "title": "Disco Bloodbath (Basement Recording)",
+        "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Extras/Disco Bloodbath (Basement Recording).mp3"
       }
     ],
     "links": [
@@ -441,7 +462,8 @@ window.RECORDS = [
     ],
     "related": [
       "anthology"
-    ]
+    ],
+    "edition": "Deluxe archive edition: original EP listing with five available studio mixes and four additional rough, demo, and basement recordings. Vincent Price is Right is listed but audio has not yet been uploaded."
   },
   {
     "id": "licker",
