@@ -530,20 +530,24 @@ window.RECORDS = [
     "artist": "LICKER",
     "year": 2012,
     "kind": "EP",
-    "cover": "until-were-dead.jpg",
+    "cover": "../audio/LICKER - Until We're Dead EP/UWD.jpg",
     "summary": "Released April 2012.",
     "tracks": [
       {
-        "title": "Rainbow Show"
+        "title": "Rainbow Show",
+        "audio": "../audio/LICKER - Until We're Dead EP/01 Rainbow Show.mp3"
       },
       {
-        "title": "Martania"
+        "title": "Martania",
+        "audio": "../audio/LICKER - Until We're Dead EP/02 Martania.mp3"
       },
       {
-        "title": "Bulldog’s March"
+        "title": "Bulldog’s March",
+        "audio": "../audio/LICKER - Until We're Dead EP/03 Bulldogs march.mp3"
       },
       {
-        "title": "Leafy Green Trees"
+        "title": "Leafy Green Trees",
+        "audio": "../audio/LICKER - Until We're Dead EP/04 Leafy Green Trees.mp3"
       }
     ],
     "links": [],
