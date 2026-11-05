@@ -388,7 +388,8 @@ window.RECORDS = [
     "summary": "Three recordings from the Minneapolis period, including Panic Reflex. Later collected on LICKER Anthology.",
     "tracks": [
       {
-        "title": "Panic Reflex"
+        "title": "Panic Reflex",
+        "audio": "../audio/LICKER - Keen Tongue EP/01 Panic Reflex.mp3"
       },
       {
         "title": "Chemistry"
