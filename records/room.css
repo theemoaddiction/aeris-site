@@ -15,3 +15,9 @@
 .release-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;color:var(--paper);font:700 clamp(12px,1.3vw,19px) var(--mono);letter-spacing:1px;text-shadow:0 2px 8px #000;pointer-events:none}
 .release-coming{color:var(--pink);font:12px var(--mono)}
 @media(max-width:680px){.record-bottom{gap:5px}.record-buy{padding:7px 5px;font-size:8px}.release-overlay{font-size:13px;letter-spacing:0}.record-name h3{overflow-wrap:anywhere}}
+
+/* Spotify album player relocated from homepage */
+.album-spotify{margin:30px 0 8px;padding:24px;background:#151615;border:1px solid var(--line)}
+.album-spotify h3{font:10px var(--mono);letter-spacing:1.5px;margin:0 0 15px;color:var(--pink)}
+.album-spotify iframe{border:0;border-radius:12px;display:block;max-width:100%}
+@media(max-width:680px){.album-spotify{padding:14px;margin-top:22px}}
