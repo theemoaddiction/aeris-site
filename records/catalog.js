@@ -32,7 +32,6 @@ window.RECORDS = [
     "links": [],
     "related": [],
     "approx": true,
-    "artNote": "New archive artwork"
   },
   {
     "id": "silent-emotion",
@@ -236,7 +235,6 @@ window.RECORDS = [
       "oj-dingo",
       "anthology"
     ],
-    "artNote": "New archive artwork",
     "trackNote": "Breakup Sung is the same song as LICKER’s Vincent Price Is Right, included on OJ Dingo EP and LICKER Anthology."
   },
   {
@@ -376,7 +374,6 @@ window.RECORDS = [
       "anthology"
     ],
     "edition": "Deluxe edition: the five original 2007 demo tracks, followed by three 2012 remixes and four basement demos. Selected demo recordings were later collected on LICKER Anthology.",
-    "artNote": "New archive artwork"
   },
   {
     "id": "keen-tongue",
@@ -519,19 +516,19 @@ window.RECORDS = [
         "audio": "../audio/LICKER (2011) (248 kbps)/11 2012-Final.mp3"
       },
       {
-        "title": "Break Me (Cover)",
-        "audio": "../audio/LICKER/Licker - Break Me.wav"
-      },
-      {
-        "title": "Believe It or Not (Cover)",
+        "title": "Believe It or Not (Joey Scarbury cover)",
         "audio": "../audio/LICKER/Licker-BelieveitorNot.wav"
       },
       {
-        "title": "Paranoid (Cover)",
+        "title": "Paranoid (Black Sabbath cover)",
         "audio": "../audio/LICKER/Paranoid.mp3"
       },
       {
-        "title": "Skinny Love (Cover)",
+        "title": "Break Me (Jewel cover)",
+        "audio": "../audio/LICKER/Licker - Break Me.wav"
+      },
+      {
+        "title": "Skinny Love (Bon Iver cover)",
         "audio": "../audio/LICKER/Skinny love.mp3"
       }
     ],
