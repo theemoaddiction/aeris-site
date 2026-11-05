@@ -475,37 +475,48 @@ window.RECORDS = [
     "summary": "The first Chicago record. Recorded by Gordon Vanguard and Kyle Benson at Space Studios in Evanston in 2010–2011; mastered at Gravity Studios. Programmed drums and synths became part of the band’s new sound.",
     "tracks": [
       {
-        "title": "Silver Bullet"
+        "title": "Silver Bullet",
+        "audio": "../audio/LICKER/01 Silver Bullet.aif"
       },
       {
-        "title": "Celebrity Politics"
+        "title": "Celebrity Politics",
+        "audio": "../audio/LICKER/02 Celebrity Politics.aif"
       },
       {
-        "title": "Party Monster"
+        "title": "Party Monster",
+        "audio": "../audio/LICKER/03 Party Monster.aif"
       },
       {
-        "title": "Adrenochrome"
+        "title": "Adrenochrome",
+        "audio": "../audio/LICKER/04 Adrenochrome.aif"
       },
       {
-        "title": "Mermaid in a Manhole"
+        "title": "Mermaid in a Manhole",
+        "audio": "../audio/LICKER/05 Mermaid in a Manhole.aif"
       },
       {
-        "title": "This Girl"
+        "title": "This Girl",
+        "audio": "../audio/LICKER/06 This Girl.aif"
       },
       {
-        "title": "Love is a Battle"
+        "title": "Love is a Battle",
+        "audio": "../audio/LICKER/07 Love is a Battle.aif"
       },
       {
-        "title": "Movie Star"
+        "title": "Movie Star",
+        "audio": "../audio/LICKER/08 Movie Star.aif"
       },
       {
-        "title": "Disco Bloodbath"
+        "title": "Disco Bloodbath",
+        "audio": "../audio/LICKER/09 Disco Bloodbath.aif"
       },
       {
-        "title": "Kings on Fire"
+        "title": "Kings on Fire",
+        "audio": "../audio/LICKER/10 Kings on Fire.aif"
       },
       {
-        "title": "2012"
+        "title": "2012",
+        "audio": "../audio/LICKER/11 2012.aif"
       },
       {
         "title": "Break Me (Cover)",
@@ -539,7 +550,7 @@ window.RECORDS = [
       "anthology",
       "vapid"
     ],
-    "edition": "Deluxe edition with four additional cover recordings. The uploaded cover recordings are playable; the original album tracks are listed pending matching audio files."
+    "edition": "Deluxe edition of the 2011 album, including eleven original album tracks and four additional cover recordings. Original tracks are available in AIFF format."
   },
   {
     "id": "until-were-dead",
