@@ -508,16 +508,20 @@ window.RECORDS = [
         "title": "2012"
       },
       {
-        "title": "Break Me (Cover)"
+        "title": "Break Me (Cover)",
+        "audio": "../audio/LICKER/Licker - Break Me.wav"
       },
       {
-        "title": "Believe It or Not (Cover)"
+        "title": "Believe It or Not (Cover)",
+        "audio": "../audio/LICKER/Licker-BelieveitorNot.wav"
       },
       {
-        "title": "Paranoid (Cover)"
+        "title": "Paranoid (Cover)",
+        "audio": "../audio/LICKER/Paranoid.mp3"
       },
       {
-        "title": "Skinny Love (Cover)"
+        "title": "Skinny Love (Cover)",
+        "audio": "../audio/LICKER/Skinny love.mp3"
       }
     ],
     "links": [
@@ -535,7 +539,7 @@ window.RECORDS = [
       "anthology",
       "vapid"
     ],
-    "edition": "Deluxe edition with four additional cover recordings. Audio links will be activated after the files are uploaded to the repository."
+    "edition": "Deluxe edition with four additional cover recordings. The uploaded cover recordings are playable; the original album tracks are listed pending matching audio files."
   },
   {
     "id": "until-were-dead",
