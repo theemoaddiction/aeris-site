@@ -467,7 +467,7 @@ window.RECORDS = [
   },
   {
     "id": "licker",
-    "title": "Licker",
+    "title": "Licker (2011) (Deluxe)",
     "artist": "LICKER",
     "year": 2011,
     "kind": "Album",
@@ -506,6 +506,18 @@ window.RECORDS = [
       },
       {
         "title": "2012"
+      },
+      {
+        "title": "Break Me (Cover)"
+      },
+      {
+        "title": "Believe It or Not (Cover)"
+      },
+      {
+        "title": "Paranoid (Cover)"
+      },
+      {
+        "title": "Skinny Love (Cover)"
       }
     ],
     "links": [
@@ -522,7 +534,8 @@ window.RECORDS = [
       "oj-dingo",
       "anthology",
       "vapid"
-    ]
+    ],
+    "edition": "Deluxe edition with four additional cover recordings. Audio links will be activated after the files are uploaded to the repository."
   },
   {
     "id": "until-were-dead",
