@@ -597,6 +597,7 @@ html[data-home-variant="mold"] .mold-site{display:block;max-width:none;backgroun
 .record-room-poster__eyebrow{font:11px "Courier New",monospace;letter-spacing:2.4px;color:#f2b0d1}
 .record-room-poster__headline{font:900 clamp(42px,8.6vw,106px)/.94 "Arial Black",Impact,sans-serif;letter-spacing:-.055em;color:#f9eff1;text-transform:uppercase;text-shadow:3px 4px 0 #bd4783;display:block}
 .record-room-poster__headline em{font-style:normal;color:#f4a9cc}
+.record-room-poster__release{font:700 clamp(12px,2vw,16px)/1.4 "Courier New",monospace;letter-spacing:.05em;color:#f8c3dc}
 .record-room-poster__art{width:min(100%,700px);height:clamp(165px,30vw,310px);display:flex;justify-content:center;align-items:center;position:relative;filter:drop-shadow(0 14px 16px #0009)}
 .record-room-poster__art img{position:absolute;width:clamp(148px,26vw,280px);aspect-ratio:1;object-fit:cover;border:5px solid #1c181c;box-shadow:0 10px 28px #000b}
 .record-room-poster__art img:nth-child(1){transform:translateX(-65%) rotate(-12deg)}
