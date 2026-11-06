@@ -7,6 +7,7 @@
   const search = document.querySelector('#search');
   const sort = document.querySelector('#sort');
   let artist = 'all', releaseType = 'all', currentId = null, audio = null, playingIndex = -1, previousFocus = null;
+  let playCounted = false;
   const escape = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
   const date = r => r.year ? `${r.approx ? 'c. ' : ''}${r.year}` : 'Undated';
   const imagePath = r => r.cover && (r.cover.startsWith('../') ? r.cover : `assets/${r.cover}`);
@@ -66,6 +67,24 @@
     content.innerHTML = `<div class="release-head">${r.cover ? `<div><img class="release-art" src="${escape(imagePath(r))}" alt="${escape(r.title)} cover">${r.artNote ? `<p class="art-credit">${escape(r.artNote)}</p>` : ''}</div>` : `<div class="art art-placeholder empty-art">${art(r,releases.indexOf(r))}</div>`}<div><p class="eyebrow">${escape(r.kind.toUpperCase())} / ${date(r)}</p><h2 id="release-title">${escape(r.title)}</h2><div class="release-byline">${escape(r.artist)}${r.tracks.length ? ` · ${r.tracks.length} tracks listed` : ''}</div><p class="release-summary">${escape(r.summary)}</p>${r.edition ? `<p class="track-note">${escape(r.edition)}</p>` : ''}${isUpcoming(r) ? `<p class="release-coming">Available ${escape(releaseDateLabel(r))}</p>` : ''}<div class="release-links">${r.links.filter(link => !(isUpcoming(r) && shopLink(r)?.url === link.url)).map((link,i) => `<a ${i===0?'class="primary"':''} href="${escape(link.url)}" ${link.url.startsWith('https:')?'target="_blank" rel="noopener"':''}>${escape(link.label)} ↗</a>`).join('')}</div></div></div>${r.id === "if" ? `<section class="album-spotify" aria-label="Listen to if… on Spotify"><h3>LISTEN TO IF…</h3><iframe title="if… by Aeris Mandrake on Spotify" src="https://open.spotify.com/embed/album/2C6z8lhzted3RomL6VgOjq?utm_source=generator&theme=0" width="100%" height="352" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></section>` : ""}<div class="release-body"><div class="track-heading"><h3>${r.tracks.length ? 'TRACK LIST' : 'FROM THE ARCHIVE'}</h3>${playable ? '<button class="play-all" type="button">▶ Play album</button>' : ''}</div>${r.trackNote ? `<p class="track-note">${escape(r.trackNote)}</p>` : ''}${playable ? '<p class="now-playing" aria-live="polite">Choose a track to listen.</p><audio class="audio-player" controls controlsList="nodownload" preload="none"></audio>' : ''}${r.tracks.length ? `<ol class="track-list">${r.tracks.map((track,i) => `<li class="track" data-track="${i}"><span class="track-number">${String(i+1).padStart(2,'0')}</span><span class="track-title">${escape(track.title)}</span><div class="track-actions">${track.audio ? `<button type="button" class="track-play" data-play="${i}" aria-label="Play ${escape(track.title)}">▶</button>` : ''}</div></li>`).join('')}</ol>` : '<p class="not-yet">The sleeve is here. Track details and recordings will follow.</p>'}${!playable && !r.links.length ? '<p class="not-yet">Listening links will be added as the recordings are gathered.</p>' : ''}${r.related.length ? `<section class="related"><h3>FOLLOW THE THREAD</h3>${r.related.map(id => {const other=releases.find(x => x.id===id);return `<a href="#release=${other.id}">${escape(other.title)} <small>(${date(other)})</small> →</a>`;}).join('')}</section>` : ''}</div>`;
     if (playable) {
       audio = content.querySelector('audio');
+      audio.addEventListener('timeupdate', event => {
+        const player = event.currentTarget;
+        if (player !== audio || playingIndex < 0 || playCounted || typeof window.umami?.track !== 'function') return;
+
+        // Played ranges exclude any audio skipped by seeking.
+        const ranges = player.played;
+        let secondsPlayed = 0;
+        for (let i = 0; i < ranges.length; i++) {
+          secondsPlayed += ranges.end(i) - ranges.start(i);
+        }
+        if (secondsPlayed < 10) return;
+
+        playCounted = true;
+        const track = r.tracks[playingIndex];
+        window.umami.track('record_room_play', {
+          recording: `${r.artist} / ${r.title} / ${track.title}`
+        });
+      });
       audio.addEventListener('ended', () => { const next = r.tracks.findIndex((t,i) => i > playingIndex && t.audio); if (next >= 0) playTrack(next); else updatePlaying(false); });
       audio.addEventListener('play', () => updatePlaying(true)); audio.addEventListener('pause', () => updatePlaying(false));
       audio.addEventListener('error', () => { content.querySelector('.now-playing').textContent='This recording couldn’t load. Please try again later.'; });
@@ -78,7 +97,11 @@
   function updatePlaying(playing) {content.querySelectorAll('[data-track]').forEach(row => {const active=Number(row.dataset.track)===playingIndex;row.classList.toggle('playing',active);const button=row.querySelector('[data-play]');if(button){button.textContent=active&&playing?'Ⅱ':'▶';button.setAttribute('aria-label',`${active&&playing?'Pause':'Play'} ${row.querySelector('.track-title').textContent}`);}});}
   function playTrack(index) {
     const r=releases.find(x => x.id===currentId), track=r.tracks[index];if(!track?.audio || !audio)return;
-    if(index!==playingIndex){audio.src=track.audio;playingIndex=index;}
+    if (index !== playingIndex) {
+      playCounted = false;
+      audio.src = track.audio;
+      playingIndex = index;
+    }
     content.querySelector('.now-playing').textContent=`${String(index+1).padStart(2,'0')} / ${track.title}`;
     audio.play().catch(() => {content.querySelector('.now-playing').textContent='Press play in the audio controls to begin.';});
   }
