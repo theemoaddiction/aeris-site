@@ -875,6 +875,10 @@ window.RECORDS = [
     ],
     "links": [
       {
+        "label": "Listen to OH1GOD",
+        "url": "https://ko-fi.com/post/OH1GOD-X1V029NU2O"
+      },
+      {
         "label": "Buy / download on Ko-fi",
         "url": "https://ko-fi.com/s/8d25fae79e"
       }
