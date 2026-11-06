@@ -619,3 +619,15 @@ html[data-home-variant="mold"] .mold-site{display:block;max-width:none;backgroun
 .oh1god-copy .cta{font-size:clamp(15px,2.3vw,22px);margin:22px 0 14px}
 .oh1god-secondary{display:block;font:13px "Courier New",monospace;color:#e6c1d4;margin:8px 0 0}
 @media(max-width:680px){.hero-record-room{padding:35px 0}.record-room-poster{gap:18px;padding:32px 14px 25px}.record-room-poster__eyebrow{font-size:8px;letter-spacing:1px}.record-room-poster__headline{font-size:clamp(38px,10.6vw,68px)}.record-room-poster__art{height:200px}.record-room-poster__art img{width:160px}.record-room-poster__foot{justify-content:center;text-align:center;font-size:9px}.oh1god-feature{grid-template-columns:1fr;gap:24px}.oh1god-art{max-width:430px}.oh1god-announcement h2{font-size:50px}}
+
+:where(html[data-home-variant] img[loading="lazy"]){height:auto}
+
+/* Keep the homepage textures without repainting the viewport on every frame. */
+html[data-home-variant="standard"] body{background-image:url('assets/pink-glow-field-home.webp')}
+html[data-home-variant] body:before{mix-blend-mode:normal}
+html[data-home-variant="standard"] .starfield{animation:none}
+html[data-home-variant="standard"] .floaties span{bottom:-50px;animation-name:home-float}
+@keyframes home-float{from{transform:translateY(0) rotate(0)}to{transform:translateY(calc(-105vh - 50px)) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){
+  html[data-home-variant="standard"] .floaties{display:none}
+}
