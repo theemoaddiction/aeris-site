@@ -19,13 +19,13 @@
   const isUpcoming = r => Boolean(r.releaseDate && todayLocal() < r.releaseDate);
   const shopLink = r => (r.links || []).find(link => link.url && /^https:\/\/ko-fi\.com\/s\//.test(link.url));
   const releaseDateLabel = r => r.releaseDate ? Number(r.releaseDate.slice(5,7)) + '-' + Number(r.releaseDate.slice(8,10)) + '-' + r.releaseDate.slice(2,4) : '';
-  // Choose three distinct album/EP sleeves once per page load.
+  // Shuffle the two archive sleeves behind the featured single.
   const headerAlbums = releases.filter(r => r.cover && r.kind !== 'Single');
   for (let i = headerAlbums.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [headerAlbums[i], headerAlbums[j]] = [headerAlbums[j], headerAlbums[i]];
   }
-  document.querySelectorAll('.sleeves .sleeve').forEach((sleeve, i) => {
+  document.querySelectorAll('.sleeves .sleeve-back, .sleeves .sleeve-mid').forEach((sleeve, i) => {
     const r = headerAlbums[i];
     if (!r) return;
     sleeve.href = `#release=${encodeURIComponent(r.id)}`;
