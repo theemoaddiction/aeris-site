@@ -320,18 +320,22 @@ window.RECORDS = [
     "summary": "LICKER’s first demo. Gordon started the project with Mitch Fedie, his manager at Jimmy John’s. They found an immediate musical rapport and, for a stretch, were writing a song a week. Grungier than Jet-Set Stereo, these early recordings capture the beginning of that partnership.",
     "tracks": [
       {
+        "lyrics": "lyrics/perfect-hair.txt",
         "title": "Perfect Hair",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/01 Perfect Hair.mp3"
       },
       {
+        "lyrics": "lyrics/hardon-u.txt",
         "title": "Hardon U",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/02 Hardon U.mp3"
       },
       {
+        "lyrics": "lyrics/confucious.txt",
         "title": "Confucious",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/03 Confucious.mp3"
       },
       {
+        "lyrics": "lyrics/pregnant-brain.txt",
         "title": "Pregnant Brain",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/04 Pregnant Brain.mp3"
       },
@@ -340,18 +344,22 @@ window.RECORDS = [
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/05 Silver Bullet.mp3"
       },
       {
+        "lyrics": "lyrics/perfect-hair.txt",
         "title": "Perfect Hair (2012 Remix)",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/06 Perfect Hair (2012 Remix).mp3"
       },
       {
+        "lyrics": "lyrics/pregnant-brain.txt",
         "title": "Pregnant Brain (2012 Remix)",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/07 Pregnant Brain (2012 Remix).mp3"
       },
       {
+        "lyrics": "lyrics/hardon-u.txt",
         "title": "Hardon U (2012 Remix)",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/08 Hardon U (2012 Remix).mp3"
       },
       {
+        "lyrics": "lyrics/the-nose-knows-basement-demo.txt",
         "title": "The Nose Knows (Basement Demo)",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/09 The Nose Knows (Basement Demo).mp3"
       },
@@ -360,10 +368,12 @@ window.RECORDS = [
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/10 Sleuth (Basement Demo).mp3"
       },
       {
+        "lyrics": "lyrics/sudden-friendships-often-scare-me-basement-demo.txt",
         "title": "Sudden Friendships Often Scare Me (Basement Demo)",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/11 Sudden Friendships Often Scare Me (Basement Demo).mp3"
       },
       {
+        "lyrics": "lyrics/rollover-rhyme-basement-demo.txt",
         "title": "Rollover Rhyme (Basement Demo)",
         "audio": "../audio/LICKER - Best Week Ever EP (Deluxe)/12 Rollover Rhyme (Basement Demo).mp3"
       }
@@ -385,13 +395,16 @@ window.RECORDS = [
     "summary": "Three recordings from the Minneapolis period, including Panic Reflex. Later collected on LICKER Anthology.",
     "tracks": [
       {
+        "lyrics": "lyrics/panic-reflex.txt",
         "title": "Panic Reflex",
         "audio": "../audio/LICKER - Keen Tongue EP/01 Panic Reflex.mp3"
       },
       {
+        "lyrics": "lyrics/chemistry.txt",
         "title": "Chemistry"
       },
       {
+        "lyrics": "lyrics/could-be-sewn.txt",
         "title": "Could be Sewn"
       }
     ],
@@ -412,26 +425,32 @@ window.RECORDS = [
     "summary": "The Minneapolis lineup: Gordon Vanguard, Mitch Fedie, Randall Zidones, and Kevin Anhut. Written in 2008–2009, tracked at IPR, and subsequently mixed at Droptone Studio.",
     "tracks": [
       {
+        "lyrics": "lyrics/kerouac.txt",
         "title": "Kerouac",
         "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/01 Kerouac.mp3"
       },
       {
+        "lyrics": "lyrics/regeneration.txt",
         "title": "Regeneration",
         "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/02 Regeneration.mp3"
       },
       {
+        "lyrics": "lyrics/pregnant-brain.txt",
         "title": "Pregnant Brain",
         "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/03 Pregnant Brain.mp3"
       },
       {
+        "lyrics": "lyrics/back-to-the-future.txt",
         "title": "Back to the Future",
         "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/04 Back to the Future.mp3"
       },
       {
+        "lyrics": "lyrics/stupid-girl.txt",
         "title": "Stupid Girl",
         "audio": "../audio/LICKER_OJ_Dingo_EP_MP3/Main/05 Stupid Girl.mp3"
       },
       {
+        "lyrics": "lyrics/vincent-price-is-right.txt",
         "title": "Vincent Price is Right"
       },
       {
@@ -472,46 +491,57 @@ window.RECORDS = [
     "summary": "The first Chicago record. Recorded by Gordon Vanguard and Kyle Benson at Space Studios in Evanston in 2010–2011; mastered at Gravity Studios. Programmed drums and synths became part of the band’s new sound.",
     "tracks": [
       {
+        "lyrics": "lyrics/silver-bullet.txt",
         "title": "Silver Bullet",
         "audio": "../audio/LICKER (2011) (248 kbps)/01 Silver Bullet.mp3"
       },
       {
+        "lyrics": "lyrics/celebrity-politics.txt",
         "title": "Celebrity Politics",
         "audio": "../audio/LICKER (2011) (248 kbps)/02 Celebrity Politics.mp3"
       },
       {
+        "lyrics": "lyrics/party-monster.txt",
         "title": "Party Monster",
         "audio": "../audio/LICKER (2011) (248 kbps)/03 Party Monster.mp3"
       },
       {
+        "lyrics": "lyrics/adrenochrome.txt",
         "title": "Adrenochrome",
         "audio": "../audio/LICKER (2011) (248 kbps)/04 Adrenochrome.mp3"
       },
       {
+        "lyrics": "lyrics/mermaid-in-a-manhole.txt",
         "title": "Mermaid in a Manhole",
         "audio": "../audio/LICKER (2011) (248 kbps)/05 Mermaid in a Manhole.mp3"
       },
       {
+        "lyrics": "lyrics/this-girl.txt",
         "title": "This Girl",
         "audio": "../audio/LICKER (2011) (248 kbps)/06 This Girl.mp3"
       },
       {
+        "lyrics": "lyrics/love-is-a-battle.txt",
         "title": "Love is a Battle",
         "audio": "../audio/LICKER (2011) (248 kbps)/07 Love is a Battle.mp3"
       },
       {
+        "lyrics": "lyrics/movie-star.txt",
         "title": "Movie Star",
         "audio": "../audio/LICKER (2011) (248 kbps)/08 Movie Star.mp3"
       },
       {
+        "lyrics": "lyrics/disco-bloodbath.txt",
         "title": "Disco Bloodbath",
         "audio": "../audio/LICKER (2011) (248 kbps)/09 Disco Bloodbath.mp3"
       },
       {
+        "lyrics": "lyrics/kings-on-fire.txt",
         "title": "Kings on Fire",
         "audio": "../audio/LICKER (2011) (248 kbps)/10 Kings on Fire.mp3"
       },
       {
+        "lyrics": "lyrics/2012.txt",
         "title": "2012",
         "audio": "../audio/LICKER (2011) (248 kbps)/11 2012-Final.mp3"
       },
@@ -588,69 +618,91 @@ window.RECORDS = [
     "summary": "Released July 2017. Twenty-three recordings gathering the self-titled album, OJ Dingo, Keen Tongue, and the previously unofficial Best Week Ever recordings. A record of LICKER’s Minneapolis and Chicago chapters.",
     "tracks": [
       {
+        "lyrics": "lyrics/silver-bullet.txt",
         "title": "Silver Bullet"
       },
       {
+        "lyrics": "lyrics/celebrity-politics.txt",
         "title": "Celebrity Politics"
       },
       {
+        "lyrics": "lyrics/party-monster.txt",
         "title": "Party Monster"
       },
       {
+        "lyrics": "lyrics/adrenochrome.txt",
         "title": "Adrenochrome"
       },
       {
+        "lyrics": "lyrics/mermaid-in-a-manhole.txt",
         "title": "Mermaid in a Manhole"
       },
       {
+        "lyrics": "lyrics/this-girl.txt",
         "title": "This Girl"
       },
       {
+        "lyrics": "lyrics/love-is-a-battle.txt",
         "title": "Love is a Battle"
       },
       {
+        "lyrics": "lyrics/movie-star.txt",
         "title": "Movie Star"
       },
       {
+        "lyrics": "lyrics/disco-bloodbath.txt",
         "title": "Disco Bloodbath"
       },
       {
+        "lyrics": "lyrics/kings-on-fire.txt",
         "title": "Kings on Fire"
       },
       {
+        "lyrics": "lyrics/2012.txt",
         "title": "2012"
       },
       {
+        "lyrics": "lyrics/kerouac.txt",
         "title": "Kerouac"
       },
       {
+        "lyrics": "lyrics/stupid-girl.txt",
         "title": "Stupid Girl"
       },
       {
+        "lyrics": "lyrics/regeneration.txt",
         "title": "Regeneration"
       },
       {
+        "lyrics": "lyrics/pregnant-brain.txt",
         "title": "Pregnant Brain"
       },
       {
+        "lyrics": "lyrics/back-to-the-future.txt",
         "title": "Back to the Future"
       },
       {
+        "lyrics": "lyrics/vincent-price-is-right.txt",
         "title": "Vincent Price is Right"
       },
       {
+        "lyrics": "lyrics/panic-reflex.txt",
         "title": "Panic Reflex"
       },
       {
+        "lyrics": "lyrics/chemistry.txt",
         "title": "Chemistry"
       },
       {
+        "lyrics": "lyrics/could-be-sewn.txt",
         "title": "Could be Sewn"
       },
       {
+        "lyrics": "lyrics/perfect-hair.txt",
         "title": "Perfect Hair"
       },
       {
+        "lyrics": "lyrics/hardon-u.txt",
         "title": "Hardon U"
       },
       {
@@ -727,6 +779,7 @@ window.RECORDS = [
         "title": "Rainbow Show"
       },
       {
+        "lyrics": "lyrics/christine.txt",
         "title": "Christine"
       },
       {
@@ -748,6 +801,7 @@ window.RECORDS = [
         "title": "Kerosene"
       },
       {
+        "lyrics": "lyrics/kiss-me-kill-me.txt",
         "title": "Kiss Me, Kill Me"
       },
       {
@@ -783,6 +837,7 @@ window.RECORDS = [
     "summary": "Nine tracks. Released March 29, 2019 through Sodalite Records.",
     "tracks": [
       {
+        "lyrics": "lyrics/better-half.txt",
         "title": "Better Half"
       },
       {
@@ -832,18 +887,23 @@ window.RECORDS = [
     "summary": "Five tracks. Released August 2, 2024.",
     "tracks": [
       {
+        "lyrics": "lyrics/happiness-is.txt",
         "title": "Happiness Is..."
       },
       {
+        "lyrics": "lyrics/mirror-mirror.txt",
         "title": "Mirror Mirror"
       },
       {
+        "lyrics": "lyrics/bump-in-the-night.txt",
         "title": "Bump in the Night"
       },
       {
+        "lyrics": "lyrics/gabapentin.txt",
         "title": "Gabapentin"
       },
       {
+        "lyrics": "lyrics/grunge-pop-baby.txt",
         "title": "Grunge Pop Baby"
       }
     ],
