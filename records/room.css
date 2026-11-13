@@ -46,3 +46,71 @@
   margin: 0;
   color: var(--muted);
 }
+
+.sodalite-radio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sodalite-radio h2 {
+  margin: 0;
+  color: var(--pink);
+  font: 700 15px/1.4 var(--mono);
+}
+
+#radio-status {
+  margin: 8px 0 3px;
+  color: var(--muted);
+  font: 11px/1.4 var(--mono);
+}
+
+#radio-status:empty { margin: 0; }
+#radio-track { color: var(--paper); }
+
+.radio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.radio-controls button {
+  min-height: 44px;
+  font: 11px var(--mono);
+}
+
+#radio-skip {
+  padding: 10px 13px;
+  color: var(--paper);
+  background: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.track-lyrics {
+  grid-column: 2 / -1;
+  min-width: 0;
+}
+
+.track-lyrics summary {
+  width: fit-content;
+  min-height: 28px;
+  padding: 5px 8px;
+  color: var(--pink);
+  font: 11px/1.5 var(--mono);
+  cursor: pointer;
+}
+
+.lyrics-text {
+  margin: 8px 0 4px;
+  padding: 12px 14px;
+  border-left: 1px solid var(--pink);
+  color: var(--paper);
+  font: 14px/1.65 var(--sans);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
