@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const releases = window.RECORDS;
+  const earlyReleaseCutoff = releases.find(r => r.id === 'best-week-ever').year;
   const grid = document.querySelector('#records');
   const dialog = document.querySelector('#release-dialog');
   const content = document.querySelector('#release-content');
@@ -37,11 +38,30 @@
     img.height = 600;
     sleeve.querySelector('span').textContent = `${r.artist.toUpperCase()} / ${date(r)}`;
   });
+  function renderCard(r) {
+    const pending = isUpcoming(r);
+    const shop = shopLink(r);
+    const detail = `#release=${encodeURIComponent(r.id)}`;
+    return `<article class="record ${pending ? 'record-upcoming' : ''}"><a class="record-main" href="${detail}" aria-label="Open ${escape(r.title)} by ${escape(r.artist)}"><div class="art ${r.cover ? '' : 'art-placeholder'}">${art(r,releases.indexOf(r))}${pending ? `<span class="release-overlay">COMING ${escape(releaseDateLabel(r))}</span>` : ''}<span class="open" aria-hidden="true">↗</span></div><div class="record-meta"><span>${date(r)}</span><span>${escape(r.kind.toUpperCase())}</span></div></a><div class="record-bottom"><a class="record-name" href="${detail}"><h3>${escape(r.title)}</h3><p class="record-artist">${escape(r.artist)}</p></a>${shop && !pending ? `<a class="record-buy" href="${escape(shop.url)}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${escape(r.title)} on Ko-fi">BUY NOW ↗</a>` : ''}</div></article>`;
+  }
   function render() {
     const query = search.value.trim().toLocaleLowerCase();
     const filtered = releases.filter(r => (artist === 'all' || r.artist === artist) && (releaseType === 'all' || (releaseType === 'singles' ? r.kind === 'Single' : r.kind !== 'Single')) && [r.title,r.artist,r.year,...r.tracks.map(t => t.title)].join(' ').toLocaleLowerCase().includes(query));
     filtered.sort((a,b) => sort.value === 'title' ? a.title.localeCompare(b.title) : a.year == null ? (b.year == null ? 0 : 1) : b.year == null ? -1 : (sort.value === 'new' ? b.year-a.year : a.year-b.year));
-    grid.innerHTML = filtered.map(r => { const pending = isUpcoming(r), shop = shopLink(r), detail = `#release=${encodeURIComponent(r.id)}`; return `<article class="record ${pending ? 'record-upcoming' : ''}"><a class="record-main" href="${detail}" aria-label="Open ${escape(r.title)} by ${escape(r.artist)}"><div class="art ${r.cover ? '' : 'art-placeholder'}">${art(r,releases.indexOf(r))}${pending ? `<span class="release-overlay">COMING ${escape(releaseDateLabel(r))}</span>` : ''}<span class="open" aria-hidden="true">↗</span></div><div class="record-meta"><span>${date(r)}</span><span>${escape(r.kind.toUpperCase())}</span></div></a><div class="record-bottom"><a class="record-name" href="${detail}"><h3>${escape(r.title)}</h3><p class="record-artist">${escape(r.artist)}</p></a>${shop && !pending ? `<a class="record-buy" href="${escape(shop.url)}" target="_blank" rel="noopener noreferrer" aria-label="Buy ${escape(r.title)} on Ko-fi">BUY NOW ↗</a>` : ''}</div></article>`; }).join('');
+    const early = [];
+    const later = [];
+    for (const release of filtered) {
+      const isEarly = release.year != null && release.year <= earlyReleaseCutoff;
+      (isEarly ? early : later).push(release);
+    }
+    grid.innerHTML = later.map(renderCard).join('') + (early.length ? `
+      <section class="early-records" aria-labelledby="early-records-title">
+        <header class="early-records-heading">
+          <h3 id="early-records-title">The Wrong Place to Start</h3>
+          <p>Early recordings. We were still figuring out which noises were on purpose.</p>
+        </header>
+        <div class="records">${early.map(renderCard).join('')}</div>
+      </section>` : '');
     document.querySelector('#record-count').textContent = `${String(filtered.length).padStart(2,'0')} RECORD${filtered.length === 1 ? '' : 'S'}`;
     document.querySelector('#empty').hidden = filtered.length !== 0;
   }

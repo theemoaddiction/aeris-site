@@ -22,3 +22,27 @@
 .album-spotify h3{font:10px var(--mono);letter-spacing:1.5px;margin:0 0 15px;color:var(--pink)}
 .album-spotify iframe{border:0;border-radius:12px;display:block;max-width:100%}
 @media(max-width:680px){.album-spotify{padding:14px;margin-top:22px}}
+
+.early-records {
+  grid-column: 1 / -1;
+  min-width: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.early-records-heading {
+  margin-bottom: 26px;
+}
+
+.early-records-heading h3 {
+  margin: 0 0 8px;
+  color: var(--pink);
+  font: 700 clamp(14px, 2vw, 18px)/1.4 var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.early-records-heading p {
+  margin: 0;
+  color: var(--muted);
+}
