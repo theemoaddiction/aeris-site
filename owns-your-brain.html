@@ -184,91 +184,60 @@
       line-height:1.65;
     }
 
-    .track-list{
+    .entity-list{
       display:grid;
-      gap:12px;
-      counter-reset:fragment;
+      gap:8px;
+      list-style:none;
+      margin:22px 0 0;
+      padding:0;
     }
 
-    .track{
-      position:relative;
+    .entity-record{
       display:grid;
-      grid-template-columns:120px minmax(220px,.65fr) minmax(280px,1.35fr);
-      gap:22px;
-      padding:22px;
-      overflow:hidden;
+      grid-template-columns:72px minmax(0,1fr);
+      align-items:center;
+      gap:5px 16px;
+      padding:9px 17px;
       border:1px solid rgba(155,201,213,.24);
       background:linear-gradient(105deg,rgba(8,27,34,.94),rgba(5,11,14,.96));
     }
 
-    .track::after{
-      content:"";
-      position:absolute;
-      width:120px;
-      height:120px;
-      right:-80px;
-      top:-80px;
-      border:1px solid rgba(141,75,54,.2);
-      transform:rotate(25deg);
+    .entity-time{
+      display:grid;
+      place-items:center;
+      min-height:44px;
+      color:#b5dce4;
+      border:1px solid rgba(155,201,213,.24);
+      font-variant-numeric:tabular-nums;
+      text-decoration:none;
     }
 
-    .track-index{
-      color:#5c8d99;
-      font-size:clamp(28px,4vw,46px);
-      line-height:1;
-    }
-
-    .track h3{
-      margin:2px 0 10px;
+    .entity-time:hover,.entity-time:focus-visible{
       color:#f1eee1;
-      font-size:clamp(20px,2.3vw,29px);
-      line-height:1.08;
+      border-color:currentColor;
     }
 
-    .track-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:7px 14px;
-      color:#6fa5b2;
-      font-size:9px;
+    .entity-record h3{
+      margin:0;
+      color:#f1eee1;
+      font-size:clamp(15px,2.3vw,21px);
+      line-height:1.25;
     }
 
     .fragment-note{
-      margin:0;
-      align-self:center;
+      grid-column:2;
+      margin:0 0 5px;
       color:#aab6b4;
       font-family:Georgia,serif;
-      font-size:16px;
-      line-height:1.48;
+      font-size:15px;
+      line-height:1.45;
     }
 
     audio{
-      width:100%;
-      height:34px;
+      display:block;
+      width:min(100%,760px);
       margin-top:15px;
-      opacity:.72;
-      filter:grayscale(1) sepia(.2) hue-rotate(135deg);
     }
-
-    .track:nth-child(n+8){
-      transform:translateX(calc((var(--drift, 0)) * 1px));
-      border-color:rgba(141,75,54,.3);
-    }
-
-    .track:nth-child(8){--drift:3}
-    .track:nth-child(9){--drift:-2}
-    .track:nth-child(10){--drift:5}
-    .track:nth-child(11){--drift:-4}
-    .track:nth-child(12){--drift:2}
-
-    .track.final{
-      margin-top:5px;
-      border-color:rgba(141,75,54,.65);
-      background:linear-gradient(110deg,rgba(40,24,22,.95),rgba(6,15,18,.97));
-      box-shadow:0 0 38px rgba(141,75,54,.12);
-    }
-
-    .track.final .track-index,.track.final .track-meta{color:#ad715d}
 
     .archive-note{
       margin-top:42px;
@@ -293,17 +262,13 @@
     @media(max-width:820px){
       .hero{grid-template-columns:1fr;min-height:0}
       .cover-shell{width:min(100%,540px)}
-      .track{grid-template-columns:72px 1fr}
-      .fragment-note{grid-column:2}
     }
 
     @media(max-width:560px){
       .wrap{width:min(100% - 24px,1080px);padding-top:20px}
       .hero{padding-bottom:34px}
       .meta{grid-template-columns:1fr}
-      .track{grid-template-columns:1fr;gap:8px;padding:17px}
-      .fragment-note{grid-column:1}
-      .track:nth-child(n){transform:none}
+      .entity-record{grid-template-columns:56px minmax(0,1fr);padding:8px 11px}
       .archive-note{padding:21px}
     }
   </style>
@@ -323,7 +288,7 @@
         <h1>OWNS YOUR BRAIN</h1>
         <p class="dek">
           <span>The fragments have assembled into one continuous recording.</span>
-          <span>Several resemble later recordings. None match them completely.</span>
+          <span>Familiar recordings surface out of order. Some passages have yet to be identified.</span>
           <span>The archive appears to remember an album that may never have existed.</span>
         </p>
 
@@ -337,21 +302,116 @@
     </section>
 
     <section class="sequence-head" aria-labelledby="sequence-title">
-      <div class="section-label">RECONSTRUCTED SEQUENCE</div>
+      <div class="section-label">CONTINUOUS RECORDING / 54:39</div>
       <h2 id="sequence-title">ROUGH CUT MASTER</h2>
-      <p>One continuous recording. The archive has stopped marking where one fragment ends and the next begins.</p>
+      <audio id="rough-cut" controls controlsList="nodownload" preload="none" aria-label="Owns Your Brain Rough Cut Master" src="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3"></audio>
     </section>
 
-    <section class="track-list" aria-label="OWNS YOUR BRAIN continuous recording">
-      <article class="track">
-        <div class="track-index">01</div>
-        <div>
-          <h3>Owns Your Brain</h3>
-          <div class="track-meta"><span>ALTERNATE VERSION</span></div>
-          <audio controls preload="none" aria-label="Play Owns Your Brain Rough Cut Master" src="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3"></audio>
+    <section aria-labelledby="entity-title">
+      <div class="section-label">ENTITY ARCHIVE</div>
+      <h2 id="entity-title">Identified sequence</h2>
+      <p class="fragment-note">Select a timestamp to listen from that point. Times are approximate.</p>
+      <ol class="entity-list">
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=0" data-time="0" aria-label="Play Heck No at 00:00">00:00</a>
+          <h3>Heck No</h3>
+          <p class="fragment-note">Already in progress when the recording opens.</p>
         </div>
-        <p class="fragment-note">Playback may strengthen the reconstruction.</p>
-      </article>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=121" data-time="121" aria-label="Play You Know, That I Know, That You Know… at 02:01">02:01</a>
+          <h3>You Know, That I Know, That You Know…</h3>
+          <p class="fragment-note">First confirmed passage.</p>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=289" data-time="289" aria-label="Play Tap My Mind at 04:49">04:49</a>
+          <h3>Tap My Mind</h3>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=575" data-time="575" aria-label="Play DYM at 09:35">09:35</a>
+          <h3>DYM</h3>
+          <p class="fragment-note">An extended passage separates two recognizable sections.</p>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=800" data-time="800" aria-label="Play Sickness at 13:20">13:20</a>
+          <h3>Sickness</h3>
+          <p class="fragment-note">Also appears on Make All the Cameras Scream, Rejoice!</p>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=1024" data-time="1024" aria-label="Play Wishing Crows at 17:04">17:04</a>
+          <h3>Wishing Crows</h3>
+          <p class="fragment-note">First confirmed passage.</p>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=1217" data-time="1217" aria-label="Play Ebbinghaus at 20:17">20:17</a>
+          <h3>Ebbinghaus</h3>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=1407" data-time="1407" aria-label="Play Owner’s Manual (Non-Album Version) at 23:27">23:27</a>
+          <h3>Owner’s Manual (Non-Album Version)</h3>
+          <p class="fragment-note">Also appears on Make All the Cameras Scream, Rejoice!</p>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=1595" data-time="1595" aria-label="Play Dashing Young Man at 26:35">26:35</a>
+          <h3>Dashing Young Man</h3>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=1831" data-time="1831" aria-label="Play Smoke Break at 30:31">30:31</a>
+          <h3>Smoke Break</h3>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=1928" data-time="1928" aria-label="Play X-Rock at 32:08">32:08</a>
+          <h3>X-Rock</h3>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=2385" data-time="2385" aria-label="Play god god at 39:45">39:45</a>
+          <h3>god god</h3>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=2577" data-time="2577" aria-label="Play Near-silence at 42:57">42:57</a>
+          <h3>Near-silence</h3>
+          <p class="fragment-note">The signal drops for about four minutes and twenty seconds.</p>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=2837" data-time="2837" aria-label="Play Unidentified passage at 47:17">47:17</a>
+          <h3>Unidentified passage</h3>
+          <p class="fragment-note">Playback resumes. Identity unresolved.</p>
+        </div>
+      </li>
+      <li>
+        <div class="entity-record">
+          <a class="entity-time" href="audio/owns-your-brain/01%20Rough%20Cut%20Master.mp3#t=3015" data-time="3015" aria-label="Play Requiem for a Silent eMotion at 50:15">50:15</a>
+          <h3>Requiem for a Silent eMotion</h3>
+          <p class="fragment-note">About a minute matches the known recording. The ending diverges.</p>
+        </div>
+      </li>
+      </ol>
     </section>
 
     <section class="archive-note">
@@ -371,5 +431,16 @@
 
     <p class="sting">THE ALBUM DOES NOT REMEMBER YOU YET.</p>
   </main>
+  <script>
+    const roughCut = document.querySelector('#rough-cut');
+    for (const timestamp of document.querySelectorAll('.entity-time')) {
+      timestamp.addEventListener('click', event => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        roughCut.currentTime = Number(timestamp.dataset.time);
+        roughCut.play().catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>
