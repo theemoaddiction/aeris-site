@@ -25,6 +25,7 @@
   const route = [];
   const mapLinks = [...document.querySelectorAll('.map-room')];
   const mapPosition = document.querySelector('#map-position');
+  const mapProgress = document.querySelector('#map-progress');
   const mapReturn = document.querySelector('#map-return');
   const hiddenRoom = document.querySelector('#behind-the-tvs');
   const misplacedMarker = new Map([
@@ -32,10 +33,11 @@
     ['#whats-left', '#inherited-self'],
     ['#inherited-self', '#the-machine']
   ]);
-  const followedMarkers = new Set();
+  const solution = ['#the-machine', '#inherited-self', '#whats-left'];
   let currentRoom = '#the-machine';
-  let plottedRoom = null;
-  let mapOpened = Boolean(stored?.mapOpened);
+  let completedStops = 0;
+  let mapFeedback = '';
+  let mapSolved = stored?.mapSolved === true;
   let photosTaken = Boolean(stored?.photosTaken);
   let storefrontPasses = 0;
 
@@ -69,7 +71,7 @@
       localStorage.setItem(storageKey, JSON.stringify({
         visits,
         route: route.length ? route : previousRoute,
-        mapOpened,
+        mapSolved,
         photosTaken
       }));
     } catch {
@@ -82,44 +84,65 @@
   saveVisit();
   function updateMap() {
     const stop = location.hash;
-    if (rooms.has(stop)) {
-      currentRoom = stop;
-      if (stop === plottedRoom) followedMarkers.add(stop);
-      plottedRoom = null;
-      if (followedMarkers.size === rooms.size && !mapOpened) {
-        mapOpened = true;
-        saveVisit();
-      }
-    }
+    if (rooms.has(stop)) currentRoom = stop;
 
-    const marker = mapOpened ? '#behind-the-tvs' : misplacedMarker.get(currentRoom);
-    hiddenRoom.hidden = !mapOpened;
+    const marker = mapSolved ? '#behind-the-tvs' : misplacedMarker.get(currentRoom);
+    hiddenRoom.hidden = !mapSolved;
     for (const link of mapLinks) {
       const target = link.getAttribute('href');
       link.toggleAttribute('data-marker', target === marker);
-      if (target === '#behind-the-tvs') link.hidden = !mapOpened;
+      if (target === '#behind-the-tvs') link.hidden = !mapSolved;
     }
 
     if (stop === '#floor-plan') {
-      plottedRoom = marker;
       mapReturn.href = currentRoom;
       mapReturn.textContent = `← ${rooms.get(currentRoom)}`;
       mapPosition.textContent = `You are here · ${rooms.get(marker) ?? 'behind the televisions'}`;
+      mapProgress.textContent = mapSolved
+        ? 'Route accepted. The map has drawn in a space behind the televisions.'
+        : mapFeedback;
     }
+  }
+
+  for (const link of mapLinks) {
+    link.addEventListener('click', event => {
+      if (mapSolved || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const selected = link.getAttribute('href');
+      if (!rooms.has(selected)) return;
+      if (selected === solution[completedStops]) {
+        completedStops++;
+        mapFeedback = `Route recorded · ${completedStops} of ${solution.length} stops.`;
+      } else {
+        completedStops = Number(selected === solution[0]);
+        mapFeedback = completedStops ? 'Route restarted at the fountain.' : 'Route cleared.';
+      }
+      if (completedStops === solution.length) {
+        event.preventDefault();
+        mapSolved = true;
+        saveVisit();
+        updateMap();
+      }
+    });
   }
 
   const photoStrip = document.querySelector('#photo-strip');
   const shutter = document.querySelector('#take-photos');
   const boothStatus = document.querySelector('#booth-status');
+  const shutterLabel = document.querySelector('#shutter-label');
 
   function showStrip() {
     photoStrip.hidden = false;
-    shutter.hidden = true;
+    shutter.disabled = false;
+    shutterLabel.textContent = 'Check the slot ↓';
     boothStatus.textContent = 'The strip is in the slot. Your curtain is still closed.';
   }
 
   if (photosTaken) showStrip();
   shutter.addEventListener('click', () => {
+    if (photosTaken) {
+      photoStrip.focus();
+      return;
+    }
     shutter.disabled = true;
     let exposure = 0;
     boothStatus.textContent = 'Keep still.';

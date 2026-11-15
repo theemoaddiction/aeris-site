@@ -169,3 +169,39 @@ footer { padding: 18px 0 28px; color: var(--muted); border-top: 1px solid var(--
 .photo-strip li:nth-child(2) .exposure { background-position: 100% 0; }
 .photo-strip li:nth-child(3) .exposure { background-position: 0 100%; }
 .photo-strip li:nth-child(4) .exposure { background-position: 100% 100%; }
+
+.map-clue {
+  max-width: 45ch;
+  padding-inline-start: 14px;
+  border-inline-start: 2px solid var(--coral);
+  color: var(--paper);
+}
+
+.booth-trigger {
+  display: grid;
+  width: min(100%, 340px);
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--ground);
+  color: var(--coral);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.booth-trigger img { max-height: 360px; object-fit: cover; object-position: center 47%; }
+.booth-trigger span { padding: 10px 14px; }
+.booth-trigger:hover { border-color: var(--coral); }
+.booth-trigger:focus-visible, .photo-strip:focus-visible { outline: 2px solid var(--paper); outline-offset: 4px; }
+.booth-trigger:disabled { cursor: wait; }
+
+.recovered-exposure {
+  width: min(100%, 360px);
+  margin: 24px 0 12px;
+  padding: 10px;
+  background: #ded8ba;
+  color: var(--ground);
+}
+
+.recovered-exposure figcaption { padding: 7px 2px 2px; }
+.prize-download { display: inline-flex; align-items: center; }
