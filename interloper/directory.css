@@ -90,3 +90,82 @@ footer { padding: 18px 0 28px; color: var(--muted); border-top: 1px solid var(--
 }
 .storefront-playback p { margin: 0; color: var(--paper); }
 .archive-entry { margin-top: 16px; }
+
+.mall-room {
+  max-width: 860px;
+  margin: 48px auto;
+  padding: clamp(18px, 4vw, 40px);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  scroll-margin-top: 18px;
+}
+.mall-room:not(:target) { display: none; }
+.mall-room h2 { font-size: clamp(32px, 6vw, 64px); line-height: 1; }
+.room-heading, .mall-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+.room-heading { justify-content: space-between; }
+.mall-button {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--ground);
+  color: var(--coral);
+  font: inherit;
+  cursor: pointer;
+}
+.mall-button:focus-visible { outline: 2px solid var(--paper); outline-offset: 4px; }
+.mall-button:hover, .mall-button[aria-pressed="true"] { border-color: var(--coral); }
+.mall-button:disabled { cursor: wait; }
+.floor-plan {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas: 'behind behind' 'store atrium' 'corridor corridor';
+  margin-top: 24px;
+  gap: 5px;
+  padding: 8px;
+  background: var(--ground);
+}
+.map-room {
+  position: relative;
+  display: flex;
+  min-height: 78px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+.map-room[hidden] { display: none; }
+.map-storefront { grid-area: store; }
+.map-atrium { grid-area: atrium; }
+.map-corridor { grid-area: corridor; min-height: 58px; }
+.map-behind { grid-area: behind; min-height: 48px; }
+.map-room[data-marker]::after {
+  content: '● YOU ARE HERE';
+  color: var(--paper);
+  font-size: .75rem;
+  letter-spacing: .08em;
+  padding-top: 5px;
+}
+.photo-strip {
+  width: min(100%, 300px);
+  padding: 12px;
+  margin: 24px 0 0;
+  display: grid;
+  gap: 8px;
+  background: #ded8ba;
+  list-style: none;
+}
+.photo-strip[hidden] { display: none; }
+.exposure {
+  aspect-ratio: 3 / 2;
+  background: #353521 url('booth-exposures.webp') 0 0 / 200% 200%;
+}
+.photo-strip li:nth-child(2) .exposure { background-position: 100% 0; }
+.photo-strip li:nth-child(3) .exposure { background-position: 0 100%; }
+.photo-strip li:nth-child(4) .exposure { background-position: 100% 100%; }
