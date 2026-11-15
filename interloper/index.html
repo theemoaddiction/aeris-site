@@ -10,10 +10,10 @@
   <link rel="canonical" href="https://myliminalreality.com/interloper/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <title>Interloper · Aeris Mandrake</title>
-  <link rel="stylesheet" href="directory.css?v=mall-expansion">
+  <link rel="stylesheet" href="directory.css?v=mall-prize">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="b2515cd4-603c-48f1-873d-98b10e5ff5d2"></script>
   <script defer src="../analytics.js"></script>
-  <script defer src="mall.js?v=mall-expansion"></script>
+  <script defer src="mall.js?v=mall-prize"></script>
 </head>
 <body>
   <header class="masthead" id="directory">
@@ -95,13 +95,16 @@
         <h2 id="map-title">Floor Plan</h2>
         <a class="return" id="map-return" href="#the-machine">← Atrium</a>
       </div>
+      <p class="map-clue">Start where the water moves. Stop where the screens face you. Finish where you can still hear the water through the wall.</p>
+      <p>Choose each stop on this map, then return to the floor plan.</p>
       <nav class="floor-plan" aria-label="Concourse floor plan">
         <a href="#inherited-self" class="map-room map-storefront">Electronics storefront</a>
         <a href="#the-machine" class="map-room map-atrium">Atrium</a>
         <a href="#whats-left" class="map-room map-corridor">Service corridor</a>
         <a href="#behind-the-tvs" class="map-room map-behind" hidden>Behind the televisions</a>
       </nav>
-      <p id="map-position" role="status"></p>
+      <p id="map-position"></p>
+      <p id="map-progress" role="status"></p>
     </section>
 
     <section class="mall-room" id="photo-booth" aria-labelledby="booth-title" tabindex="-1">
@@ -110,8 +113,11 @@
         <a class="return" href="#the-machine">← Atrium</a>
       </div>
       <p id="booth-status" role="status">The curtain is closed.</p>
-      <button class="mall-button" id="take-photos" type="button">Sit for four photos</button>
-      <ol class="photo-strip" id="photo-strip" aria-label="Photographs from the booth" hidden>
+      <button class="booth-trigger" id="take-photos" type="button">
+        <img src="photo-booth.webp" width="768" height="1024" alt="" loading="lazy">
+        <span id="shutter-label">Sit for four photos →</span>
+      </button>
+      <ol class="photo-strip" id="photo-strip" aria-label="Photographs from the booth" tabindex="-1" hidden>
         <li><div class="exposure" role="img" aria-label="First exposure. Three televisions seen through the electronics storefront glass."></div></li>
         <li><div class="exposure" role="img" aria-label="Second exposure. The same storefront with a pink reflection."></div></li>
         <li><div class="exposure" role="img" aria-label="Third exposure. The same storefront with a fluorescent reflection."></div></li>
@@ -139,6 +145,11 @@
         <a class="return" href="#floor-plan">← Floor plan</a>
       </div>
       <p>There is just enough room to stand. All three sets face away from you.</p>
+      <figure class="recovered-exposure">
+        <img src="fifth-exposure.webp" width="768" height="1024" alt="Three televisions seen from behind. Across the mall, the photo booth is reflected in the window glass." loading="lazy">
+        <figcaption>Exposure 5 of 4</figcaption>
+      </figure>
+      <a class="mall-button prize-download" href="fifth-exposure.webp" download="Interloper - Exposure 5.webp">Keep the fifth exposure ↓</a>
     </section>
 
     <details class="sleeve">
