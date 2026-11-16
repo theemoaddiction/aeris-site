@@ -1,64 +1,90 @@
 (() => {
-  'use strict';
-  const root = document.querySelector('#descent-feed');
-  const sentinel = document.querySelector('#descent-sentinel');
-  const status = document.querySelector('#descent-status');
-  if (!root || !sentinel) return;
-  const batchSize = 5;
-  let entries = [], cursor = 0, loading = false;
-  const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const shuffle = array => { const a = [...array]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
-  const audioPool = (window.RECORDS || []).flatMap(release => (release.tracks || [])
-    .filter(t => t.audio).map(t => ({title:t.title,artist:release.artist,src:t.audio.replace(/^\.\.\//,'')})));
-  function build(data) {
-    const pictures = shuffle(data.images || []);
-    const notes = data.notes || [];
-    entries = pictures.map((src, i) => ({
-      src, note: notes[i % notes.length] || '',
-      minDepth: i < 5 ? 0 : i < 11 ? 1 : i < 16 ? 2 : 3,
-      audio: i > 5 && i % 4 === 0 && audioPool.length ? audioPool[(i * 17) % audioPool.length] : null
-    }));
+'use strict';
+const feed=document.querySelector('#descent-feed'),sentinel=document.querySelector('#descent-sentinel'),status=document.querySelector('#descent-status'),panel=document.querySelector('#descent');
+if(!feed||!sentinel||!panel)return;
+let images=[],notes=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null;
+const random=(n)=>Math.floor(Math.random()*n);
+const choose=a=>a[random(a.length)];
+const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const releases=window.RECORDS||[];
+audioPool=releases.flatMap(r=>(r.tracks||[]).filter(t=>t.audio).map(t=>({title:t.title,artist:r.artist,src:t.audio.replace(/^\.\.\//,'')})));
+const templates=[
+ {kind:'image',weight:5},{kind:'diptych',weight:2},{kind:'statement',weight:2},
+ {kind:'recording',weight:2},{kind:'echo',weight:1},{kind:'interruption',weight:1}
+];
+function kindFor(depth){
+ const pool=templates.flatMap(t=>Array(t.weight+(depth>1&&['echo','interruption'].includes(t.kind)?2:0)).fill(t.kind));
+ let kind=choose(pool);if(kind===lastKind)kind=choose(pool.filter(k=>k!==lastKind));lastKind=kind;return kind;
+}
+function picture(){
+ if(!images.length)return '';
+ let n=random(images.length);if(n===lastImage)n=(n+1)%images.length;lastImage=n;
+ return '<img loading="lazy" decoding="async" src="'+safe(images[n])+'" alt="Recovered visual material">';
+}
+function line(){return choose(notes)||'The archive has retained this item without an explanation.';}
+function audioCard(depth){
+ if(!audioPool.length)return '<p class="descent-entry__note">'+safe(line())+'</p>';
+ const track=choose(audioPool),treatment=choose(depth>=2?['memory','tape','transmission','ghost']:['memory','transmission']);
+ return '<div class="descent-record"><p class="descent-entry__index">DEGRADED COPY / '+safe(treatment.toUpperCase())+'</p><p class="descent-record__title">'+safe(track.title)+'</p><p class="descent-entry__track">'+safe(track.artist)+' / ALTERED PLAYBACK</p><audio controls preload="none" crossorigin="anonymous" data-treatment="'+treatment+'" src="'+safe(track.src)+'"></audio><p class="descent-record__disclaimer">A live reconstruction. The original recording remains unchanged.</p></div>';
+}
+function add(){
+ if(busy||!images.length)return;busy=true;
+ const frag=document.createDocumentFragment();
+ for(let n=0;n<4;n++){
+  const depth=Math.min(4,Math.floor(index/8)),kind=kindFor(depth),entry=document.createElement('article');
+  entry.className='descent-entry descent-entry--'+kind+' descent-entry--depth-'+depth;
+  entry.dataset.depth=depth;
+  const serial=String(++index).padStart(3,'0');
+  const intro='<p class="descent-entry__index">RECOVERED / '+serial+'</p>';
+  if(kind==='image')entry.innerHTML=intro+picture()+'<p class="descent-entry__note">'+safe(line())+'</p>';
+  if(kind==='diptych')entry.innerHTML=intro+'<div class="descent-diptych">'+picture()+picture()+'</div><p class="descent-entry__note">'+safe(line())+'</p>';
+  if(kind==='statement')entry.innerHTML=intro+'<p class="descent-statement">'+safe(line())+'</p>';
+  if(kind==='recording')entry.innerHTML=intro+audioCard(depth);
+  if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
+  if(kind==='interruption')entry.innerHTML=intro+'<div class="descent-interruption"><p>YOU ARE STILL ON THE SAME WEBSITE.</p><p>'+safe(line())+'</p></div>';
+  frag.appendChild(entry);
+ }
+ feed.appendChild(frag);
+ panel.dataset.depth=String(Math.min(4,Math.floor(index/8)));
+ if(status)status.textContent='ARCHIVE POSITION '+String(index).padStart(3,'0')+' / NO END OF FILE';
+ busy=false;
+}
+function configureAudio(audio){
+ if(audio.dataset.configured)return;
+ audio.dataset.configured='yes';
+ const mode=audio.dataset.treatment;
+ const speed={memory:.82,tape:.68,transmission:.96,ghost:.76}[mode]||1;
+ audio.playbackRate=speed;
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  context=context||new AC();
+  const source=context.createMediaElementSource(audio),filter=context.createBiquadFilter(),gain=context.createGain();
+  filter.type=mode==='ghost'?'lowpass':'bandpass';
+  filter.frequency.value=mode==='transmission'?1100:mode==='ghost'?900:1700;
+  filter.Q.value=mode==='transmission'?.9:.35;
+  gain.gain.value=.75;
+  source.connect(filter);filter.connect(gain);gain.connect(context.destination);
+  if(mode==='ghost'||mode==='tape'){
+   const delay=context.createDelay(1),feedback=context.createGain(),wet=context.createGain();
+   delay.delayTime.value=mode==='ghost'?.39:.18;feedback.gain.value=.22;wet.gain.value=.22;
+   filter.connect(delay);delay.connect(wet);wet.connect(context.destination);
+   delay.connect(feedback);feedback.connect(delay);
   }
-  function addBatch() {
-    if (loading || !entries.length) return;
-    loading = true;
-    const fragment = document.createDocumentFragment();
-    for (let n=0;n<batchSize;n++) {
-      const index = cursor++;
-      const cycle = Math.floor(index / entries.length);
-      const depth = Math.min(3, Math.floor(index / 7));
-      const eligible = entries.filter(e => e.minDepth <= depth);
-      const entry = eligible[(index * 7 + cycle * 3) % eligible.length];
-      const article = document.createElement('article');
-      article.className = 'descent-entry descent-entry--depth-' + depth;
-      const number = String(index + 1).padStart(3,'0');
-      const image = document.createElement('img');
-      image.src = entry.src; image.alt = 'Archive image ' + number;
-      image.loading = 'lazy'; image.decoding = 'async';
-      article.innerHTML = '<p class="descent-entry__index">ARCHIVE / ' + number + '</p>';
-      article.appendChild(image);
-      const caption = document.createElement('p');
-      caption.className = 'descent-entry__note'; caption.textContent = entry.note;
-      article.appendChild(caption);
-      if (entry.audio) {
-        const label = document.createElement('p');
-        label.className = 'descent-entry__track';
-        label.textContent = 'RELATED RECORDING / ' + entry.audio.artist + ' / ' + entry.audio.title;
-        article.appendChild(label);
-        const player = document.createElement('audio');
-        player.controls = true; player.preload = 'none'; player.src = entry.audio.src;
-        player.addEventListener('play', () => document.querySelectorAll('#descent-feed audio').forEach(a => {if(a !== player) a.pause();}));
-        article.appendChild(player);
-      }
-      fragment.appendChild(article);
-    }
-    root.appendChild(fragment);
-    if(status) status.textContent = 'YOU HAVE BEEN HERE FOR ' + cursor + ' ENTRIES. THERE IS NO REQUIRED ENDING.';
-    loading = false;
-  }
-  fetch('descent/manifest.json').then(r => {if(!r.ok) throw new Error('manifest');return r.json();})
-    .then(data => {build(data);addBatch(); const observer = new IntersectionObserver(items => {
-      if(items.some(item=>item.isIntersecting)) addBatch();
-    }, {rootMargin:'850px 0px'});observer.observe(sentinel);})
-    .catch(() => {if(status) status.textContent='THE ARCHIVE IS TEMPORARILY UNAVAILABLE.';});
+ }catch(e){/* playbackRate remains available when audio processing is unsupported */}
+}
+feed.addEventListener('play',event=>{
+ const audio=event.target;if(!(audio instanceof HTMLAudioElement))return;
+ feed.querySelectorAll('audio').forEach(other=>{if(other!==audio)other.pause();});
+ configureAudio(audio);
+ if(context&&context.state==='suspended')context.resume().catch(()=>{});
+},true);
+fetch('descent/manifest.json').then(r=>{if(!r.ok)throw Error('Archive unavailable');return r.json();}).then(data=>{
+ images=(data.images||[]).filter(s=>typeof s==='string'&&s.startsWith('assets/'));
+ notes=(data.notes||[]).filter(s=>typeof s==='string'&&s.trim());
+ if(!images.length)throw Error('No images');
+ add();
+ const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))add();},{rootMargin:'700px 0px'});
+ observer.observe(sentinel);
+}).catch(()=>{if(status)status.textContent='THE ARCHIVE CANNOT BE RETRIEVED.';});
 })();
