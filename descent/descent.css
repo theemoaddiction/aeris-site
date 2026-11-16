@@ -1,0 +1,17 @@
+
+/* THE DESCENT: progressive archive below the existing homepage */
+.descent-panel{padding:clamp(3rem,8vw,8rem) max(20px,calc((100vw - 940px)/2));background:#080808;color:#ddd;overflow:hidden}
+.descent-panel__intro{max-width:640px;margin:0 auto 5rem;text-align:center}
+.descent-panel__eyebrow,.descent-entry__index,.descent-entry__track,#descent-status{font:11px/1.6 monospace;letter-spacing:.16em;color:#888}
+.descent-panel h2{font-size:clamp(2.8rem,9vw,7rem);line-height:.95;margin:.7rem 0 1.8rem;color:#f0f0f0}
+.descent-panel__intro p:last-child{font-size:1rem;line-height:1.8;color:#aaa}
+.descent-entry{max-width:760px;margin:0 auto clamp(6rem,15vh,12rem);text-align:center}
+.descent-entry img{display:block;max-width:100%;width:auto;max-height:78vh;margin:1.2rem auto 2rem;object-fit:contain;box-shadow:0 12px 65px #000}
+.descent-entry__note{font:clamp(1.05rem,2.1vw,1.45rem)/1.7 Georgia,serif;max-width:560px;margin:0 auto;color:#ddd}
+.descent-entry__track{margin:2rem auto .7rem;color:#a8a8a8}
+.descent-entry audio{display:block;max-width:100%;width:380px;margin:0 auto}
+.descent-entry--depth-2 img{filter:contrast(1.09) saturate(.83)}
+.descent-entry--depth-3 img{filter:contrast(1.15) saturate(.68)}
+#descent-status{text-align:center;padding:2rem 0 5rem}
+#descent-sentinel{height:2px}
+@media(prefers-reduced-motion:reduce){.descent-entry{scroll-behavior:auto}}
