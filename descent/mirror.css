@@ -1,0 +1,32 @@
+
+/* A second homepage, buried within the archive. */
+.descent-mirror{position:relative;margin:13vh calc(50% - 50vw);padding:0 0 3rem;background:#e7e4db;color:#171717;text-align:left;min-height:100vh;font-family:Arial,Helvetica,sans-serif;box-shadow:0 0 0 2px #e7e4db}
+.descent-mirror *{box-sizing:border-box}
+.descent-mirror a{color:inherit;text-decoration:none}
+.descent-mirror__edge{display:flex;justify-content:space-between;gap:2rem;padding:12px 4vw;background:#0b0b0b;color:#e7e4db;font:10px/1.5 monospace;letter-spacing:.15em}
+.descent-mirror__header{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:24px 4vw;border-bottom:2px solid #171717}
+.descent-mirror__logo{font-size:clamp(1.2rem,2.5vw,2.3rem);font-weight:900;letter-spacing:-.08em}
+.descent-mirror__logo em{font-style:normal;font-weight:400}
+.descent-mirror__header nav{display:flex;flex-wrap:wrap;gap:1rem;font:11px monospace;letter-spacing:.08em}
+.descent-mirror__header nav a:hover,.descent-mirror__entrance a:hover{text-decoration:underline}
+.descent-mirror__hero{min-height:76vh;padding:clamp(55px,12vh,160px) 5vw;display:flex;align-items:flex-start;justify-content:center;flex-direction:column;border-bottom:2px solid #171717}
+.descent-mirror__kicker{font:11px/1.5 monospace;letter-spacing:.15em}
+.descent-mirror__hero h2{font-size:clamp(3.4rem,11vw,11rem);line-height:.84;letter-spacing:-.085em;margin:1.4rem 0 2.5rem;color:#171717}
+.descent-mirror__hero h2 span{color:#8b263b}
+.descent-mirror__hero>p:not(.descent-mirror__kicker){max-width:500px;font:clamp(1.1rem,2vw,1.5rem)/1.5 Georgia,serif}
+.descent-mirror__cta{display:inline-block;border:2px solid #171717;padding:16px 20px;margin-top:2rem;font:bold 12px monospace}
+.descent-mirror__cta:hover{background:#171717;color:#e7e4db}
+.descent-mirror__records,.descent-mirror__about,.descent-mirror__entrance{padding:clamp(45px,7vw,110px) 5vw;border-bottom:2px solid #171717}
+.descent-mirror__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2vw;margin-top:2rem}
+.descent-mirror__grid a{display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.descent-mirror__grid img{width:100%;aspect-ratio:1;object-fit:cover;filter:saturate(.65) contrast(1.12)}
+.descent-mirror__grid strong{font-size:clamp(1.2rem,3vw,3rem);letter-spacing:-.06em}
+.descent-mirror__grid small{font:10px/1.4 monospace;letter-spacing:.06em}
+.descent-mirror__about h3{font-size:clamp(2.8rem,8vw,8rem);line-height:.9;letter-spacing:-.08em;max-width:1000px;margin:3rem 0}
+.descent-mirror__about p:not(.descent-mirror__kicker){font:clamp(1.2rem,2vw,1.7rem)/1.5 Georgia,serif;max-width:640px}
+.descent-mirror__entrance>a{display:flex;justify-content:space-between;gap:2rem;align-items:baseline;padding:2rem 0;border-top:1px solid #171717;font:bold clamp(1.2rem,3vw,3rem)/1.1 Arial,sans-serif;letter-spacing:-.04em}
+.descent-mirror__entrance>a span{font:10px/1.5 monospace;letter-spacing:.04em;text-align:right}
+.descent-mirror__footer{padding:4rem 5vw;display:flex;justify-content:space-between;align-items:center;gap:2rem;font:10px/1.5 monospace}
+.descent-mirror__continue{background:transparent;border:1px solid #171717;color:#171717;padding:14px;cursor:pointer;font:inherit}
+.descent-mirror__continue:hover{background:#171717;color:#fff}
+@media(max-width:700px){.descent-mirror__header{align-items:flex-start;flex-direction:column}.descent-mirror__edge span:last-child{display:none}.descent-mirror__grid{gap:10px}.descent-mirror__grid small{font-size:8px}.descent-mirror__entrance>a{flex-direction:column;gap:.5rem}.descent-mirror__footer{flex-direction:column;align-items:flex-start}}
