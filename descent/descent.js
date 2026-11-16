@@ -88,7 +88,7 @@ feed.addEventListener('play',event=>{
  configureAudio(audio);
  if(context&&context.state==='suspended')context.resume().catch(()=>{});
 },true);
-fetch('descent/manifest.json').then(r=>{if(!r.ok)throw Error('Archive unavailable');return r.json();}).then(data=>{
+fetch('descent/manifest.json?fresh='+Date.now(), {cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Archive unavailable');return r.json();}).then(data=>{
  images=(data.images||[]).filter(s=>typeof s==='string'&&s.startsWith('assets/'));
  notes=(data.notes||[]).filter(s=>typeof s==='string'&&s.trim());
  if(!images.length)throw Error('No images');
