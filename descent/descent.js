@@ -2,7 +2,7 @@
 'use strict';
 const feed=document.querySelector('#descent-feed'),sentinel=document.querySelector('#descent-sentinel'),status=document.querySelector('#descent-status'),panel=document.querySelector('#descent');
 if(!feed||!sentinel||!panel)return;
-let images=[],notes=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null;
+let images=[],notes=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[];
 const random=(n)=>Math.floor(Math.random()*n);
 const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -18,7 +18,8 @@ function kindFor(depth){
 }
 function picture(){
  if(!images.length)return '';
- let n=random(images.length);if(n===lastImage)n=(n+1)%images.length;lastImage=n;
+ if(!imageDeck.length){imageDeck=images.map((_,i)=>i);for(let i=imageDeck.length-1;i>0;i--){const j=random(i+1);[imageDeck[i],imageDeck[j]]=[imageDeck[j],imageDeck[i]];}if(imageDeck.length>1&&imageDeck[imageDeck.length-1]===lastImage){[imageDeck[0],imageDeck[imageDeck.length-1]]=[imageDeck[imageDeck.length-1],imageDeck[0]];}}
+ const n=imageDeck.pop();lastImage=n;
  return '<img loading="lazy" decoding="async" src="'+safe(images[n])+'" alt="Recovered visual material">';
 }
 function line(){return choose(notes)||'The archive has retained this item without an explanation.';}
@@ -27,6 +28,14 @@ function audioCard(depth){
  const track=choose(audioPool),treatment=choose(depth>=2?['memory','tape','transmission','ghost']:['memory','transmission']);
  return '<div class="descent-record"><p class="descent-entry__index">DEGRADED COPY / '+safe(treatment.toUpperCase())+'</p><p class="descent-record__title">'+safe(track.title)+'</p><p class="descent-entry__track">'+safe(track.artist)+' / ALTERED PLAYBACK</p><audio controls preload="none" crossorigin="anonymous" data-treatment="'+treatment+'" src="'+safe(track.src)+'"></audio><p class="descent-record__disclaimer">A live reconstruction. The original recording remains unchanged.</p></div>';
 }
+const interruptions=[
+ ['YOU ARE STILL ON THE SAME WEBSITE.','THIS PAGE IS PART OF THE ORIGINAL WEBSITE.','YOU MAY CONTINUE SCROLLING.'],
+ ['YOUR LOCATION WITHIN THE WEBSITE HAS BEEN UPDATED.','NO ACTION IS REQUIRED.','THE CONTENT BELOW MAY DIFFER FROM THE CONTENT ABOVE.'],
+ ['THIS IS A COPY OF THE WEBSITE.','THE ORIGINAL REMAINS AVAILABLE ABOVE.','THE RECORDS HAVE NOT BEEN MOVED.'],
+ ['THE WEBSITE HAS BEEN RESTORED FROM MEMORY.','SOME DETAILS COULD NOT BE VERIFIED.','THE WEBSITE DOES NOT CONSIDER THIS A PROBLEM.'],
+ ['THIS IS THE WEBSITE THAT REMEMBERS YOU.','THE ORIGINAL VERSION IS NO LONGER IN THIS DIRECTION.','YOU HAVE NOT LEFT.']
+];
+function interruption(depth){const pool=interruptions[Math.min(depth,interruptions.length-1)];const message=choose(pool);return '<div class="descent-interruption"><p>'+safe(message)+'</p><p>'+safe(line())+'</p></div>';}
 function add(){
  if(busy||!images.length)return;busy=true;
  const frag=document.createDocumentFragment();
@@ -41,7 +50,7 @@ function add(){
   if(kind==='statement')entry.innerHTML=intro+'<p class="descent-statement">'+safe(line())+'</p>';
   if(kind==='recording')entry.innerHTML=intro+audioCard(depth);
   if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
-  if(kind==='interruption')entry.innerHTML=intro+'<div class="descent-interruption"><p>YOU ARE STILL ON THE SAME WEBSITE.</p><p>'+safe(line())+'</p></div>';
+  if(kind==='interruption')entry.innerHTML=intro+interruption(depth);
   frag.appendChild(entry);
  }
  feed.appendChild(frag);
