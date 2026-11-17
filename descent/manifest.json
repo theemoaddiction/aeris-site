@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "images": [
     "assets/12-86-polaroid.jpg",
     "assets/aeris-black-coat-home.webp",
@@ -688,6 +688,48 @@
         "1.5 oz soda water"
       ],
       "note": ""
+    }
+  ],
+  "glossary": [
+    {
+      "term": "Anemoia",
+      "part": "n.",
+      "definition": "Nostalgia for a time you have never known.",
+      "excerpt": "A sepia-tinted past inhabited by people who lived under the same moon in a different world.",
+      "credit": "The Dictionary of Obscure Sorrows",
+      "type": "source paraphrase"
+    },
+    {
+      "term": "Kenopsia",
+      "part": "n.",
+      "definition": "The eerie atmosphere of a normally busy place now abandoned and quiet.",
+      "excerpt": "A school hallway in the evening, an unlit weekend office, or vacant fairgrounds.",
+      "credit": "The Dictionary of Obscure Sorrows",
+      "type": "source paraphrase"
+    },
+    {
+      "term": "Uncanny",
+      "part": "adj.",
+      "definition": "The discomfort of being unable to orient yourself in something that should be familiar.",
+      "excerpt": "Intellectual uncertainty about objects, events, and the environment.",
+      "credit": "Ernst Jentsch, On the Psychology of the Uncanny (1906)",
+      "type": "source paraphrase"
+    },
+    {
+      "term": "Skopasethia",
+      "part": "unclassified",
+      "definition": "Definition not recorded in the manuscript.",
+      "excerpt": "The archive preserves the word but cannot verify its meaning.",
+      "credit": "Manuscript notes",
+      "type": "unverified"
+    },
+    {
+      "term": "Liminoid",
+      "part": "adj.",
+      "definition": "An inability to progress beyond the cathartic moment.",
+      "excerpt": "A proposed connection between psychedelics, the soul, and the threshold that will not release you.",
+      "credit": "Manuscript working definition",
+      "type": "author's usage"
     }
   ]
 }
