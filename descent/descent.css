@@ -197,3 +197,12 @@
 .descent-catalog__history[hidden]{display:none}
 .descent-catalog__history img{width:160px;max-width:35%;height:110px;object-fit:cover}
 .descent-catalog__history span{font:11px monospace;letter-spacing:.09em}
+
+/* The first eighty entries must be visually legible, even on wide screens. */
+.descent-entry:nth-child(-n+80).descent-entry--image{max-width:760px;margin-left:auto;margin-right:auto}
+.descent-entry:nth-child(-n+80).descent-entry--image img{max-height:78vh;filter:none}
+.descent-entry:nth-child(-n+80).descent-entry--diptych img:last-child{transform:none}
+
+/* Do not distort the opening pages. */
+.descent-entry--depth-0 .descent-echo__broken,.descent-entry--depth-1 .descent-echo__broken,.descent-entry--depth-2 .descent-echo__broken{transform:none;opacity:.55}
+.descent-entry--depth-0.descent-entry--interruption .descent-interruption,.descent-entry--depth-1.descent-entry--interruption .descent-interruption,.descent-entry--depth-2.descent-interruption{transform:none}
