@@ -192,3 +192,8 @@
 .descent-catalog__foot{display:flex;justify-content:space-between;gap:12px;border-top:2px solid #a53c45;margin-top:20px;padding-top:12px;font:11px monospace}
 .descent-catalog__foot a{color:#9d2c36;font-weight:bold}
 @media(max-width:620px){.descent-catalog__products{grid-template-columns:repeat(2,minmax(0,1fr))}.descent-catalog__product:last-child{display:none}.descent-catalog__foot{flex-direction:column}}
+
+.descent-catalog__history{display:flex;align-items:center;gap:15px;margin-top:16px;padding:12px;border:1px dashed #a88f6f;background:#f4e6cc}
+.descent-catalog__history[hidden]{display:none}
+.descent-catalog__history img{width:160px;max-width:35%;height:110px;object-fit:cover}
+.descent-catalog__history span{font:11px monospace;letter-spacing:.09em}
