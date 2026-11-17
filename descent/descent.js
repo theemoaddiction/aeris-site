@@ -22,6 +22,7 @@ function kindFor(depth){
   const weight=severe.includes(kind)?(depth===4?1:0):weights[depth];
   for(let n=0;n<weight;n++)pool.push(kind);
  }
+ if(index<80){const clean=pool.filter(k=>!['echo','interruption',...architecture].includes(k));const kind=choose(clean.filter(k=>k!==lastKind).length?clean.filter(k=>k!==lastKind):clean);lastKind=kind;return kind;}
  let kind=choose(pool);if(kind===lastKind)kind=choose(pool.filter(k=>k!==lastKind));lastKind=kind;return kind;
 }
 function picture(){
@@ -152,7 +153,7 @@ function add(){
  if(busy||!images.length)return;busy=true;
  const frag=document.createDocumentFragment();
  for(let n=0;n<4;n++){
-  const depth=Math.min(4,Math.floor(index/8));
+  const depth=Math.min(4,Math.floor(index/40));
   let kind;
   if(index>=nextAd){kind=(adCount++%4===3)?'evolving-ad':'advertisement';nextAd=index+14+random(9);}
   else if(index>=nextRecipe){kind='recipe';nextRecipe=index+65+random(31);}
