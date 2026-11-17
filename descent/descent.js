@@ -8,12 +8,14 @@ const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const releases=window.RECORDS||[];
 audioPool=releases.flatMap(r=>(r.tracks||[]).filter(t=>t.audio).map(t=>({title:t.title,artist:r.artist,src:t.audio.replace(/^\.\.\//,'')})));
+const architecture=['marginalia','shaft','negative','footnote','redaction','corridor'];
 const templates=[
  {kind:'image',weight:5},{kind:'diptych',weight:2},{kind:'statement',weight:2},
  {kind:'recording',weight:2},{kind:'recipe',weight:2},{kind:'echo',weight:1},{kind:'interruption',weight:1}
 ];
 function kindFor(depth){
  const pool=templates.flatMap(t=>Array(t.weight+(depth>1&&['echo','interruption'].includes(t.kind)?2:0)).fill(t.kind));
+ const weights=[0,1,2,3,4];for(const kind of architecture)for(let n=0;n<weights[depth];n++)pool.push(kind);
  let kind=choose(pool);if(kind===lastKind)kind=choose(pool.filter(k=>k!==lastKind));lastKind=kind;return kind;
 }
 function picture(){
@@ -33,6 +35,18 @@ function recipeCard(depth){
  if(!recipeDeck.length){recipeDeck=recipes.map((_,i)=>i);for(let i=recipeDeck.length-1;i>0;i--){const k=random(i+1);[recipeDeck[i],recipeDeck[k]]=[recipeDeck[k],recipeDeck[i]];}}
  const recipe=recipes[recipeDeck.pop()],damaged=depth>=2;
  return '<div class="descent-prescription'+(damaged?' descent-prescription--aged':'')+'"><p class="descent-prescription__heading">THE GORDON APOTHECARY / FORMULARY '+String(recipe.id).padStart(3,'0')+'</p><h3>'+safe(recipe.name)+'</h3><ul>'+recipe.ingredients.map(i=>'<li>'+safe(i)+'</li>').join('')+'</ul>'+(recipe.note?'<p class="descent-prescription__note">UNVERIFIED: '+safe(recipe.note)+'</p>':'')+'<a href="apothecary/#formula-'+encodeURIComponent(recipe.id)+'">CONSULT ORIGINAL FORMULA ↗</a></div>';
+}
+function architecturalCard(kind,depth){
+ const first=safe(line()),second=safe(line());
+ switch(kind){
+ case 'marginalia':return '<div class="arch-marginalia"><aside>ARCHIVAL ANNOTATION / '+index+'<p>'+first+'</p></aside><p>'+second+'</p></div>';
+ case 'shaft':return '<div class="arch-shaft"><small>THE PASSAGE NARROWS</small><p>'+first+'</p><small>NO WIDTH RECORDED</small></div>';
+ case 'negative':return '<div class="arch-negative"><figure>'+picture()+'<figcaption>'+first+'</figcaption></figure><small>THE REST OF THE ROOM IS NOT INCLUDED.</small></div>';
+ case 'footnote':return '<div class="arch-footnote"><p>'+first+'<sup>1</sup></p><aside><small>1. CORRECTION TO THE ABOVE</small><p>'+second+'</p><small>Further amendments may be filed without notice.</small></aside></div>';
+ case 'redaction':return '<div class="arch-redaction"><small>PARTIALLY RELEASED / REVISION '+depth+'</small><p>'+first.split(' ').map((w,i)=>i%4===1||i%7===3?'<span aria-label="redacted" class="arch-blackout">█████</span>':w).join(' ')+'</p><small>'+second+'</small></div>';
+ case 'corridor':return '<div class="arch-corridor"><p>'+first+'</p><p aria-hidden="true">'+first+'</p><p aria-hidden="true">'+first+'</p><p aria-hidden="true">'+first+'</p><small>YOU ARE HERE. YOU ARE HERE. YOU ARE HERE.</small></div>';
+ }
+ return '';
 }
 const interruptions=[
  ['YOU ARE STILL ON THE SAME WEBSITE.','THIS PAGE IS PART OF THE ORIGINAL WEBSITE.','YOU MAY CONTINUE SCROLLING.'],
@@ -58,6 +72,7 @@ function add(){
   if(kind==='recipe')entry.innerHTML=intro+recipeCard(depth);
   if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
   if(kind==='interruption')entry.innerHTML=intro+interruption(depth);
+  if(architecture.includes(kind))entry.innerHTML=intro+architecturalCard(kind,depth);
   frag.appendChild(entry);
  }
  feed.appendChild(frag);
