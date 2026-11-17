@@ -56,6 +56,9 @@
       }
     })();
   </script>
+  <link rel="stylesheet" href="descent/descent.css?v=20261116-continuity">
+  <link rel="stylesheet" href="descent/mirror.css?v=1">
+<style>.anomaly-apothecary--featured{outline:2px solid #c9b88d;outline-offset:4px}.anomaly-apothecary--featured .anomaly-record{background:linear-gradient(135deg,#1e3d32,#18251e);color:#f2e7c7}.anomaly-apothecary--featured .anomaly-type{color:#d9b977}.anomaly-apothecary--featured .anomaly-open{color:#e8d6a6}</style>
 </head>
 
 <body>
@@ -215,16 +218,14 @@
     <a href="#home">HOME</a>
     <a href="#stream">NEW SINGLE</a>
     <a href="records/">RECORD ROOM</a>
-    <a href="https://myliminalreality.com/archive/if-game/">GAME</a>
     <a href="#prophecy">MEET AERIS</a>
     <a href="#anomalies">ANOMALIES</a>
-    <a href="#catalog">PRODUCTS</a>
     <a href="#contact">CONTACT</a>
   </div>
 
   <aside class="recovery-tracker" aria-live="polite" aria-label="Anomaly recovery progress">
     <span class="recovery-tracker__label">ANOMALIES RECOVERED</span>
-    <strong class="recovery-tracker__count">0 / 5</strong>
+    <strong class="recovery-tracker__count">0 / 12</strong>
     <span class="recovery-tracker__bar" aria-hidden="true"><span></span></span>
   </aside>
 
@@ -255,6 +256,11 @@
   </div>
 
   <main class="container">
+    <section class="panel" aria-labelledby="interloper-title">
+      <h2 id="interloper-title">INTERLOPER</h2>
+      <a class="cta" href="interloper/">ENTER THE MALL ↗</a>
+    </section>
+
     <section id="stream" class="panel oh1god-announcement">
       <p class="oh1god-kicker">NEW TRANSMISSION / 11.06.26</p>
       <h2>OH1GOD</h2>
@@ -337,6 +343,42 @@
       </p>
 
       <div class="anomaly-grid">
+        <a class="anomaly-card anomaly-concourse" href="interloper/concourse.html" data-anomaly-id="the-concourse">
+          <div class="anomaly-image">
+            <img src="interloper/atrium.webp" alt="An empty mall atrium with a running fountain" loading="lazy" width="491" height="662" decoding="async">
+          </div>
+          <div class="anomaly-record">
+            <span class="anomaly-type">ENTITY FILE // VISITOR RETAINED</span>
+            <h3>THE CONCOURSE</h3>
+            <p>One storefront still has a record of your visit.</p>
+            <span class="anomaly-open">OPEN FILE →</span>
+          </div>
+        </a>
+
+        <a class="anomaly-card anomaly-apothecary anomaly-apothecary--featured" href="apothecary/" data-anomaly-id="gordon-apothecary">
+          <div class="anomaly-image" style="background:#25392e;display:grid;place-items:center;min-height:220px;color:#e9ddbd;text-align:center;font-family:Georgia,serif">
+            <span style="font-size:clamp(27px,4vw,44px);line-height:1.1">✣<br>APOTHECARY<br><small style="font-size:12px;letter-spacing:.2em">FORMULARY NO. 026</small></span>
+          </div>
+          <div class="anomaly-record">
+            <span class="anomaly-type">NEWLY RECOVERED // PHARMACEUTICAL ARCHIVE</span>
+            <h3>Apothecary</h3>
+            <p>Twenty-six preparations. Consultations available. Credentials missing.</p>
+            <span class="anomaly-open">REQUEST A FORMULA →</span>
+          </div>
+        </a>
+
+        <a class="anomaly-card anomaly-if-game" href="archive/if-game/" data-anomaly-id="if-game">
+          <div class="anomaly-image">
+            <img src="assets/pink-arcade-home.webp" alt="" loading="lazy" width="800" height="800" decoding="async">
+          </div>
+          <div class="anomaly-record">
+            <span class="anomaly-type">ARCHIVE NODE // CONNECTION UNSTABLE</span>
+            <h3>IF-06162004</h3>
+            <p>A text adventure through a mall where the fountain runs without water.</p>
+            <span class="anomaly-open">PLAY GAME →</span>
+          </div>
+        </a>
+
         <a class="anomaly-card anomaly-unassigned" href="unassigned/" data-anomaly-id="unassigned">
           <div class="anomaly-image">
             <img src="assets/unassigned-preview.svg" alt="A vacant page with two pointers and a small black circle" loading="lazy" decoding="async">
@@ -433,11 +475,17 @@
           </div>
         </a>
 
-        <div class="anomaly-card anomaly-placeholder" aria-label="Unfilled anomaly record">
-          <span class="placeholder-index">FILE // 08</span>
-          <span class="placeholder-mark">[ EMPTY SLOT ]</span>
-          <span class="placeholder-status">LISTENING...</span>
-        </div>
+        <a class="anomaly-card anomaly-holiday-catalog" href="holiday-catalog/" data-anomaly-id="holiday-catalog">
+          <div class="anomaly-image">
+            <img src="holiday-catalog/cd-wallet.webp" alt="" loading="lazy" width="500" height="500" decoding="async">
+          </div>
+          <div class="anomaly-record">
+            <span class="anomaly-type">ENTITY FILE // RETAIL CIRCULAR</span>
+            <h3>THE CHRISTMAS CATALOG</h3>
+            <p>Sodalite Department Store. December 1998.</p>
+            <span class="anomaly-open">OPEN CATALOG →</span>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -476,107 +524,6 @@
     <b>— Review</b>
   </div>
       </div>
-    </section>
-
-    <section id="catalog" class="panel">
-      <h2>PRODUCTS YOU BUY</h2>
-
-      <div class="product">
-  <h3>Baseball Bat</h3>
-  <p>
-    Previously owned. Some cosmetic wear from normal use.
-    Grip tape has been replaced. Suitable for recreational baseball activities.
-  </p>
-  <div class="price">$8.00</div>
-</div>
-
-<div class="product">
-  <h3>Custom MySpace Profile</h3>
-  <p>
-    Profile customization service. Includes background image,
-    music player setup, and profile layout adjustments.
-    Turnaround time varies depending on availability.
-  </p>
-  <div class="price">$50.00</div>
-</div>
-
-<div class="product">
-  <h3>Thoughts & Prayers</h3>
-  <p>
-    Available individually or in larger quantities for special occasions.
-    May be delivered in person or remotely.
-    No assembly required.
-  </p>
-  <div class="price">$3.99</div>
-</div>
-
-<div class="product">
-  <h3>Office Chair</h3>
-  <p>
-    Black office chair with adjustable height.
-    Minor wear visible on armrests.
-    Rolls normally across most surfaces.
-  </p>
-  <div class="price">$20.00</div>
-</div>
-
-<div class="product">
-  <h3>CD Wallet</h3>
-  <p>
-    Holds up to 72 compact discs.
-    Several discs remain inside and have not been labelled.
-    Zipper functions correctly.
-  </p>
-  <div class="price">$5.00</div>
-</div>
-
-<div class="product">
-  <h3>Box of Cables</h3>
-  <p>
-    Mixed assortment collected over several years.
-    Includes power cables, audio cables, adapters,
-    and unidentified items. Sold as-is.
-  </p>
-  <div class="price">$4.00</div>
-</div>
-
-<div class="product">
-  <h3>Floor Lamp</h3>
-  <p>
-    Produces light when plugged into a functioning outlet.
-    Bulb included. Shade shows minor signs of age.
-  </p>
-  <div class="price">$12.00</div>
-</div>
-
-<div class="product">
-  <h3>Prom Dress</h3>
-  <p>
-    Formal dress. Worn once. Stored indoors.
-    Color appears slightly different depending on lighting conditions.
-  </p>
-  <div class="price">$18.00</div>
-</div>
-
-<div class="product">
-  <h3>Printer</h3>
-  <p>
-    Inkjet printer. Powers on.
-    Ink levels unknown.
-    Includes power cable and printed instruction manual.
-  </p>
-  <div class="price">$15.00</div>
-</div>
-
-<div class="product">
-  <h3>Framed Photograph</h3>
-  <p>
-    Photograph of an indoor plant.
-    Frame included.
-    Hanging hardware not included.
-  </p>
-  <div class="price">$7.00</div>
-</div>
     </section>
 
     <section class="panel">
@@ -641,6 +588,20 @@
     <p class="under-construction">🚧 UNDER CONSTRUCTION FOREVER 🚧</p>
   </div>
 
+    <section id="descent" class="descent-panel" aria-label="The Descent, an ongoing archive">
+      <div class="descent-panel__intro">
+        <p class="descent-panel__eyebrow">ADDITIONAL MATERIAL / NO INDEX AVAILABLE</p>
+        <h2>THE DESCENT</h2>
+        <p>The recordings are still here. So are the pictures. They don't always agree about what happened.</p>
+      </div>
+      <div id="descent-feed" aria-live="off"></div>
+      <div id="descent-sentinel" aria-hidden="true"></div>
+      <p id="descent-status" role="status">RETRIEVING ARCHIVE...</p>
+    </section>
+
   <script src="script.js?v=20261106-home-perf"></script>
+  <script src="records/catalog.js?v=descent-1"></script>
+  <script defer src="descent/descent.js?v=20261116-continuity"></script>
+  <script defer src="descent/mirror.js?v=1"></script>
 </body>
 </html>

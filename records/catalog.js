@@ -550,11 +550,11 @@ window.RECORDS = [
         "audio": "../audio/LICKER/Licker-BelieveitorNot.wav"
       },
       {
-        "title": "Paranoid (Black Sabbath cover)",
+        "title": "Paranoid (Kanye West cover)",
         "audio": "../audio/LICKER/Paranoid.mp3"
       },
       {
-        "title": "Break Me (Jewel cover)",
+        "title": "Break Me (The Irresponsibles cover)",
         "audio": "../audio/LICKER/Licker - Break Me.wav"
       },
       {
