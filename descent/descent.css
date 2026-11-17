@@ -64,3 +64,62 @@
 .descent-prescription--aged{background:repeating-linear-gradient(175deg,#d1c5a7 0,#d1c5a7 2px,#cbbd9c 3px,#d1c5a7 5px);border-color:#72654f;transform:rotate(1.3deg)}
 .descent-entry--depth-4 .descent-prescription{filter:contrast(1.15) sepia(.35)}
 @media(prefers-reduced-motion:reduce){.descent-prescription{transform:none}}
+
+/* Depth-weighted architectural typography */
+.descent-entry--marginalia,.descent-entry--shaft,.descent-entry--negative,.descent-entry--footnote,.descent-entry--redaction,.descent-entry--corridor{min-height:90vh;max-width:1000px;display:flex;flex-direction:column;justify-content:center}
+.arch-marginalia,.arch-negative,.arch-footnote,.arch-redaction,.arch-corridor{min-height:75vh;position:relative}
+.arch-marginalia{display:grid;grid-template-columns:20% 1fr;gap:8%;text-align:left;align-items:start;padding-top:15vh}
+.arch-marginalia aside{font:11px/1.7 monospace;color:#aaa;writing-mode:vertical-rl;transform:rotate(180deg);max-height:65vh;overflow:hidden}
+.arch-marginalia>p{font:clamp(1.5rem,3vw,3rem)/1.25 Georgia,serif;margin-top:20vh}
+.arch-shaft{min-height:110vh;width:clamp(95px,13vw,170px);margin:auto;border-left:1px solid #666;border-right:1px solid #666;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:4vh 8px}
+.arch-shaft p{font:clamp(14px,1.5vw,18px)/2 Georgia,serif;overflow-wrap:anywhere}
+.arch-shaft small,.arch-negative small,.arch-footnote small,.arch-redaction small,.arch-corridor small{font:10px/1.5 monospace;letter-spacing:.1em;color:#aaa}
+.arch-negative figure{position:absolute;right:0;top:0;width:min(35%,290px);margin:0}
+.arch-negative img{max-width:100%;max-height:32vh;margin:0}
+.arch-negative figcaption{font:11px/1.5 monospace;color:#aaa}
+.arch-negative>small{position:absolute;bottom:3%;left:0;max-width:160px;text-align:left}
+.arch-footnote{display:grid;grid-template-columns:1fr 30%;gap:7%;text-align:left;padding-top:10vh}
+.arch-footnote>p{font:clamp(2rem,5vw,5rem)/1.13 Georgia,serif;margin:0}
+.arch-footnote sup{font:12px monospace}
+.arch-footnote aside{border-top:1px solid #aaa;margin-top:25vh;padding-top:12px;font:15px/1.6 Georgia,serif}
+.arch-redaction{display:flex;flex-direction:column;justify-content:center;text-align:left}
+.arch-redaction>p{font:clamp(2rem,5vw,5rem)/1.5 Georgia,serif;overflow-wrap:anywhere}
+.arch-blackout{background:#ddd;color:transparent;white-space:nowrap;user-select:none;font-size:.7em}
+.arch-corridor{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;overflow:hidden}
+.arch-corridor p{font:clamp(1.2rem,3vw,2.7rem)/1.2 Georgia,serif;margin:0;max-width:85%}
+.arch-corridor p:nth-child(2){transform:scale(.75);opacity:.65}
+.arch-corridor p:nth-child(3){transform:scale(.5);opacity:.35}
+.arch-corridor p:nth-child(4){transform:scale(.25);opacity:.16}
+@media(max-width:600px){.arch-footnote{grid-template-columns:1fr}.arch-footnote aside{margin-top:2vh}.arch-marginalia{grid-template-columns:50px 1fr}.arch-negative figure{width:45%}.arch-shaft{min-height:85vh}}
+@media(prefers-reduced-motion:reduce){.arch-marginalia aside{transform:none;writing-mode:horizontal-tb}}
+
+/* Physical disorientation: the page stays scrollable; the documents do not. */
+.descent-entry--inversion,.descent-entry--sideways,.descent-entry--stack,.descent-entry--orbit,.descent-entry--dislocation{max-width:min(100%,1050px);min-height:110vh;display:flex;flex-direction:column;justify-content:center;overflow:clip}
+.arch-violent{position:relative;min-height:95vh;width:100%;isolation:isolate}
+.arch-inversion{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.arch-inversion>p:first-child{font:clamp(2rem,5.5vw,5.5rem)/1.12 Georgia,serif;max-width:90%;transform:rotate(180deg);margin:3rem auto}
+.arch-inversion small{font:10px/1.5 monospace;letter-spacing:.2em;color:#888}
+.arch-inversion__ghost{font:clamp(1rem,2vw,2rem)/1.2 Georgia,serif;opacity:.18;transform:scaleX(-1);max-width:65%;margin:6vh auto}
+.arch-sideways{display:flex;align-items:center;justify-content:center;min-height:115vh}
+.arch-sideways>p{font:clamp(2.3rem,5vw,5.3rem)/1.15 Georgia,serif;width:min(85vh,620px);max-width:none;transform:rotate(-90deg);margin:0}
+.arch-sideways>span{position:absolute;left:0;top:6%;font:10px monospace;letter-spacing:.15em}
+.arch-sideways>small{position:absolute;right:0;bottom:6%;max-width:190px;font:11px/1.6 monospace;color:#aaa;writing-mode:vertical-rl}
+.arch-stack{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem}
+.arch-stack>p{display:flex;flex-direction:column;align-items:center;gap:.1em;margin:0;font:clamp(1.5rem,3vw,3.2rem)/1.05 Georgia,serif;text-transform:uppercase;max-width:90%;overflow-wrap:anywhere}
+.arch-stack>p span:nth-child(2n){transform:translateX(1.3em)}
+.arch-stack>p span:nth-child(3n){transform:translateX(-1.1em)}
+.arch-stack>span,.arch-stack>small{font:10px monospace;letter-spacing:.18em;color:#aaa}
+.arch-orbit{display:flex;align-items:center;justify-content:center;flex-direction:column}
+.arch-orbit svg{width:min(100%,80vh,680px);height:auto;overflow:visible}
+.arch-orbit__text{font:22px Georgia,serif;fill:#e7e2dc;letter-spacing:.02em}
+.arch-orbit__text--1{font-size:18px;fill:#a9a0a0}
+.arch-orbit__text--2{font-size:14px;fill:#777}
+.arch-orbit small{font:10px monospace;letter-spacing:.12em;color:#aaa}
+.arch-dislocation{min-height:110vh;text-align:left}
+.arch-dislocation p{position:absolute;font:clamp(2rem,4vw,4rem)/1.2 Georgia,serif;max-width:70%;margin:0}
+.arch-dislocation p:nth-child(1){top:5%;left:-9%;transform:rotate(-12deg)}
+.arch-dislocation p:nth-child(2){top:38%;right:-12%;transform:rotate(16deg);opacity:.55}
+.arch-dislocation p:nth-child(4){bottom:3%;left:20%;transform:rotate(92deg);opacity:.38;max-width:45%}
+.arch-dislocation span{position:absolute;left:8%;top:55%;font:10px monospace;letter-spacing:.17em;color:#aaa}
+@media(max-width:650px){.arch-sideways>p{width:75vh;font-size:clamp(1.5rem,6vw,3rem)}.arch-dislocation p:nth-child(4){transform:rotate(70deg)}.arch-orbit__text{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.arch-inversion>p:first-child,.arch-inversion__ghost,.arch-sideways>p,.arch-dislocation p{transform:none}.arch-dislocation{display:flex;flex-direction:column;gap:2rem;min-height:auto}.arch-dislocation p,.arch-dislocation span{position:static;max-width:100%}}

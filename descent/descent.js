@@ -8,12 +8,14 @@ const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const releases=window.RECORDS||[];
 audioPool=releases.flatMap(r=>(r.tracks||[]).filter(t=>t.audio).map(t=>({title:t.title,artist:r.artist,src:t.audio.replace(/^\.\.\//,'')})));
+const architecture=['marginalia','shaft','negative','footnote','redaction','corridor','inversion','sideways','stack','orbit','dislocation'];
 const templates=[
  {kind:'image',weight:5},{kind:'diptych',weight:2},{kind:'statement',weight:2},
  {kind:'recording',weight:2},{kind:'recipe',weight:2},{kind:'echo',weight:1},{kind:'interruption',weight:1}
 ];
 function kindFor(depth){
  const pool=templates.flatMap(t=>Array(t.weight+(depth>1&&['echo','interruption'].includes(t.kind)?2:0)).fill(t.kind));
+ const weights=[0,1,2,3,4];for(const kind of architecture)for(let n=0;n<weights[depth];n++)pool.push(kind);
  let kind=choose(pool);if(kind===lastKind)kind=choose(pool.filter(k=>k!==lastKind));lastKind=kind;return kind;
 }
 function picture(){
@@ -33,6 +35,34 @@ function recipeCard(depth){
  if(!recipeDeck.length){recipeDeck=recipes.map((_,i)=>i);for(let i=recipeDeck.length-1;i>0;i--){const k=random(i+1);[recipeDeck[i],recipeDeck[k]]=[recipeDeck[k],recipeDeck[i]];}}
  const recipe=recipes[recipeDeck.pop()],damaged=depth>=2;
  return '<div class="descent-prescription'+(damaged?' descent-prescription--aged':'')+'"><p class="descent-prescription__heading">THE GORDON APOTHECARY / FORMULARY '+String(recipe.id).padStart(3,'0')+'</p><h3>'+safe(recipe.name)+'</h3><ul>'+recipe.ingredients.map(i=>'<li>'+safe(i)+'</li>').join('')+'</ul>'+(recipe.note?'<p class="descent-prescription__note">UNVERIFIED: '+safe(recipe.note)+'</p>':'')+'<a href="apothecary/#formula-'+encodeURIComponent(recipe.id)+'">CONSULT ORIGINAL FORMULA ↗</a></div>';
+}
+function architecturalCard(kind,depth){
+ const first=safe(line()),second=safe(line());
+ switch(kind){
+ case 'marginalia':return '<div class="arch-marginalia"><aside>ARCHIVAL ANNOTATION / '+index+'<p>'+first+'</p></aside><p>'+second+'</p></div>';
+ case 'shaft':return '<div class="arch-shaft"><small>THE PASSAGE NARROWS</small><p>'+first+'</p><small>NO WIDTH RECORDED</small></div>';
+ case 'negative':return '<div class="arch-negative"><figure>'+picture()+'<figcaption>'+first+'</figcaption></figure><small>THE REST OF THE ROOM IS NOT INCLUDED.</small></div>';
+ case 'footnote':return '<div class="arch-footnote"><p>'+first+'<sup>1</sup></p><aside><small>1. CORRECTION TO THE ABOVE</small><p>'+second+'</p><small>Further amendments may be filed without notice.</small></aside></div>';
+ case 'redaction':return '<div class="arch-redaction"><small>PARTIALLY RELEASED / REVISION '+depth+'</small><p>'+first.split(' ').map((w,i)=>i%4===1||i%7===3?'<span aria-label="redacted" class="arch-blackout">█████</span>':w).join(' ')+'</p><small>'+second+'</small></div>';
+ case 'corridor':return '<div class="arch-corridor"><p>'+first+'</p><p aria-hidden="true">'+first+'</p><p aria-hidden="true">'+first+'</p><p aria-hidden="true">'+first+'</p><small>YOU ARE HERE. YOU ARE HERE. YOU ARE HERE.</small></div>';
+ }
+ return '';
+}
+function violentCard(kind,depth){
+ const phrase=line(),words=phrase.split(/\s+/).filter(Boolean),escaped=safe(phrase),other=safe(line());
+ if(kind==='inversion')return '<div class="arch-violent arch-inversion"><p>'+escaped+'</p><small>THE DOCUMENT HAS BEEN TURNED OVER.</small><p class="arch-inversion__ghost" aria-hidden="true">'+escaped+'</p></div>';
+ if(kind==='sideways')return '<div class="arch-violent arch-sideways"><span>ORIENTATION NOT RECORDED</span><p>'+escaped+'</p><small>'+other+'</small></div>';
+ if(kind==='stack')return '<div class="arch-violent arch-stack"><span>TRANSCRIPTION / VERTICAL</span><p aria-label="'+safe(phrase)+'">'+words.map(w=>'<span aria-hidden="true">'+safe(w)+'</span>').join('')+'</p><small>READ DOWNWARD</small></div>';
+ if(kind==='orbit'){
+  const id='descent-orbit-'+index;
+  const rings=[0,1,2].map((n)=>'<path id="'+id+'-'+n+'" d="M '+(300-(n*74))+' 300 a '+(n*74+1)+' '+(n*74+1)+' 0 1 1 0 1" fill="none"/>').join('');
+  // Text is repeated on circular tracks, and the entire composition can be read in its accessible caption.
+  const paths=[0,1,2].map((n)=>{const r=[238,168,98][n],p=id+'-ring-'+n;return '<path id="'+p+'" d="M '+(300-r)+' 300 a '+r+' '+r+' 0 1 1 '+(2*r)+' 0 a '+r+' '+r+' 0 1 1 -'+(2*r)+' 0" fill="none"/>';}).join('');
+  const tracks=[0,1,2].map(n=>'<text class="arch-orbit__text arch-orbit__text--'+n+'"><textPath href="#'+id+'-ring-'+n+'" startOffset="'+(n*13)+'%">'+escaped+' · '+escaped+' · </textPath></text>').join('');
+  return '<div class="arch-violent arch-orbit"><svg viewBox="0 0 600 600" role="img" aria-label="'+safe(phrase)+'" preserveAspectRatio="xMidYMid meet"><defs>'+paths+'</defs>'+tracks+'</svg><small>THIS TEXT HAS NO AGREED BEGINNING.</small></div>';
+ }
+ if(kind==='dislocation')return '<div class="arch-violent arch-dislocation"><p>'+escaped+'</p><p aria-hidden="true">'+other+'</p><span>LOCATION DISPUTED</span><p aria-hidden="true">'+escaped+'</p></div>';
+ return '';
 }
 const interruptions=[
  ['YOU ARE STILL ON THE SAME WEBSITE.','THIS PAGE IS PART OF THE ORIGINAL WEBSITE.','YOU MAY CONTINUE SCROLLING.'],
@@ -58,6 +88,7 @@ function add(){
   if(kind==='recipe')entry.innerHTML=intro+recipeCard(depth);
   if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
   if(kind==='interruption')entry.innerHTML=intro+interruption(depth);
+  if(architecture.includes(kind))entry.innerHTML=intro+(['inversion','sideways','stack','orbit','dislocation'].includes(kind)?violentCard(kind,depth):architecturalCard(kind,depth));
   frag.appendChild(entry);
  }
  feed.appendChild(frag);
