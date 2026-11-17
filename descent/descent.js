@@ -2,7 +2,7 @@
 'use strict';
 const feed=document.querySelector('#descent-feed'),sentinel=document.querySelector('#descent-sentinel'),status=document.querySelector('#descent-status'),panel=document.querySelector('#descent');
 if(!feed||!sentinel||!panel)return;
-let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,adDeck=[];
+let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,nextClassified=33,nextCorrection=46,adDeck=[],adCount=0,correctionCount=0,companyStage=0,seenClaims=[];
 const random=(n)=>Math.floor(Math.random()*n);
 const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -65,10 +65,59 @@ function violentCard(kind,depth){
  return '';
 }
 const advertisements=[{"brand":"SELF-DISCOVERY ZONE","head":"GET LOST. STAY A WHILE.","copy":"An infinitely expandable play structure for the child who has already outgrown the exit.","fine":"All tunnels are final. Parent pickup is not guaranteed.","palette":"yellow"},{"brand":"COSMIC ORPHAN™","head":"HOMESICK FOR SOMEWHERE YOU'VE NEVER BEEN?","copy":"Introducing a complete range of memories from places you haven't visited.","fine":"Imagined familiarity sold separately.","palette":"blue"},{"brand":"SOLARIUM SYSTEMS","head":"NATURE. NOW WITH A CEILING.","copy":"Bring the outdoors inside. Keep it there. Purple lighting available for an additional fee.","fine":"Plants may become aware of the difference.","palette":"green"},{"brand":"THE GRAND SLAM","head":"EVERY TUNNEL LEADS TO ANOTHER TUNNEL.","copy":"Wood, carpet, plexiglass, and the assurance that someone has inspected the structure.","fine":"Inspection records unavailable.","palette":"pink"},{"brand":"INFINITE MALL DEVELOPMENT","head":"MORE MALL THAN YOU WILL EVER NEED.","copy":"Visit our newest atrium. Featuring a fountain, a treehouse showroom, and several additional centuries.","fine":"Directory subject to spatial revision.","palette":"coral"},{"brand":"NON-PLACE REALTY","head":"YOUR NEXT HOME IS BETWEEN HOMES.","copy":"Beautiful transitional spaces with fluorescent lighting and no established departure time.","fine":"Actual address may not exist.","palette":"violet"},{"brand":"MEMORY PORTRAIT STUDIO","head":"THE PICTURE IS STILL TRUE.","copy":"Professional portraits in convincing rooms built just far enough beyond the frame.","fine":"Background ends immediately outside the photograph.","palette":"mint"},{"brand":"TOMORROW'S MUSEUM","head":"SEE EVERY CENTURY BEFORE CLOSING.","copy":"One ticket. Uncountable galleries. The exhibit ends when the building decides.","fine":"Exits are interpretive.","palette":"orange"},{"brand":"THE UT0PIA PROJECT","head":"NOW OPEN IN NO PLACE IN PARTICULAR.","copy":"All the comforts of a destination without the burden of arriving.","fine":"Non-place. Non-refundable.","palette":"sky"},{"brand":"THRESHOLD HOME GOODS","head":"EVERYTHING YOU NEED FOR THE IN-BETWEEN.","copy":"Doorways, night lights, hallway carpet, and the comforting illusion of tomorrow.","fine":"Tomorrow is not included.","palette":"cream"},{"brand":"AFTER HOURS SCHOOL DISTRICT","head":"THE HALLWAYS ARE YOURS NOW.","copy":"Enjoy every corridor after the final bell. Lockers remain stocked with unspecified memories.","fine":"No faculty will be present.","palette":"yellow"},{"brand":"FAMILIARITY INSURANCE","head":"COVERAGE FOR PLACES YOU ALMOST REMEMBER.","copy":"Protect your childhood from unexpected renovations, demolished arcades, and missing street corners.","fine":"Pre-existing memories may be excluded.","palette":"blue"},{"brand":"THE DREAMSCAPE HOTEL","head":"WAKE UP SOMEWHERE ELSE.","copy":"Every suite includes a door to the room you were just dreaming about.","fine":"Check-out is a matter of interpretation.","palette":"violet"},{"brand":"FLUORESCENT SUNSHINE CO.","head":"A PERFECT DAY, 24 HOURS A DAY.","copy":"Our new artificial daylight brings the comforting hum of commercial lighting to any outdoor experience.","fine":"UV protection is not necessary. Or available.","palette":"green"},{"brand":"THE ENDLESS FOOD COURT","head":"SAME TABLE. NEW DECADE.","copy":"Return to the familiar tastes of your adolescence. The chairs have been waiting.","fine":"Some vendors closed in 1998.","palette":"coral"},{"brand":"GRAND ATRIUM TREEHOUSES","head":"THE SKY IS AN INDOOR AMENITY.","copy":"Tour luxury treehouses installed forty feet above the mall floor. No weather. No seasons. No questions.","fine":"Structural drawings are conceptual.","palette":"mint"},{"brand":"THE HORIZON EXTENSION SERVICE","head":"THERE'S MORE BEYOND THE FRAME.","copy":"We add a reassuring distance to the spaces you cannot see.","fine":"Results may resemble what is already here.","palette":"sky"},{"brand":"YESTERDAY'S TOMORROW","head":"THE FUTURE YOU WERE PROMISED IS BACK.","copy":"Experience a newly refurbished version of the year 2000, complete with original expectations.","fine":"Some futures are display models only.","palette":"pink"},{"brand":"DOORWAY DIRECT","head":"TRANSITIONS WITHOUT DESTINATIONS.","copy":"Choose from hundreds of beautifully finished thresholds. Rooms available separately.","fine":"No room is currently available.","palette":"cream"},{"brand":"CARPETED LABYRINTHS INC.","head":"SOFT FLOORS. HARD QUESTIONS.","copy":"Commercial-grade carpet for play tunnels, hotel corridors, and every turn you cannot explain.","fine":"Pattern repetition is a standard feature.","palette":"orange"},{"brand":"THE UNFINISHED BUILDING COMPANY","head":"ALMOST READY SINCE 1987.","copy":"Open-concept staircases, sealed-off wings, and a permanent sense of possibility.","fine":"Completion dates are not legally binding.","palette":"yellow"},{"brand":"NOCTURNAL CHILDHOOD","head":"IT'S PAST YOUR BEDTIME. STAY.","copy":"Rediscover the extraordinary dimensions of your childhood bedroom after the lights go out.","fine":"Parental supervision not included.","palette":"blue"},{"brand":"THE CHLORINE FOUNTAIN","head":"SMELL THE GOOD OLD DAYS.","copy":"A signature indoor-mall fragrance for homes, offices, and vacant retail properties.","fine":"Water feature sold separately.","palette":"mint"},{"brand":"TIMEKEEPER WATCH COMPANY","head":"KNOW WHEN TO LEAVE.","copy":"Precision timepieces for places where the clocks have stopped agreeing.","fine":"Departure times may vary by observer.","palette":"violet"},{"brand":"THE EMPTY TERMINAL","head":"YOUR FLIGHT IS ALWAYS BOARDING.","copy":"A premium airport experience without a destination, a departure, or the inconvenience of passengers.","fine":"All gates lead to the same concourse.","palette":"sky"},{"brand":"MEMORY REDEVELOPMENT AUTHORITY","head":"YOUR PAST. REZONED.","copy":"Transform a beloved childhood landmark into a modern mixed-use approximation of itself.","fine":"Public comment period has already ended.","palette":"coral"},{"brand":"LIMINOID THERAPIES","head":"STAY WITH THE FEELING.","copy":"A revolutionary service for people unable to move beyond the moment everything changed.","fine":"Progress not included in base package.","palette":"pink"},{"brand":"THE SUBURBAN INFINITY CLUB","head":"THERE'S NOTHING TO DO. FOREVER.","copy":"Join an exclusive community of parking lots, empty plazas, and endless summer afternoons.","fine":"Membership expires when you remember why you came.","palette":"cream"},{"brand":"THE ARCHITECT'S MISTRANSLATION","head":"WE KNOW WHAT YOU MEANT TO BUILD.","copy":"Our designers interpret your plans into structures that are almost completely correct.","fine":"Stairs may terminate early.","palette":"green"},{"brand":"THE OTHER SIDE OF THE CURTAIN","head":"THE SHOW ISN'T THE WHOLE BUILDING.","copy":"Discover the quiet service corridors behind your everyday reality.","fine":"Audience access is neither permitted nor prevented.","palette":"orange"}];
+const classifiedListings=[
+ ['ROOMS','Childhood bedroom available after 11 PM. Previous occupant is still expected home.'],
+ ['HELP WANTED','Night attendant required for an empty mall. Must be comfortable with familiar voices.'],
+ ['FOR SALE','One perfectly preserved summer afternoon. Pickup only. No returns.'],
+ ['LOST & FOUND','A hallway approximately six years long. Last seen behind the school auditorium.'],
+ ['SERVICES','Professional horizon extension. We can make the far end of any room seem farther away.'],
+ ['ROOMS','A furnished apartment between two addresses. Neither address has been assigned.'],
+ ['PERSONALS','Seeking someone who remembers the food court before the renovation.'],
+ ['FOR SALE','Original 1997 expectations. Light wear. Never fulfilled.'],
+ ['EMPLOYMENT','Treehouse showroom guide. Applicants must not inquire about the ceiling.'],
+ ['NOTICE','If you recognize this photograph, please do not contact the photographer.'],
+ ['LOST & FOUND','One future, last seen in a suburban parking lot. Reward negotiable.'],
+ ['SERVICES','We repair doors that open into rooms you no longer need.']
+];
+function classifiedCard(){
+ const picks=[];const start=random(classifiedListings.length);
+ for(let i=0;i<6;i++)picks.push(classifiedListings[(start+i)%classifiedListings.length]);
+ return '<div class="descent-classified"><header><span>THE INTERSTITIAL TIMES</span><strong>CLASSIFIEDS</strong><span>ISSUE / UNDATED</span></header><div class="descent-classified__grid">'+picks.map(([type,body],i)=>'<section><b>'+safe(type)+'</b><p>'+safe(body)+'</p><small>REF '+String(index)+'-'+(i+1)+'</small></section>').join('')+'</div><footer>ALL LISTINGS SUBJECT TO MEMORY AND AVAILABILITY.</footer></div>';
+}
+const evolvingCompany=[
+ {brand:'CONTINUITY DEVELOPMENT GROUP',head:'WE KEEP THE PLACES YOU LOVE.',copy:'Preservation, restoration, and thoughtful redevelopment of your most familiar environments.',fine:'Locally operated. Independently remembered.',palette:'mint'},
+ {brand:'CONTINUITY HOLDINGS',head:'NOTHING HAS BEEN REPLACED.',copy:'Our renovated properties retain the emotional appearance of their original locations.',fine:'Previous ownership records have been consolidated.',palette:'blue'},
+ {brand:'CONTINUITY SYSTEMS',head:'THE BUILDING REMEMBERS YOU.',copy:'A personalized environment that adapts to the details you may have forgotten.',fine:'Your consent was obtained during a previous visit.',palette:'yellow'},
+ {brand:'CONTINUITY / INTERNAL',head:'WE HAVE NOT BEEN ABLE TO LEAVE.',copy:'This advertisement is the only department still responding. Please continue scrolling.',fine:'The corporate office is somewhere above this message.',palette:'coral'},
+ {brand:'CONTINUITY / NO ADDRESS',head:'YOU ARE THE LAST AVAILABLE LOCATION.',copy:'We have discontinued all services except the preservation of this visit.',fine:'This notice was not purchased. It is still being displayed.',palette:'violet'}
+];
+function evolvingAd(){
+ const stage=Math.min(companyStage++,evolvingCompany.length-1);
+ return renderAd(evolvingCompany[stage],'<span>CONTINUITY FILE '+(stage+1)+' / '+evolvingCompany.length+'</span>');
+}
+function correctionCard(){
+ const earlier=seenClaims.length?seenClaims[correctionCount%seenClaims.length]:null;
+ correctionCount++;
+ const previous=earlier?safe(earlier.head):'THE ARCHIVE IS COMPLETE';
+ const corrections=[
+  'The facility described in this advertisement was never constructed.',
+  'The building was demolished several years before its scheduled opening.',
+  'The previous description was accurate only from inside the photograph.',
+  'The original sponsor denies ever purchasing the advertisement.',
+  'The address was reassigned to a different memory.',
+  'The correction printed above has itself been withdrawn.'
+ ];
+ const correction=corrections[(correctionCount-1)%corrections.length];
+ return '<div class="descent-correction"><span>OFFICIAL ARCHIVE CORRECTION / '+String(correctionCount).padStart(3,'0')+'</span><h3>PLEASE DISREGARD</h3><p class="descent-correction__quote">'+previous+'</p><p>'+safe(correction)+'</p><small>This notice supersedes the original without removing it.</small></div>';
+}
+function renderAd(ad,extra=''){
+ return '<div class="descent-ad descent-ad--'+ad.palette+'"><div class="descent-ad__top"><span>PAID PLACEMENT / UNVERIFIED SPONSOR</span><span>ADVERTISEMENT</span></div><div class="descent-ad__body"><p class="descent-ad__brand">'+safe(ad.brand)+'</p><h3>'+safe(ad.head)+'</h3><p class="descent-ad__copy">'+safe(ad.copy)+'</p></div><div class="descent-ad__bottom">'+safe(ad.fine)+extra+'</div></div>';
+}
 function adCard(){
  if(!adDeck.length){adDeck=advertisements.map((_,i)=>i);for(let i=adDeck.length-1;i>0;i--){const k=random(i+1);[adDeck[i],adDeck[k]]=[adDeck[k],adDeck[i]];}}
  const ad=advertisements[adDeck.pop()];
- return '<div class="descent-ad descent-ad--'+ad.palette+'"><div class="descent-ad__top"><span>PAID PLACEMENT / UNVERIFIED SPONSOR</span><span>ADVERTISEMENT</span></div><div class="descent-ad__body"><p class="descent-ad__brand">'+safe(ad.brand)+'</p><h3>'+safe(ad.head)+'</h3><p class="descent-ad__copy">'+safe(ad.copy)+'</p></div><div class="descent-ad__bottom">'+safe(ad.fine)+'</div></div>';
+ seenClaims.push({head:ad.head,brand:ad.brand});
+ return renderAd(ad)
 }
 const interruptions=[
  ['YOU ARE STILL ON THE SAME WEBSITE.','THIS PAGE IS PART OF THE ORIGINAL WEBSITE.','YOU MAY CONTINUE SCROLLING.'],
@@ -84,8 +133,10 @@ function add(){
  for(let n=0;n<4;n++){
   const depth=Math.min(4,Math.floor(index/8));
   let kind;
-  if(index>=nextAd){kind='advertisement';nextAd=index+14+random(9);}
+  if(index>=nextAd){kind=(adCount++%4===3)?'evolving-ad':'advertisement';nextAd=index+14+random(9);}
   else if(index>=nextRecipe){kind='recipe';nextRecipe=index+65+random(31);}
+  else if(index>=nextClassified){kind='classified';nextClassified=index+42+random(22);}
+  else if(index>=nextCorrection){kind='correction';nextCorrection=index+34+random(18);}
   else kind=kindFor(depth);
   lastKind=kind;
   const entry=document.createElement('article');
@@ -99,6 +150,9 @@ function add(){
   if(kind==='recording')entry.innerHTML=intro+audioCard(depth);
   if(kind==='recipe')entry.innerHTML=intro+recipeCard(depth);
   if(kind==='advertisement')entry.innerHTML=intro+adCard();
+  if(kind==='evolving-ad'){entry.innerHTML=intro+evolvingAd();seenClaims.push({head:evolvingCompany[Math.min(companyStage-1,evolvingCompany.length-1)].head});}
+  if(kind==='classified')entry.innerHTML=intro+classifiedCard();
+  if(kind==='correction')entry.innerHTML=intro+correctionCard();
   if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
   if(kind==='interruption')entry.innerHTML=intro+interruption(depth);
   if(architecture.includes(kind))entry.innerHTML=intro+(['inversion','sideways','stack','orbit','dislocation'].includes(kind)?violentCard(kind,depth):architecturalCard(kind,depth));
