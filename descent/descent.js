@@ -2,7 +2,7 @@
 'use strict';
 const feed=document.querySelector('#descent-feed'),sentinel=document.querySelector('#descent-sentinel'),status=document.querySelector('#descent-status'),panel=document.querySelector('#descent');
 if(!feed||!sentinel||!panel)return;
-let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,nextClassified=33,nextCorrection=46,adDeck=[],adCount=0,correctionCount=0,companyStage=0,seenClaims=[];
+let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,nextClassified=33,nextCorrection=46,nextGlossary=22,glossaryDeck=[],glossary=[],adDeck=[],adCount=0,correctionCount=0,companyStage=0,seenClaims=[];
 const random=(n)=>Math.floor(Math.random()*n);
 const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -85,6 +85,12 @@ const classifiedListings=[
  ['LOST & FOUND','One future, last seen in a suburban parking lot. Reward negotiable.'],
  ['SERVICES','We repair doors that open into rooms you no longer need.']
 ];
+function glossaryCard(){
+ if(!glossary.length)return '<p>NO DEFINITION RECOVERED.</p>';
+ if(!glossaryDeck.length){glossaryDeck=glossary.map((_,i)=>i);for(let i=glossaryDeck.length-1;i>0;i--){const k=random(i+1);[glossaryDeck[i],glossaryDeck[k]]=[glossaryDeck[k],glossaryDeck[i]];}}
+ const item=glossary[glossaryDeck.pop()];
+ return '<div class="descent-glossary"><p class="descent-glossary__eyebrow">FIELD DICTIONARY / '+safe(item.type)+'</p><h3>'+safe(item.term)+' <i>'+safe(item.part)+'</i></h3><p class="descent-glossary__definition">'+safe(item.definition)+'</p><blockquote>'+safe(item.excerpt)+'</blockquote><p class="descent-glossary__credit">SOURCE: '+safe(item.credit)+'</p></div>';
+}
 function classifiedCard(){
  const picks=[];const start=random(classifiedListings.length);
  for(let i=0;i<6;i++)picks.push(classifiedListings[(start+i)%classifiedListings.length]);
@@ -143,6 +149,7 @@ function add(){
   else if(index>=nextRecipe){kind='recipe';nextRecipe=index+65+random(31);}
   else if(index>=nextClassified){kind='classified';nextClassified=index+42+random(22);}
   else if(index>=nextCorrection){kind='correction';nextCorrection=index+34+random(18);}
+  else if(index>=nextGlossary){kind='glossary';nextGlossary=index+26+random(15);}
   else kind=kindFor(depth);
   lastKind=kind;
   const entry=document.createElement('article');
@@ -158,6 +165,7 @@ function add(){
   if(kind==='advertisement')entry.innerHTML=intro+adCard();
   if(kind==='evolving-ad'){entry.innerHTML=intro+evolvingAd();seenClaims.push({head:evolvingCompany[Math.min(companyStage-1,evolvingCompany.length-1)].head});}
   if(kind==='classified')entry.innerHTML=intro+classifiedCard();
+  if(kind==='glossary')entry.innerHTML=intro+glossaryCard();
   if(kind==='correction')entry.innerHTML=intro+correctionCard();
   if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
   if(kind==='interruption')entry.innerHTML=intro+interruption(depth);
@@ -202,6 +210,7 @@ feed.addEventListener('play',event=>{
 fetch('descent/manifest.json?fresh='+Date.now(), {cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Archive unavailable');return r.json();}).then(data=>{
  images=(data.images||[]).filter(s=>typeof s==='string'&&s.startsWith('assets/'));
  notes=(data.notes||[]).filter(s=>typeof s==='string'&&s.trim());
+ glossary=(data.glossary||[]).filter(g=>g&&typeof g.term==='string'&&typeof g.definition==='string');
  recipes=(data.recipes||[]).filter(r=>r&&Number.isInteger(r.id)&&typeof r.name==='string'&&Array.isArray(r.ingredients));
  if(!images.length)throw Error('No images');
  add();
