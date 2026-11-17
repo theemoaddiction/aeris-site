@@ -62,3 +62,17 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8p
 .catalog-issue{display:flex;flex-direction:column;gap:6px;text-align:center;padding:22px 12px;margin:24px 0;border-top:5px double #8c2832;border-bottom:5px double #8c2832}
 .catalog-issue span{font:11px monospace;letter-spacing:.1em;color:#7d473b}
 .catalog-issue strong{font:900 clamp(24px,4vw,48px)/1.1 Georgia,serif;color:#8c2832}
+
+.wishbook-reference{background:#e6dac4;border:5px double #8c2832;padding:clamp(18px,4vw,42px);margin:25px 0;text-align:center}
+.wishbook-reference__label{font:11px monospace;letter-spacing:.15em;color:#8c2832}
+.wishbook-reference h2{font-size:clamp(28px,5vw,52px);color:#8c2832;margin:8px 0}
+.wishbook-reference>p:not(.wishbook-reference__label){max-width:680px;margin:10px auto 20px;font-size:14px}
+.wishbook-reference__pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.wishbook-reference__pages figure{margin:0;background:#fff8e9;border:1px solid #c7b393;padding:7px}
+.wishbook-reference__pages figure[hidden]{display:none}
+.wishbook-reference__pages img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.wishbook-reference__pages figcaption{font:10px monospace;margin-top:7px}
+.products{gap:12px}
+.products li{border:1px solid var(--rule);padding:10px;background:#fff9eb}
+.listing h2{font-size:clamp(19px,2.5vw,27px)}
+.listing p:not(.price){font-size:14px}
