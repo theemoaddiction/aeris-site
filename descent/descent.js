@@ -16,10 +16,10 @@ const templates=[
 function kindFor(depth){
  const pool=templates.flatMap(t=>Array(t.weight+(depth>1&&['echo','interruption'].includes(t.kind)?2:0)).fill(t.kind));
  // Early archive stays readable; architectural breakage is reserved for the lower levels.
- const weights=[0,0,0,1,2];
+ const weights=[0,0,0,0,1];
  const severe=['inversion','sideways','stack','orbit','dislocation'];
  for(const kind of architecture){
-  const weight=severe.includes(kind)?(depth===4?1:0):weights[depth];
+  const weight=severe.includes(kind)?0:weights[depth];
   for(let n=0;n<weight;n++)pool.push(kind);
  }
  if(index<80){const clean=pool.filter(k=>!['echo','interruption',...architecture].includes(k));const kind=choose(clean.filter(k=>k!==lastKind).length?clean.filter(k=>k!==lastKind):clean);lastKind=kind;return kind;}
@@ -162,6 +162,8 @@ function add(){
   else if(index>=nextGlossary){kind='glossary';nextGlossary=index+26+random(15);}
   else if(index>=nextCatalog){kind='catalog';nextCatalog=index+110+random(61);}
   else kind=kindFor(depth);
+  // Extreme typography is a rare, late-archive event, never an opening effect.
+  if(index>=96 && index%43===0)kind=choose(['inversion','sideways','stack','orbit','dislocation']);
   lastKind=kind;
   const entry=document.createElement('article');
   entry.className='descent-entry descent-entry--'+kind+' descent-entry--depth-'+depth;
