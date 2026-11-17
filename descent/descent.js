@@ -2,7 +2,7 @@
 'use strict';
 const feed=document.querySelector('#descent-feed'),sentinel=document.querySelector('#descent-sentinel'),status=document.querySelector('#descent-status'),panel=document.querySelector('#descent');
 if(!feed||!sentinel||!panel)return;
-let images=[],notes=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[];
+let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[];
 const random=(n)=>Math.floor(Math.random()*n);
 const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -10,7 +10,7 @@ const releases=window.RECORDS||[];
 audioPool=releases.flatMap(r=>(r.tracks||[]).filter(t=>t.audio).map(t=>({title:t.title,artist:r.artist,src:t.audio.replace(/^\.\.\//,'')})));
 const templates=[
  {kind:'image',weight:5},{kind:'diptych',weight:2},{kind:'statement',weight:2},
- {kind:'recording',weight:2},{kind:'echo',weight:1},{kind:'interruption',weight:1}
+ {kind:'recording',weight:2},{kind:'recipe',weight:2},{kind:'echo',weight:1},{kind:'interruption',weight:1}
 ];
 function kindFor(depth){
  const pool=templates.flatMap(t=>Array(t.weight+(depth>1&&['echo','interruption'].includes(t.kind)?2:0)).fill(t.kind));
@@ -27,6 +27,12 @@ function audioCard(depth){
  if(!audioPool.length)return '<p class="descent-entry__note">'+safe(line())+'</p>';
  const track=choose(audioPool),treatment=choose(depth>=2?['memory','tape','transmission','ghost']:['memory','transmission']);
  return '<div class="descent-record"><p class="descent-entry__index">DEGRADED COPY / '+safe(treatment.toUpperCase())+'</p><p class="descent-record__title">'+safe(track.title)+'</p><p class="descent-entry__track">'+safe(track.artist)+' / ALTERED PLAYBACK</p><audio controls preload="none" crossorigin="anonymous" data-treatment="'+treatment+'" src="'+safe(track.src)+'"></audio><p class="descent-record__disclaimer">A live reconstruction. The original recording remains unchanged.</p></div>';
+}
+function recipeCard(depth){
+ if(!recipes.length)return '<p class="descent-entry__note">'+safe(line())+'</p>';
+ if(!recipeDeck.length){recipeDeck=recipes.map((_,i)=>i);for(let i=recipeDeck.length-1;i>0;i--){const k=random(i+1);[recipeDeck[i],recipeDeck[k]]=[recipeDeck[k],recipeDeck[i]];}}
+ const recipe=recipes[recipeDeck.pop()],damaged=depth>=2;
+ return '<div class="descent-prescription'+(damaged?' descent-prescription--aged':'')+'"><p class="descent-prescription__heading">THE GORDON APOTHECARY / FORMULARY '+String(recipe.id).padStart(3,'0')+'</p><h3>'+safe(recipe.name)+'</h3><ul>'+recipe.ingredients.map(i=>'<li>'+safe(i)+'</li>').join('')+'</ul>'+(recipe.note?'<p class="descent-prescription__note">UNVERIFIED: '+safe(recipe.note)+'</p>':'')+'<a href="apothecary/#formula-'+encodeURIComponent(recipe.id)+'">CONSULT ORIGINAL FORMULA ↗</a></div>';
 }
 const interruptions=[
  ['YOU ARE STILL ON THE SAME WEBSITE.','THIS PAGE IS PART OF THE ORIGINAL WEBSITE.','YOU MAY CONTINUE SCROLLING.'],
@@ -49,6 +55,7 @@ function add(){
   if(kind==='diptych')entry.innerHTML=intro+'<div class="descent-diptych">'+picture()+picture()+'</div><p class="descent-entry__note">'+safe(line())+'</p>';
   if(kind==='statement')entry.innerHTML=intro+'<p class="descent-statement">'+safe(line())+'</p>';
   if(kind==='recording')entry.innerHTML=intro+audioCard(depth);
+  if(kind==='recipe')entry.innerHTML=intro+recipeCard(depth);
   if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
   if(kind==='interruption')entry.innerHTML=intro+interruption(depth);
   frag.appendChild(entry);
@@ -91,6 +98,7 @@ feed.addEventListener('play',event=>{
 fetch('descent/manifest.json?fresh='+Date.now(), {cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Archive unavailable');return r.json();}).then(data=>{
  images=(data.images||[]).filter(s=>typeof s==='string'&&s.startsWith('assets/'));
  notes=(data.notes||[]).filter(s=>typeof s==='string'&&s.trim());
+ recipes=(data.recipes||[]).filter(r=>r&&Number.isInteger(r.id)&&typeof r.name==='string'&&Array.isArray(r.ingredients));
  if(!images.length)throw Error('No images');
  add();
  const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))add();},{rootMargin:'700px 0px'});
