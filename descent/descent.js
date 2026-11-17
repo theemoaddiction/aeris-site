@@ -2,7 +2,7 @@
 'use strict';
 const feed=document.querySelector('#descent-feed'),sentinel=document.querySelector('#descent-sentinel'),status=document.querySelector('#descent-status'),panel=document.querySelector('#descent');
 if(!feed||!sentinel||!panel)return;
-let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,nextClassified=33,nextCorrection=46,nextGlossary=22,glossaryDeck=[],glossary=[],adDeck=[],adCount=0,correctionCount=0,companyStage=0,seenClaims=[];
+let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,nextClassified=33,nextCorrection=46,nextGlossary=22,nextCatalog=52,glossaryDeck=[],glossary=[],adDeck=[],adCount=0,correctionCount=0,companyStage=0,seenClaims=[];
 const random=(n)=>Math.floor(Math.random()*n);
 const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -85,6 +85,146 @@ const classifiedListings=[
  ['LOST & FOUND','One future, last seen in a suburban parking lot. Reward negotiable.'],
  ['SERVICES','We repair doors that open into rooms you no longer need.']
 ];
+const catalogItems=[["Baseball Bat","8.00","baseball-bat.webp","Grip tape replaced. Prior use not documented."],["Office Chair","20.00","office-chair.webp","Height adjustment functional. Previous occupant unspecified."],["CD Wallet","5.00","cd-wallet.webp","Seventy-two disc capacity. Some recordings remain."],["Box of Cables","4.00","box-of-cables.webp","Various connectors. No complete system guaranteed."],["Floor Lamp","12.00","floor-lamp.webp","Brass finish. Provides illumination when connected."],["Printer","15.00","printer.webp","Powers on. Output is not guaranteed to correspond to input."]];
+function catalogCard(){
+ const start=random(catalogItems.length);
+ const chosen=[catalogItems[start],catalogItems[(start+1)%catalogItems.length],catalogItems[(start+2)%catalogItems.length]];
+ return '<div class="descent-catalog"><div class="descent-catalog__mast"><span>SODALITE DEPARTMENT STORE</span><strong>CHRISTMAS WISH LIST</strong><small>DECEMBER 1998 / REPRINT</small></div><p class="descent-catalog__strap">GIFT SUGGESTIONS FOR PEOPLE WHO HAVE NOT YET LEFT</p><div class="descent-catalog__products">'+chosen.map(([name,price,img,desc],i)=>'<div class="descent-catalog__product"><img loading="lazy" src="holiday-catalog/'+safe(img)+'" alt="'+safe(name)+'"><p><b>NO. '+String(start*10+i+101)+'</b> '+safe(name)+'</p><small>'+safe(desc)+'</small><strong>
+ if(!glossary.length)return '<p>NO DEFINITION RECOVERED.</p>';
+ if(!glossaryDeck.length){glossaryDeck=glossary.map((_,i)=>i);for(let i=glossaryDeck.length-1;i>0;i--){const k=random(i+1);[glossaryDeck[i],glossaryDeck[k]]=[glossaryDeck[k],glossaryDeck[i]];}}
+ const item=glossary[glossaryDeck.pop()];
+ return '<div class="descent-glossary"><p class="descent-glossary__eyebrow">FIELD DICTIONARY / '+safe(item.type)+'</p><h3>'+safe(item.term)+' <i>'+safe(item.part)+'</i></h3><p class="descent-glossary__definition">'+safe(item.definition)+'</p><blockquote>'+safe(item.excerpt)+'</blockquote><p class="descent-glossary__credit">SOURCE: '+safe(item.credit)+'</p></div>';
+}
+function classifiedCard(){
+ const picks=[];const start=random(classifiedListings.length);
+ for(let i=0;i<6;i++)picks.push(classifiedListings[(start+i)%classifiedListings.length]);
+ return '<div class="descent-classified"><header><span>THE INTERSTITIAL TIMES</span><strong>CLASSIFIEDS</strong><span>ISSUE / UNDATED</span></header><div class="descent-classified__grid">'+picks.map(([type,body],i)=>'<section><b>'+safe(type)+'</b><p>'+safe(body)+'</p><small>REF '+String(index)+'-'+(i+1)+'</small></section>').join('')+'</div><footer>ALL LISTINGS SUBJECT TO MEMORY AND AVAILABILITY.</footer></div>';
+}
+const evolvingCompany=[
+ {brand:'CONTINUITY DEVELOPMENT GROUP',head:'WE KEEP THE PLACES YOU LOVE.',copy:'Preservation, restoration, and thoughtful redevelopment of your most familiar environments.',fine:'Locally operated. Independently remembered.',palette:'mint'},
+ {brand:'CONTINUITY HOLDINGS',head:'NOTHING HAS BEEN REPLACED.',copy:'Our renovated properties retain the emotional appearance of their original locations.',fine:'Previous ownership records have been consolidated.',palette:'blue'},
+ {brand:'CONTINUITY SYSTEMS',head:'THE BUILDING REMEMBERS YOU.',copy:'A personalized environment that adapts to the details you may have forgotten.',fine:'Your consent was obtained during a previous visit.',palette:'yellow'},
+ {brand:'CONTINUITY / INTERNAL',head:'WE HAVE NOT BEEN ABLE TO LEAVE.',copy:'This advertisement is the only department still responding. Please continue scrolling.',fine:'The corporate office is somewhere above this message.',palette:'coral'},
+ {brand:'CONTINUITY / NO ADDRESS',head:'YOU ARE THE LAST AVAILABLE LOCATION.',copy:'We have discontinued all services except the preservation of this visit.',fine:'This notice was not purchased. It is still being displayed.',palette:'violet'}
+];
+function evolvingAd(){
+ const stage=Math.min(companyStage++,evolvingCompany.length-1);
+ return renderAd(evolvingCompany[stage],'<span>CONTINUITY FILE '+(stage+1)+' / '+evolvingCompany.length+'</span>');
+}
+function correctionCard(){
+ const earlier=seenClaims.length?seenClaims[correctionCount%seenClaims.length]:null;
+ correctionCount++;
+ const previous=earlier?safe(earlier.head):'THE ARCHIVE IS COMPLETE';
+ const corrections=[
+  'The facility described in this advertisement was never constructed.',
+  'The building was demolished several years before its scheduled opening.',
+  'The previous description was accurate only from inside the photograph.',
+  'The original sponsor denies ever purchasing the advertisement.',
+  'The address was reassigned to a different memory.',
+  'The correction printed above has itself been withdrawn.'
+ ];
+ const correction=corrections[(correctionCount-1)%corrections.length];
+ return '<div class="descent-correction"><span>OFFICIAL ARCHIVE CORRECTION / '+String(correctionCount).padStart(3,'0')+'</span><h3>PLEASE DISREGARD</h3><p class="descent-correction__quote">'+previous+'</p><p>'+safe(correction)+'</p><small>This notice supersedes the original without removing it.</small></div>';
+}
+function renderAd(ad,extra=''){
+ return '<div class="descent-ad descent-ad--'+ad.palette+'"><div class="descent-ad__top"><span>PAID PLACEMENT / UNVERIFIED SPONSOR</span><span>ADVERTISEMENT</span></div><div class="descent-ad__body"><p class="descent-ad__brand">'+safe(ad.brand)+'</p><h3>'+safe(ad.head)+'</h3><p class="descent-ad__copy">'+safe(ad.copy)+'</p></div><div class="descent-ad__bottom">'+safe(ad.fine)+extra+'</div></div>';
+}
+function adCard(){
+ if(!adDeck.length){adDeck=advertisements.map((_,i)=>i);for(let i=adDeck.length-1;i>0;i--){const k=random(i+1);[adDeck[i],adDeck[k]]=[adDeck[k],adDeck[i]];}}
+ const ad=advertisements[adDeck.pop()];
+ seenClaims.push({head:ad.head,brand:ad.brand});
+ return renderAd(ad)
+}
+const interruptions=[
+ ['YOU ARE STILL ON THE SAME WEBSITE.','THIS PAGE IS PART OF THE ORIGINAL WEBSITE.','YOU MAY CONTINUE SCROLLING.'],
+ ['YOUR LOCATION WITHIN THE WEBSITE HAS BEEN UPDATED.','NO ACTION IS REQUIRED.','THE CONTENT BELOW MAY DIFFER FROM THE CONTENT ABOVE.'],
+ ['THIS IS A COPY OF THE WEBSITE.','THE ORIGINAL REMAINS AVAILABLE ABOVE.','THE RECORDS HAVE NOT BEEN MOVED.'],
+ ['THE WEBSITE HAS BEEN RESTORED FROM MEMORY.','SOME DETAILS COULD NOT BE VERIFIED.','THE WEBSITE DOES NOT CONSIDER THIS A PROBLEM.'],
+ ['THIS IS THE WEBSITE THAT REMEMBERS YOU.','THE ORIGINAL VERSION IS NO LONGER IN THIS DIRECTION.','YOU HAVE NOT LEFT.']
+];
+function interruption(depth){const pool=interruptions[Math.min(depth,interruptions.length-1)];const message=choose(pool);return '<div class="descent-interruption"><p>'+safe(message)+'</p><p>'+safe(line())+'</p></div>';}
+function add(){
+ if(busy||!images.length)return;busy=true;
+ const frag=document.createDocumentFragment();
+ for(let n=0;n<4;n++){
+  const depth=Math.min(4,Math.floor(index/8));
+  let kind;
+  if(index>=nextAd){kind=(adCount++%4===3)?'evolving-ad':'advertisement';nextAd=index+14+random(9);}
+  else if(index>=nextRecipe){kind='recipe';nextRecipe=index+65+random(31);}
+  else if(index>=nextClassified){kind='classified';nextClassified=index+42+random(22);}
+  else if(index>=nextCorrection){kind='correction';nextCorrection=index+34+random(18);}
+  else if(index>=nextGlossary){kind='glossary';nextGlossary=index+26+random(15);}
+  else if(index>=nextCatalog){kind='catalog';nextCatalog=index+49+random(24);}
+  else kind=kindFor(depth);
+  lastKind=kind;
+  const entry=document.createElement('article');
+  entry.className='descent-entry descent-entry--'+kind+' descent-entry--depth-'+depth;
+  entry.dataset.depth=depth;
+  const serial=String(++index).padStart(3,'0');
+  const intro='<p class="descent-entry__index">RECOVERED / '+serial+'</p>';
+  if(kind==='image')entry.innerHTML=intro+picture()+'<p class="descent-entry__note">'+safe(line())+'</p>';
+  if(kind==='diptych')entry.innerHTML=intro+'<div class="descent-diptych">'+picture()+picture()+'</div><p class="descent-entry__note">'+safe(line())+'</p>';
+  if(kind==='statement')entry.innerHTML=intro+'<p class="descent-statement">'+safe(line())+'</p>';
+  if(kind==='recording')entry.innerHTML=intro+audioCard(depth);
+  if(kind==='recipe')entry.innerHTML=intro+recipeCard(depth);
+  if(kind==='advertisement')entry.innerHTML=intro+adCard();
+  if(kind==='evolving-ad'){entry.innerHTML=intro+evolvingAd();seenClaims.push({head:evolvingCompany[Math.min(companyStage-1,evolvingCompany.length-1)].head});}
+  if(kind==='classified')entry.innerHTML=intro+classifiedCard();
+  if(kind==='glossary')entry.innerHTML=intro+glossaryCard();
+  if(kind==='catalog')entry.innerHTML=intro+catalogCard();
+  if(kind==='correction')entry.innerHTML=intro+correctionCard();
+  if(kind==='echo')entry.innerHTML=intro+'<div class="descent-echo"><span>AERIS MANDRAKE</span><span>THE RECORD ROOM IS OPEN</span><span class="descent-echo__broken">THE RECORD ROOM IS '+(depth>2?'STILL':'ALMOST')+' OPEN</span></div><p class="descent-entry__note">'+safe(line())+'</p>';
+  if(kind==='interruption')entry.innerHTML=intro+interruption(depth);
+  if(architecture.includes(kind))entry.innerHTML=intro+(['inversion','sideways','stack','orbit','dislocation'].includes(kind)?violentCard(kind,depth):architecturalCard(kind,depth));
+  frag.appendChild(entry);
+ }
+ feed.appendChild(frag);
+ panel.dataset.depth=String(Math.min(4,Math.floor(index/8)));
+ if(status)status.textContent='ARCHIVE POSITION '+String(index).padStart(3,'0')+' / NO END OF FILE';
+ busy=false;
+}
+function configureAudio(audio){
+ if(audio.dataset.configured)return;
+ audio.dataset.configured='yes';
+ const mode=audio.dataset.treatment;
+ const speed={memory:.82,tape:.68,transmission:.96,ghost:.76}[mode]||1;
+ audio.playbackRate=speed;
+ try{
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  context=context||new AC();
+  const source=context.createMediaElementSource(audio),filter=context.createBiquadFilter(),gain=context.createGain();
+  filter.type=mode==='ghost'?'lowpass':'bandpass';
+  filter.frequency.value=mode==='transmission'?1100:mode==='ghost'?900:1700;
+  filter.Q.value=mode==='transmission'?.9:.35;
+  gain.gain.value=.75;
+  source.connect(filter);filter.connect(gain);gain.connect(context.destination);
+  if(mode==='ghost'||mode==='tape'){
+   const delay=context.createDelay(1),feedback=context.createGain(),wet=context.createGain();
+   delay.delayTime.value=mode==='ghost'?.39:.18;feedback.gain.value=.22;wet.gain.value=.22;
+   filter.connect(delay);delay.connect(wet);wet.connect(context.destination);
+   delay.connect(feedback);feedback.connect(delay);
+  }
+ }catch(e){/* playbackRate remains available when audio processing is unsupported */}
+}
+feed.addEventListener('play',event=>{
+ const audio=event.target;if(!(audio instanceof HTMLAudioElement))return;
+ feed.querySelectorAll('audio').forEach(other=>{if(other!==audio)other.pause();});
+ configureAudio(audio);
+ if(context&&context.state==='suspended')context.resume().catch(()=>{});
+},true);
+fetch('descent/manifest.json?fresh='+Date.now(), {cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Archive unavailable');return r.json();}).then(data=>{
+ images=(data.images||[]).filter(s=>typeof s==='string'&&s.startsWith('assets/'));
+ notes=(data.notes||[]).filter(s=>typeof s==='string'&&s.trim());
+ glossary=(data.glossary||[]).filter(g=>g&&typeof g.term==='string'&&typeof g.definition==='string');
+ recipes=(data.recipes||[]).filter(r=>r&&Number.isInteger(r.id)&&typeof r.name==='string'&&Array.isArray(r.ingredients));
+ if(!images.length)throw Error('No images');
+ add();
+ const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))add();},{rootMargin:'700px 0px'});
+ observer.observe(sentinel);
+}).catch(()=>{if(status)status.textContent='THE ARCHIVE CANNOT BE RETRIEVED.';});
+})();+price+'</strong></div>').join('')+'</div><p class="descent-catalog__foot"><span>ALL ITEMS PREVIOUSLY OWNED. CONDITIONS VARY.</span><a href="holiday-catalog/">VIEW COMPLETE CATALOGUE ↗</a></p></div>';
+}
 function glossaryCard(){
  if(!glossary.length)return '<p>NO DEFINITION RECOVERED.</p>';
  if(!glossaryDeck.length){glossaryDeck=glossary.map((_,i)=>i);for(let i=glossaryDeck.length-1;i>0;i--){const k=random(i+1);[glossaryDeck[i],glossaryDeck[k]]=[glossaryDeck[k],glossaryDeck[i]];}}
