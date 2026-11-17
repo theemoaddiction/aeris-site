@@ -57,3 +57,8 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8p
   .masthead, main, footer { width: calc(100% - 28px); }
   .products { grid-template-columns: 1fr; }
 }
+
+.source-note{max-width:760px;margin:22px auto 0;font:12px/1.5 Arial,sans-serif;color:#605b4d}
+.catalog-issue{display:flex;flex-direction:column;gap:6px;text-align:center;padding:22px 12px;margin:24px 0;border-top:5px double #8c2832;border-bottom:5px double #8c2832}
+.catalog-issue span{font:11px monospace;letter-spacing:.1em;color:#7d473b}
+.catalog-issue strong{font:900 clamp(24px,4vw,48px)/1.1 Georgia,serif;color:#8c2832}
