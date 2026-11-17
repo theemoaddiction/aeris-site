@@ -15,7 +15,13 @@ const templates=[
 ];
 function kindFor(depth){
  const pool=templates.flatMap(t=>Array(t.weight+(depth>1&&['echo','interruption'].includes(t.kind)?2:0)).fill(t.kind));
- const weights=[0,1,2,3,4];for(const kind of architecture)for(let n=0;n<weights[depth];n++)pool.push(kind);
+ // Early archive stays readable; architectural breakage is reserved for the lower levels.
+ const weights=[0,0,0,1,2];
+ const severe=['inversion','sideways','stack','orbit','dislocation'];
+ for(const kind of architecture){
+  const weight=severe.includes(kind)?(depth===4?1:0):weights[depth];
+  for(let n=0;n<weight;n++)pool.push(kind);
+ }
  let kind=choose(pool);if(kind===lastKind)kind=choose(pool.filter(k=>k!==lastKind));lastKind=kind;return kind;
 }
 function picture(){
