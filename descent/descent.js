@@ -2,7 +2,7 @@
 'use strict';
 const feed=document.querySelector('#descent-feed'),sentinel=document.querySelector('#descent-sentinel'),status=document.querySelector('#descent-status'),panel=document.querySelector('#descent');
 if(!feed||!sentinel||!panel)return;
-let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,nextClassified=33,nextCorrection=46,nextGlossary=22,nextCatalog=52,glossaryDeck=[],glossary=[],adDeck=[],adCount=0,correctionCount=0,companyStage=0,seenClaims=[];
+let images=[],notes=[],recipes=[],recipeDeck=[],audioPool=[],index=0,busy=false,lastKind='',lastImage=-1,context=null,imageDeck=[],nextAd=14,nextRecipe=65,nextClassified=33,nextCorrection=46,nextGlossary=22,nextCatalog=105,glossaryDeck=[],glossary=[],adDeck=[],adCount=0,correctionCount=0,companyStage=0,seenClaims=[];
 const random=(n)=>Math.floor(Math.random()*n);
 const choose=a=>a[random(a.length)];
 const safe=(s)=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -89,6 +89,8 @@ const catalogItems=[["Baseball Bat","8.00","baseball-bat.webp","Grip tape replac
 function catalogCard(){
  const start=random(catalogItems.length);
  const chosen=[catalogItems[start],catalogItems[(start+1)%catalogItems.length],catalogItems[(start+2)%catalogItems.length]];
+ const scanIndex=random(7)+1;
+ const historical='<div class="descent-catalog__history"><img loading="lazy" src="holiday-catalog/wishbook-excerpts/part-'+scanIndex+'.webp" onerror="this.closest(\'.descent-catalog__history\').hidden=true" alt="Small cropped historical Wish Book excerpt"><span>ARCHIVE EXCERPT / 1989 / PART '+scanIndex+'</span></div>';
  return '<div class="descent-catalog"><div class="descent-catalog__mast"><span>SODALITE DEPARTMENT STORE</span><strong>CHRISTMAS WISH LIST</strong><small>DECEMBER 1998 / REPRINT</small></div><p class="descent-catalog__strap">GIFT SUGGESTIONS FOR PEOPLE WHO HAVE NOT YET LEFT</p><div class="descent-catalog__products">'+chosen.map(([name,price,img,desc],i)=>'<div class="descent-catalog__product"><img loading="lazy" src="holiday-catalog/'+safe(img)+'" alt="'+safe(name)+'"><p><b>NO. '+String(start*10+i+101)+'</b> '+safe(name)+'</p><small>'+safe(desc)+'</small><strong>
  if(!glossary.length)return '<p>NO DEFINITION RECOVERED.</p>';
  if(!glossaryDeck.length){glossaryDeck=glossary.map((_,i)=>i);for(let i=glossaryDeck.length-1;i>0;i--){const k=random(i+1);[glossaryDeck[i],glossaryDeck[k]]=[glossaryDeck[k],glossaryDeck[i]];}}
@@ -154,7 +156,7 @@ function add(){
   else if(index>=nextClassified){kind='classified';nextClassified=index+42+random(22);}
   else if(index>=nextCorrection){kind='correction';nextCorrection=index+34+random(18);}
   else if(index>=nextGlossary){kind='glossary';nextGlossary=index+26+random(15);}
-  else if(index>=nextCatalog){kind='catalog';nextCatalog=index+49+random(24);}
+  else if(index>=nextCatalog){kind='catalog';nextCatalog=index+110+random(61);}
   else kind=kindFor(depth);
   lastKind=kind;
   const entry=document.createElement('article');
