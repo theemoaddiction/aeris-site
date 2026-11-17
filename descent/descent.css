@@ -123,3 +123,25 @@
 .arch-dislocation span{position:absolute;left:8%;top:55%;font:10px monospace;letter-spacing:.17em;color:#aaa}
 @media(max-width:650px){.arch-sideways>p{width:75vh;font-size:clamp(1.5rem,6vw,3rem)}.arch-dislocation p:nth-child(4){transform:rotate(70deg)}.arch-orbit__text{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.arch-inversion>p:first-child,.arch-inversion__ghost,.arch-sideways>p,.arch-dislocation p{transform:none}.arch-dislocation{display:flex;flex-direction:column;gap:2rem;min-height:auto}.arch-dislocation p,.arch-dislocation span{position:static;max-width:100%}}
+
+/* Fictional commercial interruptions, sourced from manuscript motifs. */
+.descent-entry--advertisement{max-width:min(100%,1100px);min-height:68vh;display:flex;flex-direction:column;justify-content:center}
+.descent-ad{--ad-bg:#f7d34d;--ad-ink:#192a42;--ad-accent:#f05553;background:var(--ad-bg);color:var(--ad-ink);width:100%;text-align:left;box-shadow:12px 15px 0 #000,0 20px 55px #0009;transform:rotate(-1deg);border:4px solid var(--ad-ink);font-family:Arial,Helvetica,sans-serif}
+.descent-ad--blue{--ad-bg:#85c7ef;--ad-ink:#172b5a;--ad-accent:#ffeb70}
+.descent-ad--green{--ad-bg:#a4dc91;--ad-ink:#1b3a31;--ad-accent:#f4c96e}
+.descent-ad--pink{--ad-bg:#f3a3c8;--ad-ink:#4b174b;--ad-accent:#f7df69}
+.descent-ad--coral{--ad-bg:#f88d77;--ad-ink:#43252d;--ad-accent:#ffe08d}
+.descent-ad--violet{--ad-bg:#ad9be5;--ad-ink:#2c1f58;--ad-accent:#e8c875}
+.descent-ad--mint{--ad-bg:#b9eadc;--ad-ink:#22454a;--ad-accent:#edaa87}
+.descent-ad--orange{--ad-bg:#f7ac5e;--ad-ink:#513015;--ad-accent:#f9d991}
+.descent-ad--sky{--ad-bg:#95bff3;--ad-ink:#1b3155;--ad-accent:#f9e8b5}
+.descent-ad--cream{--ad-bg:#f1e6b5;--ad-ink:#3e4c3b;--ad-accent:#d6b9dc}
+.descent-ad__top,.descent-ad__bottom{padding:13px clamp(16px,3vw,32px);font:10px/1.4 monospace;letter-spacing:.12em}
+.descent-ad__top{display:flex;justify-content:space-between;gap:16px;border-bottom:2px solid var(--ad-ink)}
+.descent-ad__body{padding:clamp(24px,5vw,65px)}
+.descent-ad__brand{font:bold clamp(15px,2vw,23px)/1.1 Arial,sans-serif;letter-spacing:.14em;margin:0 0 22px}
+.descent-ad h3{font:900 clamp(2.6rem,7.5vw,7rem)/.9 Arial,Helvetica,sans-serif;letter-spacing:-.075em;max-width:900px;margin:0 0 30px;text-wrap:balance;color:var(--ad-ink)}
+.descent-ad__copy{font:clamp(1rem,2.3vw,1.7rem)/1.3 Georgia,serif;max-width:640px;background:var(--ad-accent);padding:16px 20px}
+.descent-ad__bottom{border-top:2px solid var(--ad-ink);text-align:right}
+@media(max-width:650px){.descent-ad{transform:none}.descent-ad__top{font-size:8px}.descent-ad h3{font-size:clamp(2.3rem,11vw,4rem)}}
+@media(prefers-reduced-motion:reduce){.descent-ad{transform:none}}
