@@ -90,8 +90,11 @@ function catalogCard(){
  const start=random(catalogItems.length);
  const chosen=[catalogItems[start],catalogItems[(start+1)%catalogItems.length],catalogItems[(start+2)%catalogItems.length]];
  const scanIndex=random(7)+1;
- const historical='<div class="descent-catalog__history"><img loading="lazy" src="holiday-catalog/wishbook-excerpts/part-'+scanIndex+'.webp" onerror="this.closest(\'.descent-catalog__history\').hidden=true" alt="Small cropped historical Wish Book excerpt"><span>ARCHIVE EXCERPT / 1989 / PART '+scanIndex+'</span></div>';
- return '<div class="descent-catalog"><div class="descent-catalog__mast"><span>SODALITE DEPARTMENT STORE</span><strong>CHRISTMAS WISH LIST</strong><small>DECEMBER 1998 / REPRINT</small></div><p class="descent-catalog__strap">GIFT SUGGESTIONS FOR PEOPLE WHO HAVE NOT YET LEFT</p><div class="descent-catalog__products">'+chosen.map(([name,price,img,desc],i)=>'<div class="descent-catalog__product"><img loading="lazy" src="holiday-catalog/'+safe(img)+'" alt="'+safe(name)+'"><p><b>NO. '+String(start*10+i+101)+'</b> '+safe(name)+'</p><small>'+safe(desc)+'</small><strong>
+ const historical='<div class="descent-catalog__history"><img loading="lazy" src="holiday-catalog/wishbook-excerpts/part-'+scanIndex+'.webp" onerror="this.parentElement.hidden=true" alt="Cropped 1989 Wish Book historical reference"><span>ARCHIVE EXCERPT / 1989 / PART '+scanIndex+'</span></div>';
+ const products=chosen.map(([name,price,img,desc],i)=>'<div class="descent-catalog__product"><img loading="lazy" src="holiday-catalog/'+safe(img)+'" alt="'+safe(name)+'"><p><b>NO. '+String(start*10+i+101)+'</b> '+safe(name)+'</p><small>'+safe(desc)+'</small><strong>$'+price+'</strong></div>').join('');
+ return '<div class="descent-catalog"><div class="descent-catalog__mast"><span>SODALITE DEPARTMENT STORE</span><strong>CHRISTMAS WISH LIST</strong><small>DECEMBER 1998 / REPRINT</small></div><p class="descent-catalog__strap">GIFT SUGGESTIONS FOR PEOPLE WHO HAVE NOT YET LEFT</p><div class="descent-catalog__products">'+products+'</div>'+historical+'<p class="descent-catalog__foot"><span>ALL ITEMS PREVIOUSLY OWNED. CONDITIONS VARY.</span><a href="holiday-catalog/">VIEW COMPLETE CATALOGUE ↗</a></p></div>';
+}
+function glossaryCard(){
  if(!glossary.length)return '<p>NO DEFINITION RECOVERED.</p>';
  if(!glossaryDeck.length){glossaryDeck=glossary.map((_,i)=>i);for(let i=glossaryDeck.length-1;i>0;i--){const k=random(i+1);[glossaryDeck[i],glossaryDeck[k]]=[glossaryDeck[k],glossaryDeck[i]];}}
  const item=glossary[glossaryDeck.pop()];
